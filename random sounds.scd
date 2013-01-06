@@ -30,7 +30,7 @@ SynthDef(\wavPlayer, { |out = 0, bufnum = 0, gate = 1, speed = 1|
   // env
   env = EnvGen.ar(Env.asr(0.1,1,0.1), gate, doneAction:2);
   audio = PlayBuf.ar(2, bufnum, rate, gate, pos, doneAction:2);
-  SendTrig.kr(gate,0,bufnum);
+  SendTrig.kr(gate,0,speed);
   Out.ar(out, audio * env);
 }).add;
 )
@@ -38,6 +38,13 @@ SynthDef(\wavPlayer, { |out = 0, bufnum = 0, gate = 1, speed = 1|
 ~wavPath = "/Users/geoffroy/Music/pym - documents sonores/*.aif";
 ~wavFiles = ~wavPath.pathMatch;
 ~buffers = ~wavFiles.collect( {|buf| Buffer.read(s, buf)} );
+
+// choose a buffer with a file dialog
+(
+Dialog.openPanel({|path|
+  ~buffer = Buffer.read(s,path);
+});
+)
 
 // test wavPlayer1
 // read a soundfile from disk
@@ -65,7 +72,7 @@ TempoClock.default.tempo = 120/60;
 (
 Pbind(*[
 instrument: \wavPlayer,
-  dur: Pseq([1,2,3,5,8,13,Rest(1),Rest(2),Rest(3),Rest(5),Rest(8),Rest(13)],10),
+  dur: Prand([1,2,3,5,8,13,Rest(1),Rest(2),Rest(3),Rest(5),Rest(8),Rest(13)],10),
   bufnum: ~buffers[0].bufnum,
   speed: 1
 ]).play(quant: 1);
@@ -80,6 +87,37 @@ instrument: \wavPlayer,
     speed: Prand([-1,1],10)
   ]).play(quant: 1);
 }
+)
+
+// semitone
+(
+Pbind(*[
+instrument: \wavPlayer,
+  dur: Prand([1,2,3,5,8,13,Rest(1),Rest(2)],10),
+  legato: 1,
+  bufnum: Prand(~buffers,10),
+  speed: Prand([-1,-2,-3,-4,-6,0,1,2,3,4,6],10).midiratio
+]).play(quant: 1);
+)
+
+(
+Pbind(*[
+instrument: \wavPlayer,
+  dur: Prand([1,2,3,5,8,13,Rest(1),Rest(2)],10),
+  legato: 1,
+  bufnum: ~buffers.choose,
+  speed: Prand([-1,-2,-3,-4,-6,0,1,2,3,4,6],10).midiratio
+]).play(quant: 1);
+)
+
+(
+Pbind(*[
+instrument: \wavPlayer,
+  dur: Prand([1,2,3,5,8,13,Rest(1),Rest(2)],10),
+  legato: 1,
+  bufnum: ~buffer,
+  speed: Prand([-1,-2,-3,-4,-6,0,1,2,3,4,6],10).midiratio
+]).play(quant: 1);
 )
 
 // debugging
