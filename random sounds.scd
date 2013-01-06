@@ -111,8 +111,7 @@ SynthDef(\buf_grain_test, {arg gate = 1, amp = 1, sndbuf, envbuf;
         gate,
         levelScale: amp,
         doneAction: 2);
-    Out.ar(0,
-            GrainBuf.ar(numChannels: 2, trigger: Impulse.kr(MouseY.kr(100,1,1)), dur: 1, sndbuf: sndbuf, rate: 1, pos: LFNoise2.kr(0.1).range(0, 1), interp: 2, pan: pan, envbufnum: envbuf) * env)
+    Out.ar(0,GrainBuf.ar(numChannels: 2, trigger: Impulse.kr(MouseY.kr(100,1,1)), dur: 1, sndbuf: sndbuf, rate: 1, pos: LFNoise2.kr(0.1).range(0, 1), interp: 2, pan: pan, envbufnum: envbuf) * env)
     }).add;
 )
 
