@@ -1,21 +1,25 @@
 (
 Event.addEventType(\renoise, { |server|
   var renoiseOscServer = NetAddr("127.0.0.1", 8000);
-  var notes = [~midinote.value, ~ctranspose.value, ~velocity.value, ~sustain.value, ~lag.value, ~timingOffset.value].flop;
-  var timeNoteOn, timeNoteOff;
+  var notes = [~midinote.value, ~ctranspose.value, ~velocity.value, ~sustain.value, ~lag.value, ~timingOffset.value, ~instrument.value, ~track.value].flop;
+  var timeNoteOn, timeNoteOff, instrument, track;
   var serverLatency;
 
-  if (server.latency == nil, {serverLatency = 0}, {serverLatency = server.latency});
+  serverLatency = server.latency ? 0;
 
   notes.do {|note|
+    instrument = note[6] ? -1;
+    track = note[7] ? -1;
+
     // sustain and timingOffset are in beats, lag is in seconds
     timeNoteOn = (thisThread.clock.tempo.reciprocal*note[5])+note[4]+server.latency;
     timeNoteOff = (thisThread.clock.tempo.reciprocal*(note[3]+note[5]))+note[4]+server.latency;
-    {renoiseOscServer.sendMsg("/renoise/trigger/note_on", -1, -1, (note[0]+note[1]).asInt, note[2].asInt)}.defer(timeNoteOn);
-    {renoiseOscServer.sendMsg("/renoise/trigger/note_off", -1, -1, (note[0]+note[1]).asInt)}.defer(timeNoteOff);
+    SystemClock.sched(timeNoteOn, {renoiseOscServer.sendMsg("/renoise/trigger/note_on", instrument.asInt, track.asInt, (note[0]+note[1]).asInt, note[2].asInt)});
+    SystemClock.sched(timeNoteOff, {renoiseOscServer.sendMsg("/renoise/trigger/note_off", instrument.asInt, track.asInt, (note[0]+note[1]).asInt)});
   }
 });
 )
+
 
 // straight timing
 (
@@ -24,6 +28,8 @@ Pbind(*[
   legato: Pgauss(0.2,0.05,inf),
   dur: 0.2,
   degree: [2,5,12],
+  track: Prand([0,1], inf),
+  instrument: Prand([0,1], inf),
   ctranspose: Pseq([0,0,0,0,4,4,4,4,5,5,5,5],inf),
   velocity: Pgauss(64,10,inf),
 ]).play;
