@@ -1,8 +1,8 @@
 (
 Event.addEventType(\renoise, { |server|
   var renoiseOscServer = NetAddr("127.0.0.1", 8000);
-  var notes = [~midinote.value, ~ctranspose.value, ~velocity.value, ~sustain.value, ~lag.value, ~timingOffset.value, ~instrument.value, ~track.value].flop;
-  var timeNoteOn, timeNoteOff, instrument, track;
+  var notes = [~midinote.value, ~ctranspose.value, ~velocity.value, ~sustain.value, ~lag.value, ~timingOffset.value, ~instr.value, ~track.value].flop;
+  var timeNoteOn, timeNoteOff, instrument, track, velocity;
   var serverLatency;
 
   serverLatency = server.latency ? 0;
@@ -10,16 +10,16 @@ Event.addEventType(\renoise, { |server|
   notes.do {|note|
     instrument = note[6] ? -1;
     track = note[7] ? -1;
+    velocity = note[2].asInt.clip(0,127);
 
     // sustain and timingOffset are in beats, lag is in seconds
     timeNoteOn = (thisThread.clock.tempo.reciprocal*note[5])+note[4]+server.latency;
     timeNoteOff = (thisThread.clock.tempo.reciprocal*(note[3]+note[5]))+note[4]+server.latency;
-    SystemClock.sched(timeNoteOn, {renoiseOscServer.sendMsg("/renoise/trigger/note_on", instrument.asInt, track.asInt, (note[0]+note[1]).asInt, note[2].asInt)});
+    SystemClock.sched(timeNoteOn, {renoiseOscServer.sendMsg("/renoise/trigger/note_on", instrument.asInt, track.asInt, (note[0]+note[1]).asInt, velocity )});
     SystemClock.sched(timeNoteOff, {renoiseOscServer.sendMsg("/renoise/trigger/note_off", instrument.asInt, track.asInt, (note[0]+note[1]).asInt)});
   }
 });
 )
-
 
 // straight timing
 (
@@ -81,3 +81,78 @@ b = a.asStream;
 11.do({ b.next.postln;});
 )
 
+// drums
+
+// one note to test
+(
+NetAddr("127.0.0.1",8000).sendMsg("/renoise/trigger/note_on", -1, -1, 38, 64);
+)
+
+// all notes off
+
+(
+NetAddr("127.0.0.1",8000).sendMsg("/renoise/transport/stop");
+)
+
+TempoClock.default.tempo = 120/60;
+
+// rythme sacre caisse claire
+(
+Pbind(*[
+  type: \renoise,
+  dur: 0.25,
+  velocity: Pseq(
+    [
+      0.7, 0.5, 0.5, 0.5, 0.6, 0.5, 0.5, 0.5,
+      0.5, 1, 0.5, 1, 0.5, 0.5, 0.6, 0.5,
+      0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0.6,
+      1, 1, 0.5, 0.5, 1, 1, 0.5, 0.5,
+    ],
+    inf) * Pif(Ptime(inf) < 300, Env(#[0,127], #[300], \lin)) * Pwhite(0.9,1.1, inf),
+  midinote: Pseq([38], inf)
+]).play;
+)
+
+(
+Ppar([
+  Pbind(*[
+    type: \renoise,
+    dur: 0.25,
+    velocity: Pseq(
+      [
+        0.7, 0.5, 0.5, 0.5, 0.6, 0.5, 0.5, 0.5,
+        0.5, 1, 0.5, 1, 0.5, 0.5, 0.6, 0.5,
+        0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0.6,
+        1, 1, 0.5, 0.5, 1, 1, 0.5, 0.5,
+      ],
+      inf) * Pif(Ptime(inf) < 420, Env(#[0,127], #[420], \lin)) * Pwhite(0.9,1.1, inf),
+    midinote: Pseq([38], inf)
+  ]),
+  Pbind(*[
+    type: \renoise,
+    dur: 1,
+    velocity: Pseq(
+      [
+        0.7, 0.5, 0.5, 0.5, 0.6, 0.5, 0.5, 0.5,
+        0.5, 1, 0.5, 1, 0.5, 0.5, 0.6, 0.5,
+        0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0.6,
+        1, 1, 0.5, 0.5, 1, 1, 0.5, 0.5,
+      ],
+      inf) * Pif(Ptime(inf) < 420, Env(#[0,127], #[420], \lin)) * Pwhite(0.9,1.1, inf),
+    midinote: Pseq([36], inf)
+  ]),
+  Pbind(*[
+    type: \renoise,
+    dur: 0.5,
+    velocity: Pseq(
+      [
+        0.7, 0.5, 0.5, 0.5, 0.6, 0.5, 0.5, 0.5,
+        0.5, 1, 0.5, 1, 0.5, 0.5, 0.6, 0.5,
+        0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0.6,
+        1, 1, 0.5, 0.5, 1, 1, 0.5, 0.5,
+      ],
+      inf) * Pif(Ptime(inf) < 420, Env(#[0,127], #[420], \lin)) * Pwhite(0.9,1.1, inf),
+    midinote: Pseq([45], inf)
+  ])
+]).play;
+)
