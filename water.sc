@@ -1,7 +1,7 @@
 (
 SynthDef(\bubble, {	|out=0, t_trig=0, attack=0.01, decay=0.08, pitchcurvelen=0.1, freq=1000, amp=0.1, pan=0|
 	var pitch, sound;
-	amp   = amp * EnvGen.ar(Env.perc(attack, decay).delay(0.003), t_trig, doneAction: 2);
+	amp = amp * EnvGen.ar(Env.perc(attack, decay).delay(0.003), t_trig, doneAction: 2);
 	pitch = freq * EnvGen.ar(Env.new([0,0,1],[0,1]).exprange(1, 2.718), t_trig, timeScale: pitchcurvelen);
 	sound = SinOsc.ar(pitch);
 	sound = HPF.ar(sound, 500) * amp;
@@ -20,3 +20,5 @@ Pbind(*[
   dur: 1
 ]).play;
 )
+
+s.scope;
