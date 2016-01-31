@@ -10,6 +10,10 @@ Ndef(\player, {
   Out.ar(out, audio * env);
 });
 
+Ndef(\player).set(\bufnum, ~buffer);
+Ndef(\player).set(\loop, 1);
+Ndef(\player).play;
+
 Ndef(\player).set(\speed,1.0);
 Ndef(\player).set(\speed,0.5);
 Ndef(\player).fadeTime = 0;
@@ -20,7 +24,6 @@ Ndef(\player).play;
 Ndef(\player).free;
 Ndef(\player).set(\gate, 1);
 Ndef(\player).set(\gate, 0);
-
 Ndef(\player, {SinOsc.ar(440)});
 Ndef(\onesecosc, {SinOsc.kr(freq: 0.1)});
 Ndef(\player).set(\speed, 1);
