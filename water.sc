@@ -12,7 +12,7 @@ SynthDef(\bubble, {	|out=0, t_trig=0, attack=0.01, decay=0.08, pitchcurvelen=0.1
 (
 Pbind(*[
   instrument: \bubble,
-  freq: Pwhite(1000,1200),
+  freq: Pseries(start:500, step:100, length: 20),
   attack: Pwhite(0.008,0.012),
   decay: Pwhite(0.06,0.10),
   pitchcurvelen: Pwhite(0.08,0.12),
