@@ -7,6 +7,6 @@
 )
 
 (
-{Saw.ar(freq:MouseX.kr(20,500),width:MouseX.kr(),mul:MouseY.kr(0,1))}.play;
-{Saw.ar(freq:MouseX.kr(300,100),width:MouseX.kr(),mul:MouseY.kr(0,1))}.play;
+{VarSaw.ar(freq:MouseX.kr(20,500),width:MouseX.kr(),mul:MouseY.kr(0,1))}.play;
+{VarSaw.ar(freq:MouseX.kr(300,100),width:MouseX.kr(),mul:MouseY.kr(0,1))}.play;
 )
