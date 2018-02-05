@@ -1,0 +1,1 @@
+{Mix.fill(30,{FOS.ar(Blip.ar(rrand(0.01,1),1000),1,LFNoise0.ar([5,7]*100,0.3,0.7),LFNoise0.ar([4,5]*100,0.35,0.6))}).softclip;}.play;

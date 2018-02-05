@@ -1,6 +1,12 @@
 // buffer
 ~buffer = Buffer.read(server: s, path: "/Users/geoffroy/music/stromboli/samples/mandoline_tri.wav", action: { "buffer loaded".postln; });
 
+~buffer = Buffer.read(server: s, path: "/Users/geoffroy/Music/impro mandoline/01-170730_1312.wav", action: { "buffer loaded".postln; });
+
+~buffer = Buffer.read(server: s, path: "/Users/geoffroy/Music/cupa-cupe.wav", action: { "buffer loaded".postln; });
+
+
+
 (
 SynthDef(\wavStereoPlayer, { |out = 0, bufnum = 0, gate = 1, speed = 1, pos = 0, pan = 0, amp = 1, loop = 0|
 	var audio, rate, env;
@@ -9,7 +15,7 @@ SynthDef(\wavStereoPlayer, { |out = 0, bufnum = 0, gate = 1, speed = 1, pos = 0,
 	// use PulseCount because PlayBuf starts right away whatever trigger is
 	rate = BufRateScale.kr(bufnum)*speed*(PulseCount.kr(gate) >= 1);
   // env
-  env = EnvGen.ar(Env.asr(0.1,1,0.1), gate, doneAction:0);
+  env = EnvGen.ar(Env.asr(0.1,1,0.1), gate, doneAction:2);
   audio = PlayBuf.ar(numChannels: 2, bufnum: bufnum, rate: rate, trigger: gate, startPos: pos, loop: loop, doneAction:0);
   audio = Balance2.ar(audio[0], audio[1], pan, amp);
   Out.ar(out, audio * env);
@@ -32,31 +38,48 @@ p.postln;
 4.do {
 Pbind(*[
   instrument: \wavStereoPlayer,
-  dur: Prand([1,2,4,8,12,16],50)*1/8,
+  dur: Prand([1,2,4,8,12,16],50)*4,
   legato: 1,
   pan: Pfunc({rrand(-1.0,1.0)}),
   bufnum: ~buffer,
-  speed: 1,
+  speed: Pfunc({rrand(0.99,1.01)}),
   amp: 2,
   pos: Pfunc({rrand(p,p+0.01)})
 ]).play(quant: 1);
 }
 )
 
+(
+p = rrand(0.0,1.0);
+p.postln;
+8.do {
+Pbind(*[
+  instrument: \wavStereoPlayer,
+  dur: Prand([1,2,4,8,12,16],50)*8,
+  legato: Pfunc({1 - exprand(0.5, 1)}),
+  pan: Pfunc({rrand(-1.0,1.0)}),
+  bufnum: ~buffer,
+  speed: Pfunc({rrand(0.99,1.01)}),
+  amp: 1,
+  pos: Pfunc({rrand(p,p+0.1)})
+]).play(quant: 1);
+}
+)
+
+
 // nice subtle melody
 (
 Pbind(*[
   instrument: \wavStereoPlayer,
-  dur: Prand([1,2,4,8,12,16],50),
-  legato: 2,
+  dur: Prand([1,2],50),
+  legato: Pfunc({1 - exprand(0.5, 1)}),
   pan: Pfunc({rrand(-1.0,1.0)}),
   bufnum: ~buffer,
   amp: 2,
-  speed: Prand([-1,-2,-3,-4,-6,0,1,2,3,4,6],50).midiratio,
-  pos: Pfunc({rrand(0.0,0.1)})
+  speed: Prand([-1,-2,1,2],50).midiratio,
+  pos: Pfunc({rrand(0.0,1.0)})
 ]).play(quant: 1);
 )
-
 
 Scale.directory
 
