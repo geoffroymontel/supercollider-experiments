@@ -42,3 +42,5 @@ SynthDef(\hecker, { |out, freq, t_trig, duration|
 	}
 }.fork;
 )
+
+
