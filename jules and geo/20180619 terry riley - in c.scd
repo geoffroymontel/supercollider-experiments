@@ -65,6 +65,27 @@ TempoClock.default.tempo = ~tempo;
 	//26
 	Pbind(*[note: Pseq([4, 6, 7, 9, 11, 11, 11, 11, 11], 1), dur: Pseq([0.5, 0.5, 0.5, 0.5, 1.5, 1.5, 1.5, 1.5, 1.5], 1), octave: 5]),
 
+    //40
+	Pbind(*[note: Pseq([11, 5], 1), dur: Pseq([0.25, 0.25], 1), octave: 5]),
+    //41
+	Pbind(*[note: Pseq([11, 5], 1), dur: Pseq([0.25, 0.25], 1), octave: 5]),
+    //42
+	Pbind(*[note: Pseq([12, 11, 9, 12], 1), dur: Pseq([2], 4), octave: 5]),
+    //43
+	Pbind(*[note: Pseq([5, 4, 5, 4, 4, 4, 4, 5, 4], 1), dur: Pseq([0.25, 0.25, 0.25, 0.25, 1, 1, 0.5, 0.25, 0.25], 1), octave: 6]),
+    //44
+	Pbind(*[note: Pseq([5, 4, 4, 4, 0], 1), dur: Pseq([0.5, 0.5, 0.5, 0.5, 1], 1), octave: 6]),
+    //45
+	Pbind(*[note: Pseq([2, 2, -5], 1), dur: Pseq([1, 1, 1], 1), octave: 6]),
+    //46
+	Pbind(*[note: Pseq([7, 14, 16, 14, Rest(), 7, Rest(), 7, Rest(), 7, 7, 14, 16, 14], 1), dur: Pseq([0.25, 0.25, 0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.25, 0.25, 0.25, 0.25], 1), octave: 5]),
+    //47
+	Pbind(*[note: Pseq([14, 16, 14], 1), dur: Pseq([0.25, 0.25, 0.5], 1), octave: 5]),
+    //48
+	Pbind(*[note: Pseq([7, 7, 5], 1), dur: Pseq([3, 2, Pwhite(4,20,1)], 1), octave: 5]),
+    //49
+	Pbind(*[note: Pseq([5, 7, 10, 7, 10, 7], 1), dur: Pseq([0.25], 6), octave: 5]),
+
 ]
 )
 
