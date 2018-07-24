@@ -132,7 +132,8 @@ SynthDef(\instr1, { |out = 0, freq = 440, amp = 0.1, numharmonics = 4, pan = 0|
 SynthDef(\instr2, { |out = 0, freq = 440, amp = 0.1, pan = 0, decaytime = 3|
 	var signal;
 	signal = Pluck.ar(in: WhiteNoise.ar(0.1), trig: Impulse.kr(0), maxdelaytime: freq.reciprocal, delaytime: freq.reciprocal, decaytime: decaytime, coef: 0);
-	signal = Pan2.ar(signal * amp, pan);
+	DetectSilence.ar(signal, 0.001, 0.5, doneAction:2);
+	signal = Pan2.ar(signal * amp * 4, pan);
 	Out.ar(out, signal);
 }).add;
 
@@ -156,9 +157,9 @@ SynthDef(\instr4, {
 		exciter,
 		freqscale:freq*pitchy
 	);
-	sig = sig * amp;
+	sig = sig * amp * 0.25;
 	DetectSilence.ar(sig, 0.001, 0.5, doneAction:2);
-	Out.ar(0, Pan2.ar(sig * 0.1, pan));
+	Out.ar(0, Pan2.ar(sig, pan));
 }).add;
 )
 
@@ -167,14 +168,15 @@ SynthDef(\instr4, {
 (
 ~players = Array.newClear(~numberOfPlayers);
 ~numberOfPlayers.do({ |i|
-	var instr;
+	var instr, pairs;
 	instr = [\instr1, \instr2, \instr3, \instr4].choose;
-	~players[i] = switch(instr,
+	pairs = switch(instr,
 		\instr1, { [instrument: \instr1, numharmonics: [2, 4, 10, 20].choose]},
 		\instr2, { [instrument: \instr2, decaytime: rrand(2.0, 5.0)] },
 		\instr3, { [instrument: \instr4] },
 		\instr4, { [instrument: \instr4, pitchy: (1..4).choose, t60: rrand(0.5, 9)] }
 	);
+	~players[i] = pairs ++ [pan: rrand(-1.0, 1.0), amp: 1.0/~numberOfPlayers];
 	("player "+i+" : "+~players[i]).postln;
 });
 )
