@@ -207,3 +207,15 @@ Pbind(*[instrument: \instr4, degree: 0, pan: 0, dur: 1/2, octave: 5,db: Pseq([-2
 	}).play(quant: 1);
 });
 )
+
+(
+a = Pbind(*[
+    octave: 4,
+    note: Pseq((0..11), 1)
+]);
+
+c = (octave: 8, amp: 0.5);
+
+b = Pchain(c, a);
+b.asStream.next(Event.new)
+)
