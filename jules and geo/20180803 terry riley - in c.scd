@@ -118,7 +118,7 @@ TempoClock.default.tempo = ~tempo;
 	Pbind(*[note: Pseq([10, 7], 1), dur: Pseq([0.25, 0.25], 1), octave: 5]),
 ];
 
-~commonPattern = Pbind(*[lag: Pwhite(-0.05, 0.05, inf)]);
+~commonPattern = Pbind(*[lag: Pwhite(-0.02, 0.02, inf)]);
 )
 
 (
@@ -203,16 +203,15 @@ SynthDef(\instr5,{ // orgue
 });
 )
 
-// joueur de la pulse
-(
-Pbind(*[instrument: \instr5, degree: 0, pan: 0, dur: 1/2, octave: 5,db: Pseq([-20, -24, -22, -24], inf)]).play(quant:1);
-)
-
-// Test
+// Test d'un instrument avec la gamme majeur
 (
 Pbind(*[degree: Pseq((0..7)), instrument: \instr5, amp: 1]).play
 )
 
+// joueur de la pulse
+(
+Pbind(*[instrument: \instr4, degree: 0, pan: 0, dur: 1/2, octave: 5,db: Pseq([-20, -24, -22, -24], inf)]).play(quant:1);
+)
 
 // 1 seul joueur
 (
@@ -225,21 +224,10 @@ Pbind(*[degree: Pseq((0..7)), instrument: \instr5, amp: 1]).play
 			("player "+player+" : ").post;
 			// jouer le pattern i entre 45s et 1,30 min
 			sp.seq(
-				Pchain(~commonEvent,Pbindf(Pfindur(~durationToBeats.value(rrand(~minPatternDuration,~maxPatternDuration).postln), Pn(i, inf))),~players[player]);
+				Pchain(~commonPattern,Pbindf(Pfindur(~durationToBeats.value(rrand(~minPatternDuration,~maxPatternDuration).postln), Pn(i, inf))),~players[player]);
 			);
 		});
 	}).play(quant: 1);
 });
 )
-~players[0].asPairs
-(
-a = Pbind(*[
-    octave: 4,
-    note: Pseq((0..11), 1)
-]);
 
-c = (octave: 8, amp: 0.5);
-
-b = Pchain(c, a);
-b.asStream.next(Event.new)
-)
