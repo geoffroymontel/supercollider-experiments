@@ -3,7 +3,7 @@
 - wslib : optimisations (SimpleMIDIFile, SVG, RoundButton, SmoothSlider, AutoBackup)
 - feedback
 - vowel
-- miSCellaneous_lib : par daniel mayer, patterns, fx sequencing, granulation, wave folding, sieves, combined lang and server gui control, live coding, single sample feedback, generalized functional iteration synthesis
+- miSCellaneous_lib : par daniel mayer, VarGui, PbindFx, patterns, fx sequencing, granulation, wave folding, sieves, combined lang and server gui control, live coding, single sample feedback, generalized functional iteration synthesis
 - Wavesets
 - safeclip : coupe le master en cas de son trop fort
 - dewdrop_lib, ddw* and chucklib : par James Harkins, à creuser (mixer channel, timeline, voicer) 
