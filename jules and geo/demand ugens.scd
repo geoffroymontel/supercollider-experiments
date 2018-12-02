@@ -1,11 +1,8 @@
 (
 {
 	var trig, snd, tempo, clock;
-	// trig = Impulse.ar(1);
-	tempo = 1.0;
-	clock = Impulse.kr(tempo);
-	trig = Demand.kr(clock, 0, Dseq([0.25, tempo],repeats: inf));
-	trig = Impulse.ar(trig.poll(clock));
+	tempo = 60/60;
+	trig = TDuty.kr(Drand([Dseq(1,1,1,1), Dseq(1/2)]*tempo, repeats: inf));
 
 	snd = SinOsc.ar(
 		freq: EnvGen.ar(
@@ -21,16 +18,26 @@
 		gate: trig
 	);
 
-	trig.lag(0.01)
-
 }.plot(10)
 )
 
+Prand
+
+
 (
 {
-	Impulse.ar(2).lag
-}.plot()
+	SinOsc.ar(freq: SinOsc.kr(1).range(300,400))
+}.play
+)
+
+(
+SynthDef(\test,
+{ |freq|
+	var n = 3;
+		Out.ar(0, Splay.ar(Array.fill(n, { |i| SinOsc.ar(freq: freq + Rand(0, 10)) * (1/n) })));
+}).add;
 )
 
 
+Synth(\test, [freq: 800])
 
