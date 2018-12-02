@@ -1,14 +1,17 @@
 (
 {
-	var trig, snd, tempo, clock;
-	tempo = 60/60;
-	trig = TDuty.kr(Drand([Dseq(1,1,1,1), Dseq(1/2)]*tempo, repeats: inf));
+	var trig, snd, tempo, clock, kick, drone, note;
 
-	snd = SinOsc.ar(
+	note = 41; // fa
+	tempo = 60/60;
+	clock = Impulse.kr(tempo);
+	trig = TDuty.kr(Dseq([Dwrand([1/3, 2/3], [0.9, 0.1], 1), 1/3, 1/3, 1],inf)+Dwhite(-0.01, 0.01,inf));
+
+	kick = SinOsc.ar(
 		freq: EnvGen.ar(
 			envelope: Env(
 				levels: [472, 472, 60],
-				times: [0.0, 0.045],
+				times: [0.0, 0.01],
 				curve: 'exp'),
 			gate: trig
 		)
@@ -18,26 +21,14 @@
 		gate: trig
 	);
 
-}.plot(10)
-)
+	drone = Splay.ar( (1..10).collect({ |i|
+		Saw.ar(
+			freq: note.midicps * i,
+			mul: 1/i
+		)
+	}));
 
-Prand
-
-
-(
-{
-	SinOsc.ar(freq: SinOsc.kr(1).range(300,400))
+	drone = drone * (1- (trig.lag(0.3) * 10)); // sidechain compressor
+	kick + drone * -12.dbamp;
 }.play
 )
-
-(
-SynthDef(\test,
-{ |freq|
-	var n = 3;
-		Out.ar(0, Splay.ar(Array.fill(n, { |i| SinOsc.ar(freq: freq + Rand(0, 10)) * (1/n) })));
-}).add;
-)
-
-
-Synth(\test, [freq: 800])
-
