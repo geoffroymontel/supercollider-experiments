@@ -13,10 +13,15 @@
         )
     }));
 
-	drone = drone * (1 - EnvGen.kr(
-		envelope: Env.perc(0.01, 0.3),
+	// drone = drone * (1 - EnvGen.kr(
+	// 	envelope: Env.perc(0.01, 0.3),
+	// 	gate: trig
+	// ));
+
+	drone = drone * EnvGen.kr(
+		envelope: Env.new(levels: [0, 0, 1], times: [0.01, 0.3], loopNode: 1),
 		gate: trig
-	));
+	);
 
 }.play
 )
