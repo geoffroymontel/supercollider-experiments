@@ -1,6 +1,6 @@
 (
 {
-	var trig, snd, tempo, clock, kick, drone, note;
+	var trig, snd, tempo, clock, kick, drone, note,envcomp;
 
 	note = 41; // fa
 	tempo = 60/60;
@@ -28,7 +28,13 @@
 		)
 	}));
 
-	drone = drone * (1- (trig.lag(0.3) * 10)); // sidechain compressor
+	envcomp = Env.new(levels:[1, -20.dbamp, 1], times:[0.1,0.3]);
+	// drone = drone * (1- (trig.lag(0.3) * 10)); // basic sidechain compressor
+	//drone = Compander.ar(drone, kick, 0.1, 1, 0.3, 0.01, 0.1); // with a real compressor
+	drone = drone * EnvGen.kr(envelope: envcomp, gate: trig);
+
 	kick + drone * -12.dbamp;
 }.play
 )
+
+
