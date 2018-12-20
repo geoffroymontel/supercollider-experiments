@@ -1,19 +1,21 @@
+// Without Modality Toollkit
+
 OSCFunc.trace(true);
 OSCFunc.trace(false);
-
 OSCdef('/1/fader1', { |msg, time, addr, recvPort| msg.postln }, '/1/fader1', nil);
 
-// email to SC user list
+// With Modality Toolkit
 t = MKtl(\tosca, "touchosc-simple1");
-t.device.updateSrcAddr("192.168.1.12", 63763); // IP and port of TouchOsc on my iPad as printed
+t.device.updateSrcDstAddr("192.168.1.12", 63763); // IP and port of TouchOsc on my iPad as printed
 t.gui;
+
 t.postElements;
 
 t.elAt.action = { |el|
     "tOsc %: %\n".postf(el.name, el.value.round(0.001))
 };
 
-t.setValueAt("sl_1", 0.0);
+t.setValueAt('sl_1', 1.0.rand);
 
 t.free;
 
@@ -23,4 +25,4 @@ t.free;
 
 // install
 Quarks.gui
-Platform.userExtensionDir
+Quarks.openFolder
