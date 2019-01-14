@@ -37,8 +37,8 @@ Event.addEventType(\vstPlugin, { |server|
 
 	notes.do { |note|
 		// sustain and timingOffset are in beats, lag is in seconds
-		timeNoteOn = (thisThread.clock.tempo.reciprocal*note[5])+note[4];
-		timeNoteOff = (thisThread.clock.tempo.reciprocal*(note[3]+note[5]))+note[4];
+		timeNoteOn = (thisThread.clock.tempo.reciprocal*note[5])+note[4]+server.latency;
+		timeNoteOff = (thisThread.clock.tempo.reciprocal*(note[3]+note[5]))+note[4]+server.latency;
 
 		SystemClock.sched(timeNoteOn, {
 			note[6].midiNoteOn(chan: note[7] ? 0, note: (note[0]+note[1]).asInteger, veloc: note[2].asInteger.clip(0,127));
