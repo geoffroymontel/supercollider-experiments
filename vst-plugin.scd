@@ -18,7 +18,6 @@ SystemClock.sched(2, {
 });
 )
 
-
 ~vst.midiNoteOff(chan: 0, note: 60, veloc: 64);
 
 (
@@ -60,6 +59,7 @@ Pbind(*[
 ]).play;
 )
 
+
 // straight timing
 (
 Pbind(*[
@@ -68,7 +68,6 @@ Pbind(*[
 	legato: Pgauss(0.2,0.05,inf),
 	dur: 0.2,
 	degree: [2,5,12],
-	track: Prand([0,1], inf),
 	ctranspose: Pseq([0,0,0,0,4,4,4,4,5,5,5,5],inf),
 	velocity: Pgauss(64,10,inf),
 ]).play;
