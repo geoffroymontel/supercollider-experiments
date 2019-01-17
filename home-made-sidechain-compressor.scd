@@ -25,3 +25,5 @@
 
 }.play
 )
+
+{ EnvGen.kr(Env.new(levels: [0.5, 0, 1], times: [0.1, 0.3], loopNode: 1), Impulse.kr(2)) }.plot(1)
