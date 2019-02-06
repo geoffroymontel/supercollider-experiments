@@ -9,3 +9,5 @@
 - dewdrop_lib, ddw* and chucklib : par James Harkins, à creuser (mixer channel, timeline, voicer) 
 - require
 - crucial-library : Instr, Patch, Player
+- notation anglaise : https://github.com/shimpe/panola
+- L Systems : https://github.com/shimpe/sc-lsystem
