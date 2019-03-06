@@ -1,20 +1,18 @@
 // need Modality-toolkit quark
 Quarks.gui;
 
-// create buses and group
 (
 ~number = 10;
+
+// create buses and group
 if (~synthsOutputBus == nil) { ~synthsOutputBus = Bus.audio(s, ~number); };
 if (~filtersInputBus == nil) {~filtersInputBus = Bus.audio(s, ~number); };
 if (~filtersOutputBus == nil) {~filtersOutputBus = Bus.audio(s, ~number); };
-~synthsGroup = Group.new;
-~matrixGroup = Group.after(~synthsGroup);
-~filtersGroup = Group.after(~matrixGroup);
-~masterGroup = Group.after(~filtersGroup);
-)
+if (~synthsGroup == nil) { ~synthsGroup = Group.new } { ~synthsGroup.freeAll };
+if (~matrixGroup == nil) { ~matrixGroup = Group.after(~synthsGroup) } { ~matrixGroup.freeAll };
+if (~filtersGroup == nil) { ~filtersGroup = Group.after(~matrixGroup) } { ~filtersGroup.freeAll };
+if (~masterGroup == nil) { ~masterGroup = Group.after(~filtersGroup) } { ~masterGroup.freeAll };
 
-// synth and filters synthdefs
-(
 // synth
 SynthDef(\synth, { |out=0, freq=440, detune=0, gate=1|
 	var signal;
@@ -53,7 +51,7 @@ SynthDef(\string_resonator, { |out=0, in=0, freq=440, res=0.9|
 }).add;
 
 // Audiomulch like matrix routing but channel per channel
-SynthDef(\routing, { |in=0, out=1, fadeTime=0.01, gate=1|
+SynthDef(\routing, { |in=0, out=1, fadeTime=1, gate=1|
 	var signal;
 	signal = In.ar(in, 1) * EnvGen.kr(Env.asr(fadeTime, 1.0, fadeTime),gate, doneAction: Done.freeSelf);
 	Out.ar(out, signal);
@@ -63,16 +61,12 @@ SynthDef(\routing, { |in=0, out=1, fadeTime=0.01, gate=1|
 SynthDef(\mixer, {
 	Out.ar(0, Splay.ar(~number.collect({|i| In.ar(~filtersOutputBus.index+i, 1)})).tanh);
 }).add;
-)
 
 // create mixer
-(
 ~masterGroup.freeAll;
 ~mixer = Synth(defName: \mixer, target: ~masterGroup);
-)
 
 // generate N filters
-(
 ~filtersGroup.freeAll;
 ~filtersPlaying = ~number.collect({ |i|
 	Synth(
@@ -80,8 +74,8 @@ SynthDef(\mixer, {
 		defName: [\dfm1_HighPass, \dfm1_LowPass, \303].choose,
 		args: [
 			freq: rrand(0.0, 1.0).lincurve(0, 1, 100, 2000),
-			// res: rrand(0.0, 1.0).lincurve(0,1,0,1),
-			// dist:rrand(0.0, 1.0).lincurve(0,1,0,1),
+			res: rrand(0.0, 1.0).lincurve(0,1,0,0.6),
+			dist:rrand(0.0, 1.0).lincurve(0,1,0,0.8),
 			in: ~filtersInputBus.index + i,
 			out: ~filtersOutputBus.index + i
 		],
