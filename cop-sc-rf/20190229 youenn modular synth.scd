@@ -76,7 +76,7 @@ Ndef(\osc01)[1]=\set->Pbind(
 );
 )
 
-// maintenant on change le synthé en lui-même
+// maintenant on change le synthé en lui-même avec un fade de 5 secondes
 Ndef(\osc01).fadeTime = 5;
 
 (

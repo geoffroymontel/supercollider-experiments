@@ -1,49 +1,117 @@
-// need Mktl quark
+// need Modality-toolkit quark
+Quarks.gui;
 
-// create a synth that plays on N buses
+// create buses and group
 (
 ~number = 10;
+if (~synthsOutputBus == nil) { ~synthsOutputBus = Bus.audio(s, ~number); };
+if (~filtersInputBus == nil) {~filtersInputBus = Bus.audio(s, ~number); };
+if (~filtersOutputBus == nil) {~filtersOutputBus = Bus.audio(s, ~number); };
+~synthsGroup = Group.new;
+~matrixGroup = Group.after(~synthsGroup);
+~filtersGroup = Group.after(~matrixGroup);
+~masterGroup = Group.after(~filtersGroup);
+)
 
+// synth and filters synthdefs
+(
 // synth
-SynthDef(\synth, {
-	var out = \out.kr(0);
-	var freq = \freq.kr(440);
-	var detune = \detune.kr(0);
-	var gate = \gate.kr(1);
+SynthDef(\synth, { |out=0, freq=440, detune=0, gate=1|
 	var signal;
 	signal = ~number.collect({
 		[SinOsc, FSinOsc, Saw, Pulse].choose.ar(
 			freq: (freq.cpsmidi + (LFNoise1.kr(rrand(0.1, 2.0)) * (detune/100))).midicps
-		) / ~number * -3.dbamp * EnvGen.kr(Env.asr, gate)
+		) / ~number * -3.dbamp * EnvGen.kr(Env.asr, gate, doneAction: Done.freeSelf)
 	});
-	signal = Splay.ar(signal); // if you want to test it in stereo
+	// signal = Splay.ar(signal); // if you want to test it in stereo
+	Out.ar(out, signal); // outputs to ~number channels
+}).add;
+
+// filters
+SynthDef(\dfm1_HighPass, { |out=0, in=0, freq=440, res=0.1|
+	var signal;
+	signal = DFM1.ar(In.ar(in), freq, res, 1.0, 1.0);
+	Out.ar(out, signal.tanh);
+}).add;
+
+SynthDef(\dfm1_LowPass, { |out=0, in=0, freq=440, res=0.1|
+	var signal;
+	signal = DFM1.ar(In.ar(in), freq, res, 1.0, 0.0);
+	Out.ar(out, signal.tanh);
+}).add;
+
+SynthDef(\303, { |out=0, in=0, freq=440, res=0.1, dist=0.0|
+	var signal;
+	signal = RLPFD.ar(In.ar(in), freq, res, dist);
+	Out.ar(out, (signal * 6.dbamp).tanh);
+}).add;
+
+SynthDef(\string_resonator, { |out=0, in=0, freq=440, res=0.9|
+	var signal;
+	signal = Streson.ar(In.ar(in), freq.reciprocal, res);
+	Out.ar(out, signal.tanh);
+}).add;
+
+// Audiomulch like matrix routing but channel per channel
+SynthDef(\routing, { |in=0, out=1, fadeTime=0.01, gate=1|
+	var signal;
+	signal = In.ar(in, 1) * EnvGen.kr(Env.asr(fadeTime, 1.0, fadeTime),gate, doneAction: Done.freeSelf);
 	Out.ar(out, signal);
+}).add;
+
+// mix
+SynthDef(\mixer, {
+	Out.ar(0, Splay.ar(~number.collect({|i| In.ar(~filtersOutputBus.index+i, 1)})).tanh);
 }).add;
 )
 
-Synth(\synth, [detune: 15]);
-
-// draw black keys on top of whites, use MPadViews
+// create mixer
 (
-~win = Window("PianoLayout", Rect(0, 200, 400, 150)).front;
+~masterGroup.freeAll;
+~mixer = Synth(defName: \mixer, target: ~masterGroup);
+)
 
+// generate N filters
+(
+~filtersGroup.freeAll;
+~filtersPlaying = ~number.collect({ |i|
+	Synth(
+		// defName: [\dfm1_HighPass, \dfm1_LowPass, \303, \string_resonator].choose,
+		defName: [\dfm1_HighPass, \dfm1_LowPass, \303].choose,
+		args: [
+			freq: rrand(0.0, 1.0).lincurve(0, 1, 100, 2000),
+			// res: rrand(0.0, 1.0).lincurve(0,1,0,1),
+			// dist:rrand(0.0, 1.0).lincurve(0,1,0,1),
+			in: ~filtersInputBus.index + i,
+			out: ~filtersOutputBus.index + i
+		],
+		target: ~filtersGroup
+	);
+});
+)
+
+// GUI
+(
+~win = Window("Synth Matrix Experiment", Rect(0, 100, 1220, 500)).front;
+
+// KEYBOARD
 // sort black before white keys so we draw them on top
-~layouts = Piano.layout(48, 72).sort { |a, b| a.color > b.color };
+~layouts = Piano.layout(24, 108).sort { |a, b| a.color > b.color };
 
-~synthsPlaying = Array.newClear(73);
+~synthsPlaying = Array.newClear(109);
 
 // draw MPadViews as keys
 ~keys = ~layouts.collect { |ev|
 	var color = Color.perform(ev.color);
 	var height = ev.h * 60;
-	var rect = Rect(ev.x + (1-ev.w/2) * 24 + 4, 4, 24 * ev.w, height);
+	var rect = Rect((ev.x + ((1-ev.w)/2)) * 24 + 4, 4, 24 * ev.w, height);
 	var pad = MPadView(~win, rect).mode_(\noteOnOffTouch);
 	pad.baseColor_(color).label_(ev.note);
 	pad.vShiftLabel_( ev.h * 15);
 	pad.action = { |pd|
 		"pad %    on: % \n".postf(ev.note, pd.value.round(0.001));
 		if (~synthsPlaying[ev.note] == nil) {
-			~synthsPlaying[ev.note] = Synth(\synth, [freq: ev.note.midicps, detune: pd.value * 100]);
+			~synthsPlaying[ev.note] = Synth(\synth, [freq: ev.note.midicps, detune: pd.value * 100, out: ~synthsOutputBus], ~synthsGroup);
 		};
 	};
 	pad.upAction = { |pd|
@@ -59,4 +127,54 @@ Synth(\synth, [detune: 15]);
 		};
 	};
 };
+
+// MATRIX
+~matrixPlaying = Array2D.new(~number, ~number);
+~matrixGroup.freeAll;
+
+~buttons = ~number.do({ |x|
+	var startX = 100;
+	var startY = 150;
+	~number.do({ |y|
+		var rect = Rect(startX + (x * 20), startY + (y * 20), 20, 20);
+		Button(~win, rect)
+		.states_([
+			["", Color.black, Color.white],
+			["", Color.white, Color.black]
+		])
+		.action_({ |butt|
+			butt.value.postln;
+			if (butt.value == 0) {
+				"coucou".postln;
+				if (~matrixPlaying[x,y] != nil) {
+					"hey".postln;
+					~matrixPlaying[x,y].release;
+					~matrixPlaying[x,y] = nil;
+				}
+			} {
+				~matrixPlaying[x,y] = Synth(\routing, [in: ~synthsOutputBus.index + x, out: ~filtersInputBus.index + y], ~matrixGroup);
+			}
+		});
+	});
+});
 )
+
+// test synth
+(
+a = Synth(\synth, [out: ~synthsOutputBus, freq: rrand(200, 800)], ~synthsGroup);
+m = Monitor.new;
+m.play(~synthsOutputBus.index, 2, 0);
+)
+
+(
+a.release; // stop synth
+m.clear; // clear monitor
+)
+
+(
+a = Synth(\synth, [out: ~filtersOutputBus, freq: rrand(200, 800) ], ~filtersGroup);
+~filtersOutputBus.scope;
+)
+
+a.release;
+
