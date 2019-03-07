@@ -1,4 +1,4 @@
-// need Modality-toolkit quark
+// please install Modality-toolkit quark
 Quarks.gui;
 
 (
@@ -8,10 +8,10 @@ Quarks.gui;
 if (~synthsOutputBus == nil) { ~synthsOutputBus = Bus.audio(s, ~number); };
 if (~filtersInputBus == nil) {~filtersInputBus = Bus.audio(s, ~number); };
 if (~filtersOutputBus == nil) {~filtersOutputBus = Bus.audio(s, ~number); };
-if (~synthsGroup == nil) { ~synthsGroup = Group.new } { ~synthsGroup.freeAll };
-if (~matrixGroup == nil) { ~matrixGroup = Group.after(~synthsGroup) } { ~matrixGroup.freeAll };
-if (~filtersGroup == nil) { ~filtersGroup = Group.after(~matrixGroup) } { ~filtersGroup.freeAll };
-if (~masterGroup == nil) { ~masterGroup = Group.after(~filtersGroup) } { ~masterGroup.freeAll };
+~synthsGroup = Group.new;
+~matrixGroup = Group.after(~synthsGroup);
+~filtersGroup = Group.after(~matrixGroup);
+~masterGroup = Group.after(~filtersGroup);
 
 // synth
 SynthDef(\synth, { |out=0, freq=440, detune=0, gate=1|
@@ -19,7 +19,7 @@ SynthDef(\synth, { |out=0, freq=440, detune=0, gate=1|
 	signal = ~number.collect({
 		[SinOsc, FSinOsc, Saw, Pulse].choose.ar(
 			freq: (freq.cpsmidi + (LFNoise1.kr(rrand(0.1, 2.0)) * (detune/100))).midicps
-		) / ~number * -3.dbamp * EnvGen.kr(Env.asr, gate, doneAction: Done.freeSelf)
+		) / ~number * -3.dbamp * EnvGen.kr(Env.asr(), gate, doneAction: Done.freeSelf)
 	});
 	// signal = Splay.ar(signal); // if you want to test it in stereo
 	Out.ar(out, signal); // outputs to ~number channels
@@ -61,7 +61,9 @@ SynthDef(\routing, { |in=0, out=1, fadeTime=1, gate=1|
 SynthDef(\mixer, {
 	Out.ar(0, Splay.ar(~number.collect({|i| In.ar(~filtersOutputBus.index+i, 1)})).tanh);
 }).add;
+)
 
+(
 // create mixer
 ~masterGroup.freeAll;
 ~mixer = Synth(defName: \mixer, target: ~masterGroup);
@@ -125,13 +127,14 @@ SynthDef(\mixer, {
 // MATRIX
 ~matrixPlaying = Array2D.new(~number, ~number);
 ~matrixGroup.freeAll;
+~buttons = Array2D.new(~number, ~number);
 
-~buttons = ~number.do({ |x|
+~number.do({ |x|
 	var startX = 100;
 	var startY = 150;
 	~number.do({ |y|
 		var rect = Rect(startX + (x * 20), startY + (y * 20), 20, 20);
-		Button(~win, rect)
+		~buttons[x, y] = Button(~win, rect)
 		.states_([
 			["", Color.black, Color.white],
 			["", Color.white, Color.black]
@@ -153,22 +156,46 @@ SynthDef(\mixer, {
 });
 )
 
-// test synth
-(
-a = Synth(\synth, [out: ~synthsOutputBus, freq: rrand(200, 800)], ~synthsGroup);
-m = Monitor.new;
-m.play(~synthsOutputBus.index, 2, 0);
-)
+// automate routing with routines
 
 (
-a.release; // stop synth
-m.clear; // clear monitor
+~routine = {
+	var i = 0;
+	var x;
+	loop {
+		i = i % ~number;
+		x = Synth(\routing, [in: ~synthsOutputBus.index + i, out: ~filtersInputBus.index + i], ~matrixGroup);
+		1.0.wait;
+		x.release;
+		i = i + 1;
+	}
+}.fork
 )
 
+~routine.stop;
+
+// automate routing with patterns
 (
-a = Synth(\synth, [out: ~filtersOutputBus, freq: rrand(200, 800) ], ~filtersGroup);
-~filtersOutputBus.scope;
+~pattern = Pbind(*[
+	instrument: \routing,
+	in: ~synthsOutputBus.index + Pwhite(0,~number -1),
+	out: ~filtersInputBus.index + Pwhite(0,~number -1),
+	dur: Pstutter(Prand([1, 2, 4, 8], inf), Pseq([1/8, 1/8, 1/8, Prand([1/8, 1/4, 1/2], inf)], inf)),
+	group: ~matrixGroup,
+	gui: Pfunc({ |ev|
+		var in, out, dur;
+		postf("in = %, out = %, dur = %\n", ev['in'].class, ev['out'], ev['dur']);
+		in = ev['in'] - ~synthsOutputBus.index;
+		out = ev['out'] - ~filtersInputBus.index;
+		dur = ev['dur'];
+		{
+			~buttons[in, out].value = 1;
+
+		}.defer;
+		{
+			~buttons[in, out].value = 0;
+		}.defer(dur);
+	})
+]).play;
 )
-
-a.release;
-
+~pattern.stop
