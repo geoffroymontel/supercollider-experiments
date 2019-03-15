@@ -1,86 +1,94 @@
-VstPlugin.makeSynthDef.add;
-~vst = VstPlugin.new([\nin, 0, \nout, 2, \out, 0, \replace, 0], s, addAction: \addToHead);
-~vst.open("/Library/Audio/Plug-Ins/VST/mda ePiano.vst", info: true);
-~vst.showGui;
-~vst.programs;
-~vst.currentProgram;
-~vst.midiNoteOn(chan: 0, note: 60, veloc: 64);
-~vst.midiNoteOn(chan: 0, note: 64, veloc: 64);
+VSTPlugin.search(s, ["C:/audio/vst"], false, true, action: { "vst plugin search done".postln });
+
+VSTPlugin.plugins(s);
+VSTPlugin.pluginKeys(s);
 
 (
-SystemClock.sched(1, {
-	~vst.midiNoteOn(chan: 0, note: 60, veloc: 64);
-	~vst.midiNoteOn(chan: 0, note: 64, veloc: 64);
-});
-SystemClock.sched(2, {
-	~vst.midiNoteOff(chan: 0, note: 60, veloc: 64);
-	~vst.midiNoteOff(chan: 0, note: 64, veloc: 64);
-});
+var plugs;
+plugs = VSTPlugin.pluginKeys(s);
+plugs.do { |plug|
+	plug.postln;
+}
 )
 
-~vst.midiNoteOff(chan: 0, note: 60, veloc: 64);
+// VST FX
 
 (
-Event.addEventType(\vstPlugin, { |server|
-	var notes = [
-		~midinote.value,  // 0
-		~ctranspose.value,  // 1
-		~velocity.value, // 2
-		~sustain.value, // 3
-		~lag.value, // 4
-		~timingOffset.value, //5
-		~instrument, // 6
-		~midiChannel.value, // 7
-	].flop;
-	var timeNoteOn, timeNoteOff;
+// a simple stereo insert FX which reads from an audio bus
+// and replaces the content with the processed output:
+SynthDef.new(\insert, {arg bus;
+    ReplaceOut.ar(bus, VSTPlugin.ar(In.ar(bus, 2), 2));
+}).add;
 
-	notes.do { |note|
-		// sustain and timingOffset are in beats, lag is in seconds
-		timeNoteOn = (thisThread.clock.tempo.reciprocal*note[5])+note[4]+server.latency;
-		timeNoteOff = (thisThread.clock.tempo.reciprocal*(note[3]+note[5]))+note[4]+server.latency;
-
-		SystemClock.sched(timeNoteOn, {
-			note[6].midiNoteOn(chan: note[7] ? 0, note: (note[0]+note[1]).asInteger, veloc: note[2].asInteger.clip(0,127));
-		});
-		SystemClock.sched(timeNoteOff, {
-			note[6].midiNoteOff(chan: note[7] ? 0, note: (note[0]+note[1]).asInteger, veloc: note[2].asInteger.clip(0,127));
-		});
-	}
-});
+// load sound file
+~buf = Buffer.read(s, Platform.resourceDir +/+ "sounds/a11wlk01.wav");
+// soundfile player
+SynthDef(\test, {arg out = 0;
+    Out.ar(out,
+        PlayBuf.ar(1, ~buf, BufRateScale.kr(~buf), loop: 1).dup * 0.5;
+    )
+}).add;
 )
+
+(
+// allocate an FX bus
+~fxBus = Bus.audio(s, 2);
+// play test signal on FX bus
+~test = Synth(\test, [\out, ~fxBus]);
+// send FX bus to output
+SynthDef(\output, {arg in = 0, out = 0;
+    Out.ar(out, In.ar(in, 2))
+}).play(~test, [\in, ~fxBus, \out, 0], addAction: \addAfter);
+)
+
+// add an insert FX to the bus (after the test signal)
+~insert = Synth(\insert, [\bus, ~fxBus], ~test, addAction: \addAfter);
+~fx1 = VSTPluginController(~insert);
+// open a plugin from the GUI and play with the parameters
+~fx1.open("C:/audio/vst/reverb/ValhallaRoom_x64.dll", editor: true);
+~fx1.editor;
+
+~fx1.numParameters;
+~fx1.info[\parameterNames];
+~fx1.info[\parameterLabels];
+~fx1.set(0, rand(1.0));
+
+// add another insert FX (after '~fx1'):
+~fx2 = VSTPluginController(Synth(\insert, [\bus, ~fxBus], ~fx1.synth, addAction: \addAfter));
+// open plugin
+~fx2.open("C:/audio/vst/delay/EchoBoy.dll", editor: true);
+~fx2.editor;
+// change the FX order dynamically, e.g. move '~fx2' before '~fx1':
+~fx2.synth.moveBefore(~fx1.synth);
+
+~fx1.synth.free; // remove from FX chain
+~fx2.synth.free; // remove from FX chain
+
+
+// VSTi
+
+(
+// a simple stereo insert FX which reads from an audio bus
+// and replaces the content with the processed output:
+SynthDef.new(\vsti, { |bus = 0|
+    Out.ar(bus, VSTPlugin.ar(nil, 2));
+}).add;
+)
+
+~vst = Synth(\vsti);
+~vstPluginController = VSTPluginController(~vst);
+~vstPluginController.open("Repro-5", editor: true);
+~vstPluginController.editor;
 
 (
 Pbind(*[
-	type: \vstPlugin,
-	instrument: ~vst,
-	dur: 4,
-	degree: [0, 4],
-	velocity: 64
-]).play;
-)
-
-
-// straight timing
-(
-Pbind(*[
-	type: \vstPlugin,
-	instrument: ~vst,
-	legato: Pgauss(0.2,0.05,inf),
-	dur: 0.2,
-	degree: [2,5,12],
-	ctranspose: Pseq([0,0,0,0,4,4,4,4,5,5,5,5],inf),
-	velocity: Pgauss(64,10,inf),
-]).play;
-)
-
-// loose timing
-(
-Pbind(*[
-	type: \vstPlugin,
-	instrument: ~vst,
-	legato: 0.1,
+	type: \midi,
+	midiout: ~vstPluginController.midi,
+	legato: 0.5,
 	dur: 0.2,
 	midinote: [66, 69, 74],
-	lag: Pwhite(-0.05!3, 0.05)
 ]).play;
 )
+
+~vstPluginController.numParameters;
+~vstPluginController.set(rand(~vstPluginController.numParameters), rand(1.0));
