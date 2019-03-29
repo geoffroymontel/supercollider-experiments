@@ -76,3 +76,17 @@ p = Pbind(*[
 
 ~seq1.play;
 )
+
+(
+SynthDef(\mouseControl, { |out|
+	Out.kr(out, MouseX.kr(0, 20));
+}).add;
+)
+
+(
+~synth = Synth(\distOsc);
+~bus = Bus.control(s, 1);
+~mouse = Synth(\mouseControl, [out: ~bus]);
+~synth.map(\degree, ~bus);
+)
+
