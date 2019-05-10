@@ -1,0 +1,35 @@
+d1 $ sound "[bd bd bd, sd cp sd cp]"
+
+d1 $ sound "[bd silence bd, sd silence sd cp, arpy arpy, odx]"
+
+hush
+
+d1 $ sound "[bd sd [sd sd sd], hh hh hh hh hh hh]"
+
+d1 $ sound "bd <arpy:1 arpy:2 arpy:3>"
+
+d1 $ sound "bd*2"
+
+d1 $ sound "bd bd"
+
+d1 $ sound "bd/2"
+
+d1 $ sound "bd*3" -- plays the bd sample three times each cycle
+
+d1 $ sound "bd/3" -- plays the bd samples only once each third cycle
+
+d1 $ sound "[bd bd silence bd] cp"
+
+d1 $ sound "[bd sn] cp/2"
+
+d1 $ sound "[[bd sn] cp]*2" -- speeds up the entire pattern by 2
+
+d1 $ sound "[[bd sn] cp]/2" -- slows down the entire pattern by 2
+
+d1 $ sound "[bd sn sn*3]/2 [bd sn*3 bd*4]/3"
+
+d1 $ sound "[bd [sn sn]*2]/2 [bd [sn bd]/2]*2"
+
+d1 $ rev(sound "bd*2 [bd sn sn]")
+
+d2 $ sound "bd*2 [bd sn sn]"
