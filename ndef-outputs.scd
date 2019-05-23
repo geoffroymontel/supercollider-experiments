@@ -1,5 +1,6 @@
 (
 BusPlug.defaultReshaping = \elastic;
+Ndef(\x).proxyspace.quant = 1.0;
 Ndef.clear;
 )
 (
@@ -23,4 +24,15 @@ Ndef(\synth, {
 });
 )
 
+(
+Ndef(\synth2, {
+	var gate = Ndef(\sequencer).ar[0];
+	var freq =  Ndef(\sequencer).ar[1];
+	var amp =  Ndef(\sequencer).ar[2];
+
+	DelayC.ar(SinOsc.ar(freq * [2, MouseX.kr(2, 4)]) * EnvGen.kr(Env.perc, gate) * amp, 1.0, [0, MouseX.kr(0.01, 1.0)]);
+});
+)
+
 Ndef(\synth).play;
+Ndef(\synth2).play;
