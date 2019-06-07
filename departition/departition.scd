@@ -1,3 +1,7 @@
+// Ligne noire : événements discontinus
+// Ligne rouge : événements continus (drone, quoi)
+// Ligne verte : interjection rapide et contrastée
+
 OSCFunc.trace(true, true);
 OSCFunc.trace(false, true);
 OSCdef.freeAll;
