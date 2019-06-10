@@ -3,16 +3,19 @@
 // Ligne verte : interjection rapide et contrastée
 
 OSCFunc.trace(true, true);
+
+// change iPad IP address here
+~iPadNetAddr = NetAddr.new("192.168.1.12", 63763);
+
 OSCFunc.trace(false, true);
-OSCdef.freeAll;
 
+// load all files
 (
-OSCdef.new(\stop1, {|msg, time, addr, recvPort| postf("stop1 : %\n",msg); }, '/departition/stop1');
-OSCdef.new(\launch1, {|msg, time, addr, recvPort| postf("launch1 : %\n",msg); }, '/departition/launch1');
-OSCdef.new(\multifader1_1, {|msg, time, addr, recvPort| postf("multifader1_1 : %\n",msg); }, '/departition/multifader1/1');
-OSCdef.new(\multifader1_2, {|msg, time, addr, recvPort| postf("multifader1_2 : %\n",msg); }, '/departition/multifader1/2');
-OSCdef.new(\multitoggle1_1, {|msg, time, addr, recvPort| postf("multitoggle1_1 : %\n",msg); }, '/departition/multitoggle1/1/1');
-OSCdef.new(\multitoggle1_2, {|msg, time, addr, recvPort| postf("multitoggle1_2 : %\n",msg); }, '/departition/multitoggle1/1/2');
-OSCdef.new(\multitoggle1_3, {|msg, time, addr, recvPort| postf("multitoggle1_3 : %\n",msg); }, '/departition/multitoggle1/1/3');
+[
+	"groups-buses.scd",
+	"setup-touchosc.scd",
+	"player1.scd",
+].do { |file|
+	file.loadRelative;
+}
 )
-
