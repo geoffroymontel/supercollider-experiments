@@ -15,6 +15,7 @@ OSCFunc.trace(false, true);
 	"groups-buses.scd",
 	"setup-touchosc.scd",
 	"player1.scd",
+	"player2.scd",
 ].do { |file|
 	file.loadRelative;
 }
