@@ -16,6 +16,7 @@ OSCFunc.trace(false, true);
 	"setup-touchosc.scd",
 	"player1.scd",
 	"player2.scd",
+	"player3.scd",
 ].do { |file|
 	file.loadRelative;
 }

@@ -29,6 +29,7 @@ s.waitForBoot({
 		+ In.ar(~busPlayer6, 2)
 		+ In.ar(~busPlayer7, 2);
 		snd = snd + (NHHall.ar(snd, rt60: 0.5) * -6.dbamp);
+		snd = snd.tanh;
 		Out.ar(0, snd);
 	}).add;
 
