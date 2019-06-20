@@ -17,6 +17,7 @@ OSCFunc.trace(false, true);
 	"player1.scd",
 	"player2.scd",
 	"player3.scd",
+	"player4.scd",
 ].do { |file|
 	file.loadRelative;
 }

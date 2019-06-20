@@ -15,7 +15,7 @@ s.waitForBoot({
 			SinOsc.ar(Demand.kr(Dust.kr(a),0,x))
 		};
 		snd = SinOsc.ar([timbre * y.(modFreq) * y.(modFreq *IRand(1,4)),(timbre + 1) * y.(modFreq) * y.(modFreq * IRand(1,4))]);
-		snd = LeakDC.ar(snd.fold2) * amp * EnvGen.kr(Env.linen(sustainTime: duration, releaseTime: 0.01), doneAction: Done.freeSelf);
+		snd = LeakDC.ar(snd.fold2) * amp * EnvGen.kr(Env.linen(sustainTime: duration, releaseTime: 0.01), doneAction: Done.freeSelf) * -6.dbamp;
 		Out.ar(out, snd);
 	}).add;
 
