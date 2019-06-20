@@ -1,4 +1,6 @@
 s.waitForBoot({
+	"setup groups & buses".postln;
+
 	~playersGroup = Group.tail(s);
 	~groupPlayer1 = Group.tail(~playersGroup);
 	~groupPlayer2 = Group.tail(~playersGroup);
