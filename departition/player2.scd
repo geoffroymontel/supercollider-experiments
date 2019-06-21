@@ -1,7 +1,9 @@
 s.waitForBoot({
-	"player2".postln;
+	var p = 2;
+	("player"++p).postln;
 
 	// Synths
+
 	SynthDef(\player2Noir, {
 		var freq = \freq.kr(440);
 		var modFreq = \modFreq.kr(1);
@@ -21,43 +23,38 @@ s.waitForBoot({
 
 	// VARS
 
-	~busPlayer2Volume = Bus.control(s,1);
-	~player1LowFreq = 20;
-	~player1HighFreq = 500;
-	~player1Duration = 0.1;
-	~player1Chorus = 0;
-	~player1Legato = 0.1;
+	~players[p].volume = Bus.control(s,1);
 
 	// OSC
 
-	OSCdef.new(\launch2, { |msg, time, addr, recvPort|
-		postf("launch2 : %\n",msg);
+	OSCdef.new((\launch++p).asSymbol, { |msg, time, addr, recvPort|
+		postf("launch% : %\n",p,msg);
 		Synth(\player2Noir, [
 			freq: rrand(30,60).midicps,
 			modFreq: rrand(0.5,10),
 			timbre: rrand(300,10000),
 			duration: rrand(0.5,5),
-			amp: ~busPlayer2Volume.asMap,
-			out: ~busPlayer2
-		], target: ~groupPlayer2);
-	}, '/departition/launch2', ~iPadNetAddr);
-	OSCdef.new(\stop2, { |msg, time, addr, recvPort|
-		postf("stop2 : %\n",msg);
-	}, '/departition/stop2', ~iPadNetAddr);
-	OSCdef.new(\multifader2_1, { |msg, time, addr, recvPort|
-		postf("multifader2_1 : %\n",msg);
-		~busPlayer2Volume.set(msg[1].lincurve(0.0,1.0,0.0,1.0,2));
-	}, '/departition/multifader2/1', ~iPadNetAddr);
-	OSCdef.new(\multifader2_2, { |msg, time, addr, recvPort|
-		postf("multifader2_2 : %\n",msg);
-	}, '/departition/multifader2/2', ~iPadNetAddr);
-	OSCdef.new(\multitoggle2_1, { |msg, time, addr, recvPort|
-		postf("multitoggle2_1 : %\n",msg);
-	}, '/departition/multitoggle2/1/1', ~iPadNetAddr);
-	OSCdef.new(\multitoggle2_2, { |msg, time, addr, recvPort|
-		postf("multitoggle2_2 : %\n",msg);
-	}, '/departition/multitoggle2/1/2', ~iPadNetAddr);
-	OSCdef.new(\multitoggle2_3, { |msg, time, addr, recvPort|
-		postf("multitoggle2_3 : %\n",msg);
-	}, '/departition/multitoggle2/1/3', ~iPadNetAddr);
+			amp: ~players[p].volume.asMap,
+			out: ~players[p].bus
+		], target: ~players[p].group);
+	}, '/departition/launch'++p, ~iPadNetAddr);
+	OSCdef.new((\stop++p).asSymbol, { |msg, time, addr, recvPort|
+		postf("stop% : %\n",p,msg);
+	}, '/departition/stop'++p, ~iPadNetAddr);
+	OSCdef.new((\multifader++p++'_1').asSymbol, { |msg, time, addr, recvPort|
+		postf("multifader%_1 : %\n",p,msg);
+		~players[p].volume.set(msg[1].lincurve(0.0,1.0,0.0,1.0,2));
+	}, '/departition/multifader'++p++'/1', ~iPadNetAddr);
+	OSCdef.new((\multifader++p++'_2').asSymbol, { |msg, time, addr, recvPort|
+		postf("multifader%_2 : %\n",p,msg);
+	}, '/departition/multifader'++p++'/2', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_1').asSymbol, { |msg, time, addr, recvPort|
+		postf("multitoggle%_1 : %\n",p,msg);
+	}, '/departition/multitoggle'++p++'/1/1', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_2').asSymbol, { |msg, time, addr, recvPort|
+		postf("multitoggle%_2 : %\n",p,msg);
+	}, '/departition/multitoggle'++p++'/1/2', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_3').asSymbol, { |msg, time, addr, recvPort|
+		postf("multitoggle%_3 : %\n",p,msg);
+	}, '/departition/multitoggle'++p++'/1/3', ~iPadNetAddr);
 });
