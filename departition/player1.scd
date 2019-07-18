@@ -1,7 +1,9 @@
 s.waitForBoot({
-	"player1".postln;
+	var p = 1;
+	("player"++p).postln;
 
 	// Synths
+
 	SynthDef(\player1Noir, {
 		var out = \out.kr(0);
 		var startFreqs = \startFreqs.kr([50,400,600]);
@@ -34,60 +36,61 @@ s.waitForBoot({
 	}).add;
 
 	// VARS
-	~busPlayer1Volume = Bus.control(s,1);
-	~player1LowFreq = 20;
-	~player1HighFreq = 500;
-	~player1Duration = 0.1;
-	~player1Chorus = 0;
-	~player1Legato = 0.1;
+
+	~players[p].volume = Bus.control(s,1);
+	~players[p].lowFreq= 20;
+	~players[p].highFreq = 500;
+	~players[p].duration = 0.1;
+	~players[p].chorus = 0;
+	~players[p].legato = 0.1;
 
 	// OSC
 
-	OSCdef.new(\stop1, { |msg, time, addr, recvPort|
-		postf("stop1 : %\n",msg);
+	OSCdef.new((\stop++p).asSymbol, { |msg, time, addr, recvPort|
+		postf("stop% : %\n",p,msg);
 		~tempoClock.schedAbs(~tempoClock.beats.ceil, {
 			Pdef(\player1Noir).stop;
 		});
-	}, '/departition/stop1', ~iPadNetAddr);
-	OSCdef.new(\launch1, { |msg, time, addr, recvPort|
-		postf("launch1 : %\n",msg);
+	}, '/departition/stop'++p, ~iPadNetAddr);
+	OSCdef.new((\launch++p).asSymbol, { |msg, time, addr, recvPort|
+		postf("launch% : %\n",p,msg);
 		Pdef(\player1Noir).play(~tempoClock, quant: 1);
-	}, '/departition/launch1', ~iPadNetAddr);
+	}, '/departition/launch'++p, ~iPadNetAddr);
 	OSCdef.new(\multifader1_1, { |msg, time, addr, recvPort|
-		postf("multifader1_1 : %\n",msg);
-		~busPlayer1Volume.set(msg[1].lincurve(0.0,1.0,0.0,1.0,2));
-	}, '/departition/multifader1/1', ~iPadNetAddr);
-	OSCdef.new(\multifader1_2, { |msg, time, addr, recvPort|
-		postf("multifader1_2 : %\n",msg);
-		~player1LowFreq = msg[1].lincurve(0,1,20,150,1).debug("~player1LowFreq");
-		~player1HighFreq = msg[1].lincurve(0,1,150,800,4).debug("~player1HighFreq");
-		~player1Duration = msg[1].lincurve(0,1,3,0.1,2).debug("~player1Duration");
-		~player1Chorus = msg[1].lincurve(0,1,0,0.2,4).debug("~player1Chorus");
-		~player1Legato = msg[1].lincurve(0,1,0.1,3.0,2).debug("~player1Legato");
-	}, '/departition/multifader1/2', ~iPadNetAddr);
-	OSCdef.new(\multitoggle1_1, { |msg, time, addr, recvPort|
-		postf("multitoggle1_1 : %\n",msg);
-	}, '/departition/multitoggle1/1/1', ~iPadNetAddr);
-	OSCdef.new(\multitoggle1_2, { |msg, time, addr, recvPort|
+		postf("multifader%_1 : %\n",p,msg);
+		~players[p].volume.set(msg[1].lincurve(0.0,1.0,0.0,1.0,2));
+	}, '/departition/multifader'++p++'/1', ~iPadNetAddr);
+	OSCdef.new((\multifader++p++'_2').asSymbol, { |msg, time, addr, recvPort|
+		postf("multifader%_2 : %\n",p,msg);
+		~players[p].lowFreq = msg[1].lincurve(0,1,20,150,1);
+		~players[p].highFreq = msg[1].lincurve(0,1,150,800,4);
+		~players[p].duration = msg[1].lincurve(0,1,3,0.1,2);
+		~players[p].chorus = msg[1].lincurve(0,1,0,0.2,4);
+		~players[p].legato = msg[1].lincurve(0,1,0.1,3.0,2);
+	}, '/departition/multifader'++p++'/2', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_1').asSymbol, { |msg, time, addr, recvPort|
+		postf("multitoggle%_1 : %\n",p,msg);
+	}, '/departition/multitoggle'++p++'/1/1', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_2'), { |msg, time, addr, recvPort|
 		postf("multitoggle1_2 : %\n",msg);
-	}, '/departition/multitoggle1/1/2', ~iPadNetAddr);
-	OSCdef.new(\multitoggle1_3, { |msg, time, addr, recvPort|
+	}, '/departition/multitoggle'++p++'/1/2', ~iPadNetAddr);
+	OSCdef.new((\multitoggle++p++'_3'), { |msg, time, addr, recvPort|
 		postf("multitoggle1_3 : %\n",msg);
-	}, '/departition/multitoggle1/1/3', ~iPadNetAddr);
+	}, '/departition/multitoggle'++p++'/1/3', ~iPadNetAddr);
 
 	// Patterns
 
 	Pdef.new(\player1Noir, Pbind(*[
 		instrument: \player1Noir,
-		group: ~groupPlayer1,
-		startFreqs: Pn(Plazy({ [ {rrand(~player1LowFreq, ~player1HighFreq)}.dup(3) ] })),
-		endFreqs: Pn(Plazy({ [ {rrand(~player1LowFreq,~player1HighFreq)}.dup(3) ] })),
-		durations: Pn(Plazy({ [ rrand(0.1,~player1Duration).dup(3) ] })),
-		dur: Pfunc({ rrand(0.1, ~player1Duration) }),
-		ffreq: Pfunc({ rrand(~player1LowFreq, ~player1HighFreq)}),
-		amp: ~busPlayer1Volume.asMap,
-		chorus: Pfunc({~player1Chorus}),
-		legato: Pfunc({~player1Legato}),
-		out: ~busPlayer1
+		group: ~players[p].group,
+		startFreqs: Pn(Plazy({ [ {rrand(~players[p].lowFreq, ~players[p].highFreq)}.dup(3) ] })),
+		endFreqs: Pn(Plazy({ [ {rrand(~players[p].lowFreq,~players[p].highFreq)}.dup(3) ] })),
+		durations: Pn(Plazy({ [ rrand(0.1,~players[p].duration).dup(3) ] })),
+		dur: Pfunc({ rrand(0.1, ~players[p].duration) }),
+		ffreq: Pfunc({ rrand(~players[p].lowFreq, ~players[p].highFreq)}),
+		amp: ~players[p].volume.asMap,
+		chorus: Pfunc({~players[p].chorus}),
+		legato: Pfunc({~players[p].legato}),
+		out: ~players[p].bus
 	]));
 });
