@@ -1,0 +1,23 @@
+hush
+
+setcps ((70/60)/4)
+
+d1 $ silence
+
+d2 $ silence
+
+d1 $ sound "808bd:1 808bd:0" # room 0.4 # size 0.9 # orbit 1
+
+d2 $ sound "~ [808sd:1 808sd:3]" # gain "[1.0 0.5]*2" # orbit 2
+
+d3 $ s "supernoise/8" # midinote ((irand 10) + 30) # sustain "8"
+  # accelerate "0.5 0.9 0.1" # voice "0.5" # pitch1 "0.15" # slide "-0.5" # resonance "0.7"
+  # attack "1" # release "20" # room "0.9" # size "0.9" # orbit 3
+
+d4 $ n (slow 2 $ fmap (*7) $ run 8) # s "supergong" # decay "[1 0.2]/4" # voice "[0.5 0]/8" # orbit 4
+
+d4 $ s "psin/8" # n "10" # gain "0.5" # room "0.9" # size "0.8" # orbit 4
+
+d3 $ silence
+
+d4 $ silence
