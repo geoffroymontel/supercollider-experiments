@@ -172,6 +172,8 @@ plug.numParameters.do { |param|
 	vst.editor;
 }
 )
+
+
 (
 var plug;
 ~vsts.do { |plug|

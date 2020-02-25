@@ -1,10 +1,35 @@
+-- Monad = tout ce qui intéragit avec le monde
+-- Monoid = comme +, prend deux args du même type pour renvoyer un élément du même type
+
 hush
 
-setcps ((70/60)/4)
+sound "808bd:1" # 
 
-d1 $ silence
+:k Pattern
+
+d1 $ sound "bd*2 sn" # room 0.4
+
+d1 $ (#) (sound "bd*2 sn") (room 0.4)
+
+hush
+1+2
+1*2
+
+:t room
+
+setcps (60/60)
+
+:t d1
+
+d1 $ cat [sound "bd*2 sn", sound "arpy jvbass*2"]
+
+d1 $ cat [sound "bd*2 sn", sound "arpy jvbass*2", sound "drum*2"]
+
+d1 $ silence # room 0.3
 
 d2 $ silence
+
+d1 $ sound "808bd:1 [808sd:0 808bd:2 [808bd:1 808bd:3]]"
 
 d1 $ sound "808bd:1 808bd:0" # room 0.4 # size 0.9 # orbit 1
 
