@@ -1,29 +1,26 @@
 MidiCCBusAllocator {
 	var <server = nil;
 	var <ccNumber = nil;
-	var <bus;
-	var <minVal = 0.0;
-	var <maxVal = 1.0;
+	var <bus = nil;
+	var <minValue = 0.0;
+	var <maxValue = 1.0;
 	var <curve = 0.0;
 	var midifunc = nil;
 	var learnCCFunc = nil;
 
-	*new { |server, ccNumber = 0, minVal = 0.0, maxVal = 1.0, curve = 0|
-		^super.new.init(server, ccNumber, minVal, maxVal, curve);
+	*new { |server, ccNumber = 0, minValue = 0.0, maxValue = 1.0, curve = 0|
+		^super.new.init(server, ccNumber, minValue, maxValue, curve);
 	}
 
-	init { |server1, ccNumber1, minVal1, maxVal1, curve1|
+	init { |server1, ccNumber1, minValue1, maxValue1, curve1|
 		server = server1;
 		ccNumber = ccNumber1;
-		minVal = minVal1;
-		maxVal = maxVal1;
+		minValue = minValue1;
+		maxValue = maxValue1;
 		curve = curve1;
 		bus = Bus.control(server, 1);
+		bus.set(minValue1);
 		this.registerMidiFunc();
-	}
-
-	asBus {
-		^bus;
 	}
 
 	learnCC {
@@ -35,13 +32,17 @@ MidiCCBusAllocator {
 		});
 	}
 
+	asBus {
+		^bus;
+	}
+
 	registerMidiFunc {
 		if (midifunc != nil) {
 			midifunc.free;
 		};
 
 		midifunc = MIDIFunc.cc({ |value, cc|
-			bus.set(value.lincurve(0, 127, minVal, maxVal, curve));
+			bus.set(value.lincurve(0, 127, minValue, maxValue, curve));
 		}, ccNumber);
 	}
 
@@ -50,13 +51,13 @@ MidiCCBusAllocator {
 		this.registerMidiFunc();
 	}
 
-	minVal_ { |value|
-		minVal = value;
+	minValue_ { |value|
+		minValue = value;
 		this.registerMidiFunc();
 	}
 
-	maxVal_ { |value|
-		minVal = value;
+	maxValue_ { |value|
+		minValue = value;
 		this.registerMidiFunc();
 	}
 
