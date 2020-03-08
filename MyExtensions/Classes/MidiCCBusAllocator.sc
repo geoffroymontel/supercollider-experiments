@@ -36,6 +36,10 @@ MidiCCBusAllocator {
 		^bus;
 	}
 
+	asMap {
+		^bus.asMap;
+	}
+
 	registerMidiFunc {
 		if (midifunc != nil) {
 			midifunc.free;

@@ -48,10 +48,15 @@ MIDIIn.connectAll;
 
 // Map CC #21 to 50 -> 2000 with a slightly concave curve
 b = MidiCCBusAllocator.new(s, 21, 50, 2000, 0.6);
-
+b.learnCC
 Ndef(\freq, b.bus);
 Ndef(\sine, { SinOsc.ar(freq: Ndef(\freq).kr ! 2) * -20.dbamp; });
 Ndef(\sine).play;
+Ndef(\sine).stop;
+
+Ndef(\saw, { |freq = 200| Saw.ar([freq, freq * 1.001]) * -20.dbamp });
+Ndef(\saw).set(\freq, b.asMap);
+Ndef(\saw).play;
 
 Ndef.clear;
 b.free;
@@ -102,7 +107,10 @@ METHOD:: curve
 Get / set the curve used to map the MIDI CC value to the [minValue, maxValue] range. See link::Classes/SimpleNumber#-lincurve::.
 
 METHOD:: asBus
-Allows the MidiCCBusAllocator to be mapped directly to a Node parameter.
+Allows the MidiCCBusAllocator to be mapped directly to a Synth parameter.
+
+METHOD:: asMap
+Allows the MidiCCBusAllocator to be mapped to a NodeProxy parameter.
 
 METHOD:: free
 Free the MidiCCBusAllocator resources and stop listening to MIDI CC.
