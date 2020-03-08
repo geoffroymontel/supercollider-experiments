@@ -18,6 +18,10 @@ MIDIIn.connectAll;
 // Map CC #21 to 50 -> 2000 with a slightly concave curve
 b = MidiCCBusAllocator.new(s, 21, 50, 2000, 0.6);
 
+// by default, the MidiCCBusAllocator does not survive Cmd-Period, set surviveCmdPeriod to true to circumvent this.
+b = MidiCCBusAllocator.new(s, 21, 50, 2000, 0.6, true);
+
+
 // Overwrite MIDI CC to the next incoming MIDI CC, it's time to turn a knob in your MIDI controller !
 b.learnCC;
 
@@ -83,6 +87,9 @@ ARGUMENT:: curve
 The curve used to map the MIDI CC value to the [minValue, maxValue] range. Default value is 0.0 (linear).
 See link::Classes/SimpleNumber#-lincurve::.
 
+ARGUMENT:: suriveCmdPeriod
+Set it to true if you want the MidiCCBusAllocator to survive Cmd-Period (false by default)
+
 INSTANCEMETHODS::
 
 PRIVATE:: init, registerMidiFunc
@@ -114,3 +121,6 @@ Allows the MidiCCBusAllocator to be mapped to a NodeProxy parameter.
 
 METHOD:: free
 Free the MidiCCBusAllocator resources and stop listening to MIDI CC.
+
+METHOD:: surviveCmdPeriod
+Sets if the MidiCCBusAllocator survives press of cmd + period
