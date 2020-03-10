@@ -1,0 +1,21 @@
+# à lancer dans Visual Studio 2019 Developer Command Prompt
+
+cd C:\dev\supercollider
+SET PATH=c:\Qt\5.14.0\msvc2017_64\bin;%PATH%
+SET CMAKE_PREFIX_PATH=c:\Qt\5.14.0\msvc2017_64
+mkdir build
+cd build
+
+cd C:\dev\supercollider\build
+cmake -G "Visual Studio 16 2019" ..
+cmake --build . --config RelWithDebInfo
+
+SET PATH=c:\Qt\5.14.0\msvc2017_64\bin;%PATH%
+SET CMAKE_PREFIX_PATH=c:\Qt\5.14.0\msvc2017_64
+cd C:\dev\supercollider\build\editors\sc-ide\RelWithDebInfo
+scide
+scsynth.exe -u 57110
+
+
+cd "\Program Files\SuperCollider-3.10.4"
+scsynth.exe -u 57110
