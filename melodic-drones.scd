@@ -66,4 +66,8 @@ s.waitForBoot(
 });
 )
 
+SynthDescLib.global[\bell].makeGui;
+
+~rev.set(\room, 10, \mix, 0.2);
+
 [1, 3, 5].normalizeSum
