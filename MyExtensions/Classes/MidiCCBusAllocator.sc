@@ -8,6 +8,7 @@ MidiCCBusAllocator {
 	var <surviveCmdPeriod = false;
 	var midifunc = nil;
 	var learnCCFunc = nil;
+	var currentValue = nil;
 
 	*new { |server, ccNumber = 0, minValue = 0.0, maxValue = 1.0, curve = 0, surviveCmdPeriod = false|
 		^super.new.init(server, ccNumber, minValue, maxValue, curve, surviveCmdPeriod);
@@ -21,7 +22,8 @@ MidiCCBusAllocator {
 		curve = curve1;
 		surviveCmdPeriod = surviveCmdPeriod1;
 		bus = Bus.control(server, 1);
-		bus.set(minValue1);
+		currentValue = minValue1;
+		bus.set(currentValue);
 		this.registerMidiFunc();
 	}
 
@@ -42,13 +44,18 @@ MidiCCBusAllocator {
 		^bus.asMap;
 	}
 
+	value {
+		^currentValue;
+	}
+
 	registerMidiFunc {
 		if (midifunc != nil) {
 			midifunc.free;
 		};
 
 		midifunc = MIDIFunc.cc({ |value, cc|
-			bus.set(value.lincurve(0, 127, minValue, maxValue, curve));
+			currentValue = value.lincurve(0, 127, minValue, maxValue, curve);
+			bus.set(currentValue);
 		}, ccNumber);
 
 		if (surviveCmdPeriod, {
