@@ -3,10 +3,11 @@ BCF2000Mixer {
 	var <inBuses = nil;
 	var <numChannelsPerTrack = nil;
 	var <numTracks = nil;
-	var <group = nil;
-	var <trackSynths = nil;
+	var group = nil;
+	var trackSynths = nil;
+	var limiterSynth = nil;
 	var midifunc = nil;
-	var volumeCurve = -4;
+	var volumeCurve = 4;
 
 	*new { |server, numTracks = 8, numChannelsPerTrack = 2|
 		^super.new.init(server, numTracks, numChannelsPerTrack);
@@ -25,6 +26,7 @@ BCF2000Mixer {
 		// mark them as nil
 		group = nil;
 		trackSynths = nil;
+		limiterSynth = nil;
 		midifunc = nil;
 
 		this.createMixerTracks();
@@ -60,6 +62,11 @@ BCF2000Mixer {
 			trackSynths = nil;
 		};
 
+		if (limiterSynth != nil) {
+			limiterSynth.free;
+			limiterSynth = nil;
+		};
+
 		if (group != nil) {
 			group.free;
 			group = nil;
@@ -78,7 +85,10 @@ BCF2000Mixer {
 
 	createMixerTrackSynthDef {
 		SynthDef(\bcf2000MixerTrack, { |in = 0, out = 0, amp = 0.0, pan = 0.0|
-			Out.ar(out, Balance2.ar(In.ar(in), In.ar(in+1), pan, amp));
+			Out.ar(out, Balance2.ar(In.ar(in), In.ar(in+1), pan.lag(0.1)) *  amp.lag(0.1));
+		}).add;
+		SynthDef(\bcf2000MixerLimiter, { |out = 0|
+			ReplaceOut.ar(out, In.ar(out).tanh);
 		}).add;
 	}
 
@@ -87,7 +97,13 @@ BCF2000Mixer {
 			trackSynths.collect(_.free);
 		};
 
+		if (limiterSynth != nil) {
+			limiterSynth.free;
+		};
+
 		trackSynths = numTracks.collect({ |i| Synth(\bcf2000MixerTrack, [in: inBuses[i], out: 0], group) });
+
+		limiterSynth = Synth(\bcf2000MixerLimiter, [out: 0], group, \addToTail);
 	}
 
 	registerMidiFunc {
@@ -95,24 +111,10 @@ BCF2000Mixer {
 			midifunc.free;
 		};
 
-		midifunc = MIDIFunc.cc({ |value, cc|
+		midifunc = MIDIFunc.cc({ |value, cc, chan|
 			switch (cc,
-				0, { trackSynths[0].set(\amp, value.lincurve(0, 127, 0.0, 1.0, volumeCurve)) }, // fader 1
-				1, { }, // fader 2
-				2, { }, // fader 3
-				3, { }, // fader 4
-				4, { }, // fader 5
-				5, { }, // fader 6
-				6, { }, // fader 7
-				7, { }, // fader 8
-				8, { }, // pan 1
-				9, { }, // pan 2
-				10, { }, // pan 3
-				11, { }, // pan 4
-				12, { }, // pan 5
-				13, { }, // pan 6
-				14, { }, // pan 7
-				15, { }, // pan 8
+				7, { trackSynths[chan].set(\amp, value.lincurve(0, 127, 0.0, 1.0, volumeCurve)) }, // faders
+				10, { trackSynths[chan].set(\pan, value.linlin(0, 127, -1.0, 1.0)) } // pan pots
 			);
 		});
 	}
