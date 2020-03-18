@@ -1,0 +1,76 @@
+TITLE:: BCF2000Mixer
+summary:: A simple 8 channel mixer to mix 8 mono, stereo or multichannel tracks
+categories:: External Control>MIDI
+
+DESCRIPTION::
+This class is a tool to a simple mixer with 8 mono, stereo or multichannel tracks which volume and pan are controlled by the BCF2000 (mode 1).
+
+Subsection:: Usage
+
+code::
+(
+s.boot;
+MIDIClient.init;
+MIDIIn.connectAll;
+)
+
+// 8 mono tracks
+m = BCF2000Mixer.new(s,8,1);
+
+(
+Ndef(\test, {
+	{|i| [SinOsc,Saw,Pulse,LFTri].choose.ar(rrand(50.0,5000.0)) } ! 8
+}).play(m.inBuses[0], 8, addAction: \addToHead);
+)
+Ndef(\test).fadeTime = 10;
+
+(
+m.free;
+Ndef(\test).clear;
+)
+
+// 8 stereo tracks
+m = BCF2000Mixer.new(s,8,2);
+
+(
+Ndef(\test, {
+	{|i| [SinOsc,Saw,Pulse,LFTri].choose.ar(rrand(50.0,5000.0)) } ! 16
+}).play(m.inBuses[0], 16, addAction: \addToHead);
+)
+
+::
+
+CLASSMETHODS::
+
+METHOD:: new
+create a BCF2000Mixer instance.
+
+ARGUMENT:: server
+The SC server.
+
+ARGUMENT:: numTracks
+The number of tracks in the mixer, it's usually 8 since there are 8 faders in the BCF2000
+
+ARGUMENT:: numChannelsPerTrack
+The number of channels per track. 1 for mono tracks, 2 for stereo tracks, and more for multichannel tracks. All the tracks will have the same spatial configuration.
+Note that the pan pots only control panning for mono and stereo tracks for now (because I don't have more than 2 channels to test !).
+
+INSTANCEMETHODS::
+
+PRIVATE:: init, cmdPeriod, createMixerTracks, createBuses, moveFadersToInit, createMixerTrackSynthDef, createMixerTrackSynths, registerMidiFunc
+
+METHOD:: inBuses
+The input buses to the mixer. Play your synths starting at inBuses[0]
+
+METHOD:: numTracks
+The number of tracks.
+
+METHOD:: numChannelsPerTrack
+The number of audio channels per track.
+
+METHOD:: group
+The link::Classes/Group:: which encloses the synths for the volume faders and panning.
+
+METHOD:: free
+Free the BCF2000Mixer resources, stop playing and stop listening to the control surface.
+
