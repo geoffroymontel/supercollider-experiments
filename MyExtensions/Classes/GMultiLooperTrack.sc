@@ -10,6 +10,9 @@ GMultiLooperTrack : SCViewHolder {
 	var synth = nil;
 	var startPos = 0;
 	var endPos = 0;
+	var gain = 1.0;
+	var routine;
+	var tempoClock60;
 
 	// GUI
 	var dragSink;
@@ -25,9 +28,13 @@ GMultiLooperTrack : SCViewHolder {
 	init { | parent, bounds |
 		view = CompositeView(parent, bounds);
 
+		tempoClock60 = TempoClock.new(1);
+
 		soundFileView = SoundFileView(view, bounds);
 		soundFileView.gridOn = false;
 		soundFileView.timeCursorOn = true;
+
+		// file loading
 		soundFileView.receiveDragHandler_({
 			var path, tempSoundFile, tempBuffer;
 			path = View.currentDrag;
@@ -49,6 +56,8 @@ GMultiLooperTrack : SCViewHolder {
 				});
 			}
 		});
+
+		// selection handling
 		soundFileView.mouseUpAction = { |v|
 			var startPos, endPos;
 			startPos = v.selection(0)[0];
@@ -92,6 +101,10 @@ GMultiLooperTrack : SCViewHolder {
 		}
 	}
 
+	isTempoSynced {
+		^((startPos == endPos) && (playbackSpeed != 0));
+	}
+
 	buffer_ { |b|
 		if (buffer != nil, {
 			if (synth != nil) {
@@ -107,20 +120,46 @@ GMultiLooperTrack : SCViewHolder {
 
 	play {
 		if (buffer != nil) {
-			var pos;
-			pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
-			synth = Synth(\gMultiLooperPlayer, [out: 0, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos]);
+			if ((this.isTempoSynced()), {
+				var pos;
+				pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
+				synth = Synth(\gMultiLooperPlayer, [out: 0, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos]);
+			}, {
+				if ((routine == nil || routine.isPlaying().not), {
+					routine = Routine.new({
+						if (synth != nil, {
+							synth.set(\gate, 0);
+						});
+						while( { this.isTempoSynced().not }, {
+							var pos, duration;
+							pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
+							// approximation of loop duration (could change while playing but do not care)
+							duration = (endPos - startPos) / buffer.sampleRate / playbackSpeed.abs;
+							duration = max(0.025, duration);
+							synth = Synth(\gMultiLooperPlayer, [out: 0, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos]);
+							duration.wait;
+							synth.set(\gate, 0);
+						});
+					});
+					routine.play(tempoClock60);
+				});
+			});
 		}
 	}
 
 	release {
-		if (synth != nil) {
+		if ((this.isTempoSynced() && (synth != nil)), {
 			synth.set(\gate, 0);
-		}
+		});
 	}
 
 	stop {
-		this.release(0.1);
-		synth = nil;
+		if ((routine != nil) && routine.isPlaying()) {
+			routine.stop;
+		};
+		if (synth != nil) {
+			this.release(0.1);
+			synth = nil;
+		}
 	}
 }

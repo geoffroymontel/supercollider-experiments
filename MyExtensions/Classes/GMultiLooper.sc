@@ -37,7 +37,7 @@ GMultiLooper {
 
 	createTracks {
 		tracks = 4.collect({ GMultiLooperTrack.new(window) });
-		tempoClock = TempoClock.new(tempo/60);
+		tempoClock = TempoClock.new(1);
 
 		SynthDef(\gMultiLooperPlayer, { |out = 0, bufnum = 0, rate = 1.0, gate = 1, wowAndFlutter = 0, amp = 1, startPos = 0|
 			var sig;
@@ -101,8 +101,8 @@ GMultiLooper {
 	loopLength_ { |value|
 		loopLength = value;
 		loopLengthBox.value = loopLength;
-		tempo = beats * 60 / loopLength;
-		tempoBox.value = tempo;
+		beats = tempo * loopLength / 60;
+		beatsBox.value = beats;
 	}
 
 	randomLoopLengthPercentage_ { |value|
@@ -110,14 +110,14 @@ GMultiLooper {
 	}
 
 	play {
-
 		routine = Routine.new({
+			var loopDuration;
 			loop {
-				tempoClock.tempo = tempo / 60;
 				tracks.do { |track|
 					track.play;
 				};
-				(beats * (1 + (randomLoopLengthPercentage / 100).bilinrand)).wait;
+				loopDuration = max(0.025, loopLength * (1 + (randomLoopLengthPercentage / 100).bilinrand));
+				loopDuration.wait;
 				tracks.do { |track|
 					track.release;
 				};
