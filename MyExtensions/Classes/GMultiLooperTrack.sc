@@ -13,6 +13,8 @@ GMultiLooperTrack : SCViewHolder {
 	var gain = 1.0;
 	var routine;
 	var tempoClock60;
+	var outputBus;
+	var group;
 
 	// GUI
 	var dragSink;
@@ -21,14 +23,21 @@ GMultiLooperTrack : SCViewHolder {
 	var wowAndFlutterSlider;
 	var randomPlayStartSlider;
 
-	*new { | parent, bounds |
-		^super.new.init(parent, bounds);
+	*new { |parent, bounds, bus = 0, group = nil|
+		^super.new.init(parent, bounds, bus, group);
 	}
 
-	init { | parent, bounds |
-		view = CompositeView(parent, bounds);
+	free {
+		if (soundFile != nil) { soundFile.close };
+		if (buffer != nil) { buffer.free };
+	}
 
+	init { |parent, bounds, bus, argGroup|
+		outputBus = bus;
+		group = argGroup;
 		tempoClock60 = TempoClock.new(1);
+
+		view = CompositeView(parent, bounds);
 
 		soundFileView = SoundFileView(view, bounds);
 		soundFileView.gridOn = false;
@@ -120,23 +129,25 @@ GMultiLooperTrack : SCViewHolder {
 
 	play {
 		if (buffer != nil) {
-			if ((this.isTempoSynced()), {
+			if (this.isTempoSynced(), {
+				// tempo synced
 				var pos;
 				pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
-				synth = Synth(\gMultiLooperPlayer, [out: 0, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos]);
+				synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos], group);
 			}, {
+				// not tempo synced
 				if ((routine == nil || routine.isPlaying().not), {
 					routine = Routine.new({
 						if (synth != nil, {
 							synth.set(\gate, 0);
 						});
-						while( { this.isTempoSynced().not }, {
+						while({ this.isTempoSynced().not }, {
 							var pos, duration;
 							pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
 							// approximation of loop duration (could change while playing but do not care)
 							duration = (endPos - startPos) / buffer.sampleRate / playbackSpeed.abs;
 							duration = max(0.025, duration);
-							synth = Synth(\gMultiLooperPlayer, [out: 0, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos]);
+							synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos], group);
 							duration.wait;
 							synth.set(\gate, 0);
 						});
@@ -149,6 +160,7 @@ GMultiLooperTrack : SCViewHolder {
 
 	release {
 		if ((this.isTempoSynced() && (synth != nil)), {
+			// tempo synced
 			synth.set(\gate, 0);
 		});
 	}
@@ -158,7 +170,7 @@ GMultiLooperTrack : SCViewHolder {
 			routine.stop;
 		};
 		if (synth != nil) {
-			this.release(0.1);
+			synth.set(\gate, 0);
 			synth = nil;
 		}
 	}

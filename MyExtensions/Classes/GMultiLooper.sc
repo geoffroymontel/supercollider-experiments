@@ -9,6 +9,9 @@ GMultiLooper {
 	var <tracks;
 
 	// PRIVATE
+	var numberOfTracks;
+	var group;
+	var outputBuses;
 	var tempoClock;
 	var routine;
 
@@ -19,24 +22,33 @@ GMultiLooper {
 	var loopLengthBox;
 	var randomLoopLengthPercentageSlider;
 
-	*new {
-		^super.new.init();
+	*new { |numberOfTracks = 3, outputBuses = #[0]|
+		^super.new.init(numberOfTracks, outputBuses);
 	}
 
 	free {
 		window.close;
+		this.stop;
+		tracks.do({ |track| track.free });
+		group.free;
 	}
 
 	// PRIVATE METHODS
 
-	init {
+	init { |argNumberOfTracks, argOutputBuses|
+		numberOfTracks = argNumberOfTracks;
+		outputBuses = argOutputBuses;
 		window = Window.new("Geoffroy Multi Looper", Rect(20, 20, 800, 800), true);
-		this.createTracks();
-		this.createLayout();
+		window.onClose = {
+			this.free;
+		};
+		this.createTracks;
+		this.createLayout;
 	}
 
 	createTracks {
-		tracks = 4.collect({ GMultiLooperTrack.new(window) });
+		group = Group.new;
+		tracks = numberOfTracks.collect({ |i| GMultiLooperTrack.new(window, group: group, bus: outputBuses.foldAt(i)) });
 		tempoClock = TempoClock.new(1);
 
 		SynthDef(\gMultiLooperPlayer, { |out = 0, bufnum = 0, rate = 1.0, gate = 1, wowAndFlutter = 0, amp = 1, startPos = 0|
@@ -79,7 +91,7 @@ GMultiLooper {
 			randomLoopLengthPercentageSlider
 		);
 
-		4.do({ |i| window.layout.add(tracks[i]); });
+		numberOfTracks.do({ |i| window.layout.add(tracks[i]); });
 
 		window.front;
 	}
