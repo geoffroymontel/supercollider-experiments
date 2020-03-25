@@ -1,0 +1,14 @@
+INSTANCEMETHODS::
+
+METHOD:: plotTransferFunction
+Plot a transfer function.
+
+code::
+{ |x| x.lincurve(-1,1,-1,1,4) }.plotTransferFunction(-1, 1);
+::
+
+ARGUMENT:: from
+The minimum value on the x-axis.
+
+ARGUMENT:: to
+The maximum value on the x-axis.
