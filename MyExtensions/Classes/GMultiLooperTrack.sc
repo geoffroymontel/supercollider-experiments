@@ -44,6 +44,9 @@ GMultiLooperTrack : SCViewHolder {
 		soundFileView.timeCursorOn = true;
 
 		// file loading
+		soundFileView.canReceiveDragHandler_({
+			^true;
+		});
 		soundFileView.receiveDragHandler_({
 			var path, tempSoundFile, tempBuffer;
 			path = View.currentDrag;
