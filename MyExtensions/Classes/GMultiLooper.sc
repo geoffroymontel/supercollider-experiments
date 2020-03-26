@@ -38,7 +38,7 @@ GMultiLooper {
 	init { |argNumberOfTracks, argOutputBuses|
 		numberOfTracks = argNumberOfTracks;
 		outputBuses = argOutputBuses;
-		window = Window.new("Geoffroy Multi Looper", Rect(20, 20, 800, 800), true);
+		window = Window.new("Geoffroy Multi Looper",  Rect(0, 400, 800, 400), resizable: true);
 		window.onClose = {
 			this.free;
 		};

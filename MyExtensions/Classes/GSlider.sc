@@ -17,10 +17,11 @@ GSlider : SCViewHolder {
 		value = spec.constrain(initValue);
 		view = CompositeView(parent, bounds);
 		if (name != nil) {
-			staticText = StaticText(view).string_(name);
+			staticText = StaticText(view).string_(name).maxHeight_(20);
+			staticText.setProperty(\wordWrap, false); // for Windows
 		};
-		numberBox = NumberBox(view).maxHeight_(20).maxWidth_(80).align_(\center);
-		numberBox.clipLo_(spec.clipLo).clipHi_(spec.clipHi).maxHeight_(20);
+		numberBox = NumberBox(view).maxWidth_(80).maxHeight_(20).align_(\center);
+		numberBox.clipLo_(spec.clipLo).clipHi_(spec.clipHi);
 		slider = Slider(view).maxHeight_(20);
 		slider.orientation = \horizontal;
 		if (name != nil) {
