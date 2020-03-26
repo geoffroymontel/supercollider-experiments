@@ -5,12 +5,12 @@ GMultiLooperTrack : SCViewHolder {
 	var <randomPlayStartPercentage = 0;
 	var <soundFile = nil;
 	var <buffer = nil;
+	var <gain = 1.0;
 
 	// PRIVATE
 	var synth = nil;
 	var startPos = 0;
 	var endPos = 0;
-	var gain = 1.0;
 	var routine;
 	var tempoClock60;
 	var outputBus;
@@ -22,6 +22,7 @@ GMultiLooperTrack : SCViewHolder {
 	var playbackSpeedSlider;
 	var wowAndFlutterSlider;
 	var randomPlayStartSlider;
+	var gainSlider;
 
 	*new { |parent, bounds, bus = 0, group = nil|
 		^super.new.init(parent, bounds, bus, group);
@@ -42,10 +43,11 @@ GMultiLooperTrack : SCViewHolder {
 		soundFileView = SoundFileView(view, bounds);
 		soundFileView.gridOn = false;
 		soundFileView.timeCursorOn = true;
+		soundFileView.drawsBoundingLines = false;
 
 		// file loading
 		soundFileView.canReceiveDragHandler_({
-			^true;
+			true
 		});
 		soundFileView.receiveDragHandler_({
 			var path, tempSoundFile, tempBuffer;
@@ -77,11 +79,12 @@ GMultiLooperTrack : SCViewHolder {
 			this.setSelection(startPos, endPos);
 		};
 
+		gainSlider = GSlider(view, initValue: gain.ampdb, spec: ControlSpec(-inf, 12,\db, default: gain.ampdb), name: "Gain (dB)").action_({ |obj, value| this.gain = value.dbamp });
 		playbackSpeedSlider = GSlider(view, initValue: playbackSpeed, spec: ControlSpec(-2, 2,\lin), name: "Speed (x)").action_({ |obj, value| this.playbackSpeed = value });
 		wowAndFlutterSlider = GSlider(view, initValue: wowAndFlutterPercentage, spec: ControlSpec(0, 100, CurveWarp([0,100].asSpec, 4)), name: "Wow and Flutter (%)").action_({ |obj, value| this.wowAndFlutterPercentage = value });
 		randomPlayStartSlider = GSlider(view, initValue: randomPlayStartPercentage, spec: ControlSpec(0, 50, CurveWarp([0,50].asSpec, 6)), name: "Randomize play start (%)").action_({ |obj, value| this.randomPlayStartPercentage = value });
 
-		view.layout = VLayout(soundFileView, playbackSpeedSlider, wowAndFlutterSlider, randomPlayStartSlider).margins_(0).spacing_(2);
+		view.layout = VLayout(soundFileView, gainSlider, playbackSpeedSlider, wowAndFlutterSlider, randomPlayStartSlider).margins_(0).spacing_(2);
 	}
 
 	wowAndFlutterPercentage_ { |value|
@@ -103,6 +106,16 @@ GMultiLooperTrack : SCViewHolder {
 	randomPlayStartPercentage_ { |value|
 		randomPlayStartPercentage = value;
 		randomPlayStartSlider.value = value;
+	}
+
+	gain_ { |value|
+		gain = value;
+		if (gain > 0) {
+			soundFileView.yZoom = gain;
+		};
+		if (synth != nil) {
+			synth.set(\amp, gain);
+		};
 	}
 
 	setSelection { |start, end|
@@ -136,7 +149,7 @@ GMultiLooperTrack : SCViewHolder {
 				// tempo synced
 				var pos;
 				pos = max(0, startPos + ((randomPlayStartPercentage/100).bilinrand * buffer.numFrames)).round;
-				synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos], group);
+				synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos, amp: gain], group);
 			}, {
 				// not tempo synced
 				if ((routine == nil || routine.isPlaying().not), {
@@ -150,7 +163,7 @@ GMultiLooperTrack : SCViewHolder {
 							// approximation of loop duration (could change while playing but do not care)
 							duration = (endPos - startPos) / buffer.sampleRate / playbackSpeed.abs;
 							duration = max(0.025, duration);
-							synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos], group);
+							synth = Synth(\gMultiLooperPlayer, [out: outputBus, bufnum: buffer, rate: playbackSpeed, gate: 1, wowAndFlutter: (wowAndFlutterPercentage/100), startPos: pos, amp: gain], group);
 							duration.wait;
 							synth.set(\gate, 0);
 						});
