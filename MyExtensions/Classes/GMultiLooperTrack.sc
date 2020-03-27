@@ -44,6 +44,17 @@ GMultiLooperTrack : SCViewHolder {
 		soundFileView.gridOn = false;
 		soundFileView.timeCursorOn = true;
 		soundFileView.drawsBoundingLines = false;
+		soundFileView.mouseWheelAction = { |view, x, y, modifiers, xDelta, yDelta|
+			var zoomFactor = 0.9;
+
+			if ((soundFile != nil) && (yDelta > 0) && (soundFileView.bounds.width > 0)) {
+				soundFileView.xZoom = soundFileView.xZoom * 0.9;
+				soundFileView.scroll(x / soundFileView.bounds.width * (1 - zoomFactor));
+			};
+			if ((soundFile != nil) && (yDelta < 0) && (soundFileView.bounds.width > 0)) {
+				soundFileView.xZoom = min(soundFileView.xZoom / zoomFactor, soundFile.numFrames / soundFile.sampleRate);
+			};
+		};
 
 		// file loading
 		soundFileView.canReceiveDragHandler_({
