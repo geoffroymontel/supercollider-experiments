@@ -14,3 +14,5 @@ SynthDef(\insert, { |bus = 0|
 ~fx = VSTPluginController(~synth);
 ~fx.browse;
 ~fx.editor;
+
+{ SinOsc.ar * -20.dbamp }.play

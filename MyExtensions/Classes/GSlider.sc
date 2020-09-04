@@ -20,7 +20,7 @@ GSlider : SCViewHolder {
 			staticText = StaticText(view).string_(name).maxHeight_(20);
 			staticText.setProperty(\wordWrap, false); // for Windows
 		};
-		numberBox = NumberBox(view).maxWidth_(80).maxHeight_(20).align_(\center);
+		numberBox = NumberBox(view).maxWidth_(80).maxHeight_(20).maxDecimals_(3).align_(\center);
 		numberBox.clipLo_(spec.clipLo).clipHi_(spec.clipHi);
 		slider = Slider(view).maxHeight_(20);
 		slider.orientation = \horizontal;

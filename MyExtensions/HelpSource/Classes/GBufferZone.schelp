@@ -1,0 +1,31 @@
+TITLE:: GBufferZone
+summary:: a repository for tuned buffers
+categories:: Tools
+
+DESCRIPTION::
+This class helps to organize tuned buffers by frequency, and to retrieve the closest tuned buffer from a given frequency.
+
+Subsection:: Exemple
+code::
+a = Buffer.new(s, 512,1);
+b = Buffer.new(s, 512,1);
+c = Buffer.new(s, 512,1);
+
+// create a new repository for tuned buffers
+d = GBufferZone.new;
+
+d.items;
+d.mapBufferToFrequency(a, "a3".notemidi.midicps);
+d.mapBufferToFrequency(b, "a3".notemidi.midicps);
+d.mapBufferToFrequency(c, "a4".notemidi.midicps);
+d.items; // an item is a dictionary with the buffer and the associated frequency
+
+d.getBufferAndRateForFrequency("a3".notemidi.midicps); // should return a or b and a rate of 1.0
+d.getBufferAndRateForFrequency("a3".notemidi.midicps); // should return something different from the previous one
+d.getBufferAndRateForFrequency("a3".notemidi.midicps); // should return something different from the previous one
+d.getBufferAndRateForFrequency("a4".notemidi.midicps); // should return b
+d.getBufferAndRateForFrequency("b4".notemidi.midicps); // should return b and a rate equals to 2.midiratio
+
+d.free;
+d.items;
+::
