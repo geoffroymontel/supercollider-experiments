@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5042"
+   name=""
+   committed-date="2005-10-31T23:29:16.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/JITLib/nodeMapping"
+   last-author="jrhb"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5029"
+   name="NodeMapSetting.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2005-10-30T18:11:48.000000Z"
+   checksum="12e601924bc3d106e186ea97b6c97ea2"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="4719"
+   name="NodeMap.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2005-06-28T11:04:25.000000Z"
+   checksum="b0ca0c396da57548b7f02f0c39ac73b1"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+</wc-entries>

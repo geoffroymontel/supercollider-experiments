@@ -1,0 +1,103 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf410
+{\fonttbl\f0\fswiss\fcharset77 Helvetica-Bold;\f1\fswiss\fcharset77 Helvetica;\f2\fswiss\fcharset77 ArialMT;
+}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\b\fs24 \cf0 Xynthi
+\f1\b0 \
+\
+what's going on...\
+inspired by ems synthi series, but not a model, per se.  GNU/GPL (see below and/or License.rtf).\
+\
+xynthi is comprised of a number of modules defined as Events in SuperCollider.  this may not be best practice, when compared to Class definitions, but it allows for fast development and has some advantages.  plus, Events can look like classes and are pretty easy to convert.  all of the modules are found in the "modules" folder.  they all use Events declared in SynthEvents.rtf.\
+\
+Xynthi is a universal build, so you'll need 10.3.9 or higher to run it.  you'll know it's working if you can open it, load an included preset, and hear something crazy coming through your speakers.\
+\
+
+\f0\b top row of buttons: 
+\f1\b0 \
+load and save entire state.  numbered buttons allow for quick preset switching.  to add preset to numbered box, shift-click on the box.  the current state will be assigned to it.  or, hit the 'batch' button: you can select a number of saved presets, and they will be assigned to the numbered buttons in order.  a few presets are included in the "presets" folder.  i recommend you start with them.\
+\
+
+\f0\b left column:
+\f1\b0 \
+three vcos.  first one can be the master.  vcos and filters become slaves of vco1 by clicking on the "^" button, or selecting ssync (sync saw) as an oscillator.  frequency knobs then become relative.  vertical slider at far left is for midi resolution on frequency when using an inc/dec midi controller (see notes on midi below).  \
+\
+two audio inputs.  number boxes at top determine input channel.\
+\
+
+\f0\b middle column:
+\f1\b0 \
+noise generator...\
+\
+ring modulator...\
+\
+dynamic distortion (works like ring modulator as far as carrier/modulator, but with some distortion algorithms)\
+\
+patch matrix.  outputs are on the left, inputs on the top.  any output can patch into as many inputs as you like.  feedback is good.  numbered buttons at bottom work just like top row buttons.  for audio signals only.\
+\
+
+\f0\b right column:
+\f1\b0 \
+moogy filter w/audio fm input\
+\
+two mono-to-stereo mixers with tone dials.\
+\
+a "space echo" comprised of a tape delay effect into a reverb (taken from Sean Costello's SCVerb in CSound).  collectively, these are 'rev1, rev2".  \
+\
+
+\f0\b bottom row:
+\f1\b0 \
+two envelope generators.  1st one is part of patch matrix and outputs audio (an enveloped signal) and control rates (just the envelope).  second only outputs control rate.  for use in ModPod.  number boxes next to loop button are loopNode and releaseNode, respectively.  number box (scrollable) at bottom is the timeScale for the envelope.\
+\
+three control rate lfos.\
+\
+
+\f0\b "ModPod":
+\f1\b0 \
+used for routing control signals for more modulation.  top menu selects the target, bottom selects the modulator.  middle is optional and will modulate the modulator within the range specified on the range slider to the right.  anyone who has used a logic synth knows where this comes from...\
+\
+
+\f0\b Notes on midi:
+\f1\b0 \
+each module is equipped with a method to work with an increment/decrement midi controller.  basically, this means the doepfer pocket dial.  the midi cc action button in the lower left hand corner initializes midi control starting at cc #64.  using a standard midi controller with this code will only make you sad.  other ways of using midi can be implemented by replacing the code in the Xynthi_cc.rtf file with code that works for your midi needs.  midi communication between the gui and a responsive midi device can easily be customized by changing the updateMidi function in SynthEvents.rtf.  basic keyboard control is available, though not terribly stunning in this implementation.\
+\
+\pard\pardeftab720\ql\qnatural
+\cf0 for the doepfer pocket dial: use preset 107 (0101 0110) -- banks 1 & 2 are used in the default settings.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 \
+
+\f0\b Notes on the GUI:\
+
+\f1\b0 xynthi is a tall guy.  screens with lower resolution may experience MultiPageLayout's multiple pages.  this may not look too good and may even chop off some functional objects.  Xynthi_Run.rtf executes the GUI layout and can be easily modified to accommodate multiple windows that make sense.  or, you can just live with the weirdness.\
+\
+
+\f0\b In General:
+\f1\b0 \
+"P" means play, "M" means mute, "B" means bypass, "S" means save, "L" means load.  these are all local to a particular module.  \
+\
+have fun.  and share your patches; i.e. send them to me.  hell, send me money.  paypal works.  lloydlyson@gmail.com for all correspondence.  oh, but don't email me feature requests or bug reports unless they come with a truck full of gold bricks.  i'm not really available right now for support.  use the sc-users list, and i might be listening.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f2 \cf0     Xynthi \
+    Copyright (c) 2006 Bhob Rainey. All rights reserved.\
+    http://www.bhobrainey.net\
+\
+   Built with James McCartey's SuperCollider.  http://www.audiosynth.com\
+\
+    This program is free software; you can redistribute it and/or modify\
+    it under the terms of the GNU General Public License as published by\
+    the Free Software Foundation; either version 2 of the License, or\
+    (at your option) any later version.\
+\
+    This program is distributed in the hope that it will be useful,\
+    but WITHOUT ANY WARRANTY; without even the implied warranty of\
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\
+    GNU General Public License for more details.\
+\
+    You should have received a copy of the GNU General Public License\
+    along with this program; if not, write to the Free Software\
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA}

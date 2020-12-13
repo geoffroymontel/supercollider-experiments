@@ -1,0 +1,106 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf410
+{\fonttbl\f0\fswiss\fcharset77 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 ~initMidi.value;\
+~xynthi.vco1.theMidi.nums=(64..67);\
+~xynthi.vco1.theMidi.ccDictionary=Dictionary[\
+	\\freq -> 64,\
+	\\fm -> 65,\
+	\\pw -> 66,\
+	\\amp -> 67\
+];\
+~xynthi.vco1.theMidi.valueDictionary=~xynthi.vco1.theGui.valueDictionary.copy;\
+(~xynthi.vco1.theMidi.responderObj.isNil).if(\{ ~xynthi.vco1.theMidi.initialize; \}, 	\{ ~xynthi.vco1.theMidi.removeResponder; ~xynthi.vco1.theMidi.initialize \});\
+~xynthi.vco1.midiOn;\
+~xynthi.vco2.theMidi.nums=(68..71);\
+~xynthi.vco2.theMidi.ccDictionary=Dictionary[\
+	\\freq -> 68,\
+	\\fm -> 69,\
+	\\pw -> 70,\
+	\\amp -> 71\
+];\
+~xynthi.vco2.theMidi.valueDictionary=~xynthi.vco2.theGui.valueDictionary.copy;\
+(~xynthi.vco2.theMidi.responderObj.isNil).if(\{ ~xynthi.vco2.theMidi.initialize; \}, 	\{ ~xynthi.vco2.theMidi.removeResponder; ~xynthi.vco2.theMidi.initialize \});\
+~xynthi.vco2.midiOn;\
+~xynthi.vco3.theMidi.nums=(72..75);\
+~xynthi.vco3.theMidi.ccDictionary=Dictionary[\
+	\\freq -> 72,\
+	\\fm -> 73,\
+	\\pw -> 74,\
+	\\amp -> 75\
+];\
+~xynthi.vco3.theMidi.valueDictionary=~xynthi.vco3.theGui.valueDictionary.copy;\
+(~xynthi.vco3.theMidi.responderObj.isNil).if(\{ ~xynthi.vco3.theMidi.initialize; \}, 	\{ ~xynthi.vco3.theMidi.removeResponder; ~xynthi.vco3.theMidi.initialize \});\
+~xynthi.vco3.midiOn;\
+~xynthi.vcf.theMidi.nums=(76..79);\
+~xynthi.vcf.theMidi.ccDictionary=Dictionary[\
+	\\freq -> 76,\
+	\\q -> 77,\
+	\\fm -> 78,\
+	\\amp -> 79\
+];\
+~xynthi.vcf.theMidi.valueDictionary=~xynthi.vcf.theGui.valueDictionary.copy;\
+(~xynthi.vcf.theMidi.responderObj.isNil).if(\{ ~xynthi.vcf.theMidi.initialize; \}, 	\{ ~xynthi.vcf.theMidi.removeResponder; ~xynthi.vcf.theMidi.initialize \});\
+~xynthi.vcf.midiOn;\
+~xynthi.noise1.theMidi.nums=80;\
+~xynthi.noise1.theMidi.ccDictionary=Dictionary[\\amp -> 80];\
+~xynthi.noise1.theMidi.valueDictionary=~xynthi.noise1.theGui.valueDictionary.copy;\
+(~xynthi.noise1.theMidi.responderObj.isNil).if(\{ ~xynthi.noise1.theMidi.initialize; \}, 	\{ ~xynthi.noise1.theMidi.removeResponder; ~xynthi.noise1.theMidi.initialize \});\
+~xynthi.noise1.midiOn;\
+~xynthi.ringer.theMidi.nums=81;\
+~xynthi.ringer.theMidi.ccDictionary=Dictionary[\\depth -> 81];\
+~xynthi.ringer.theMidi.valueDictionary=~xynthi.ringer.theGui.valueDictionary.copy;\
+(~xynthi.ringer.theMidi.responderObj.isNil).if(\{ ~xynthi.ringer.theMidi.initialize; \}, 	\{ ~xynthi.ringer.theMidi.removeResponder; ~xynthi.ringer.theMidi.initialize \});\
+~xynthi.ringer.midiOn;\
+~xynthi.dist.theMidi.nums=82;\
+~xynthi.dist.theMidi.ccDictionary=Dictionary[\\depth -> 82];\
+~xynthi.dist.theMidi.valueDictionary=~xynthi.dist.theGui.valueDictionary.copy;\
+(~xynthi.dist.theMidi.responderObj.isNil).if(\{ ~xynthi.dist.theMidi.initialize; \}, 	\{ ~xynthi.dist.theMidi.removeResponder; ~xynthi.dist.theMidi.initialize \});\
+~xynthi.dist.midiOn;\
+~xynthi.rev.theMidi.nums=(83..84) ;\
+~xynthi.rev.theMidi.ccDictionary=Dictionary[\
+	\\time -> 83,\
+	\\mix -> 84,\
+	\\lpf -> 255\
+];\
+~xynthi.rev.theMidi.valueDictionary=~xynthi.rev.theGui.valueDictionary.copy;\
+(~xynthi.rev.theMidi.responderObj.isNil).if(\{ ~xynthi.rev.theMidi.initialize; \}, 	\{ ~xynthi.rev.theMidi.removeResponder; ~xynthi.rev.theMidi.initialize \});\
+~xynthi.rev.midiOn;\
+~xynthi.lfo1.theMidi.nums=85;\
+~xynthi.lfo1.theMidi.ccDictionary=Dictionary[\\freq -> 85, \\pw -> 255];\
+~xynthi.lfo1.theMidi.valueDictionary=Dictionary[\\freq -> ~xynthi.lfo1.theGui.valueDictionary.at(\\freq), \\pw -> 0.5];\
+(~xynthi.lfo1.theMidi.responderObj.isNil).if(\{ ~xynthi.lfo1.theMidi.initialize; \}, 	\{ ~xynthi.lfo1.theMidi.removeResponder; ~xynthi.lfo1.theMidi.initialize \});\
+~xynthi.lfo1.midiOn;\
+~xynthi.lfo2.theMidi.nums=86;\
+~xynthi.lfo2.theMidi.ccDictionary=Dictionary[\\freq -> 86, \\pw -> 255];\
+~xynthi.lfo2.theMidi.valueDictionary=Dictionary[\\freq -> ~xynthi.lfo2.theGui.valueDictionary.at(\\freq), \\pw -> 0.5];\
+(~xynthi.lfo2.theMidi.responderObj.isNil).if(\{ ~xynthi.lfo2.theMidi.initialize; \}, 	\{ ~xynthi.lfo2.theMidi.removeResponder; ~xynthi.lfo2.theMidi.initialize \});\
+~xynthi.lfo2.midiOn;\
+~xynthi.lfo3.theMidi.nums=87;\
+~xynthi.lfo3.theMidi.ccDictionary=Dictionary[\\freq -> 87, \\pw -> 255];\
+~xynthi.lfo3.theMidi.valueDictionary=Dictionary[\\freq -> ~xynthi.lfo3.theGui.valueDictionary.at(\\freq), \\pw -> 0.5];\
+(~xynthi.lfo3.theMidi.responderObj.isNil).if(\{ ~xynthi.lfo3.theMidi.initialize; \}, 	\{ ~xynthi.lfo3.theMidi.removeResponder; ~xynthi.lfo3.theMidi.initialize \});\
+~xynthi.lfo3.midiOn;\
+~xynthi.mix1.theMidi.nums=(88..90);\
+~xynthi.mix1.theMidi.ccDictionary=Dictionary[\\tone -> 88, \\pan -> 89, \\amp -> 90];\
+~xynthi.mix1.theMidi.valueDictionary=~xynthi.mix1.theGui.valueDictionary.copy;\
+(~xynthi.mix1.theMidi.responderObj.isNil).if(\{ ~xynthi.mix1.theMidi.initialize; \}, 	\{ ~xynthi.mix1.theMidi.removeResponder; ~xynthi.mix1.theMidi.initialize \});\
+~xynthi.mix1.midiOn;\
+~xynthi.mix2.theMidi.nums=(91..93);\
+~xynthi.mix2.theMidi.ccDictionary=Dictionary[\\tone -> 91, \\pan -> 92, \\amp -> 93];\
+~xynthi.mix2.theMidi.valueDictionary=~xynthi.mix2.theGui.valueDictionary.copy;\
+(~xynthi.mix2.theMidi.responderObj.isNil).if(\{ ~xynthi.mix2.theMidi.initialize; \}, 	\{ ~xynthi.mix2.theMidi.removeResponder; ~xynthi.mix2.theMidi.initialize \});\
+~xynthi.mix2.midiOn;\
+~xynthi.in1.theMidi.nums=94;\
+~xynthi.in1.theMidi.ccDictionary=Dictionary[\\amp -> 94, \\gate -> 255];\
+~xynthi.in1.theMidi.valueDictionary=~xynthi.in1.theGui.valueDictionary.copy;\
+(~xynthi.in1.theMidi.responderObj.isNil).if(\{ ~xynthi.in1.theMidi.initialize; \}, 	\{ ~xynthi.in1.theMidi.removeResponder; ~xynthi.in1.theMidi.initialize \});\
+~xynthi.in1.midiOn;\
+~xynthi.in2.theMidi.nums=95;\
+~xynthi.in2.theMidi.ccDictionary=Dictionary[\\amp -> 95, \\gate -> 255];\
+~xynthi.in2.theMidi.valueDictionary=~xynthi.in2.theGui.valueDictionary.copy;\
+(~xynthi.in2.theMidi.responderObj.isNil).if(\{ ~xynthi.in2.theMidi.initialize; \}, 	\{ ~xynthi.in2.theMidi.removeResponder; ~xynthi.in2.theMidi.initialize \});\
+~xynthi.in2.midiOn;\
+}

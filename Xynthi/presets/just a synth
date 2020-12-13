@@ -1,0 +1,444 @@
+var o, p;
+o = [
+	Dictionary.prNew,  Array.prNew(128),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(32),  Array.prNew(16),  Array.prNew(16),  
+	Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  
+	Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  
+	Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  
+	Array.prNew(16),  Array.prNew(16),  Array.prNew(16),  Array.prNew(8),  
+	Array.prNew(6),  Array.prNew(6),  Array.prNew(6),  Array.prNew(6),  
+	Array.prNew(6),  Array.prNew(6),  Array.prNew(6),  Array.prNew(6),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(32),  
+	Env.prNew,  Array.prNew(6),  Array.prNew(5),  Array.prNew(5),  
+	Array.prNew(24),  Dictionary.prNew,  Array.prNew(32),  Env.prNew,  
+	Array.prNew(5),  Array.prNew(4),  Array.prNew(4),  Array.prNew(20),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(64),  Dictionary.prNew,  Array.prNew(32),  
+	Dictionary.prNew,  Array.prNew(64),  Dictionary.prNew,  Array.prNew(4),  
+	Dictionary.prNew,  Array.prNew(32),  Dictionary.prNew,  Array.prNew(4),  
+	Dictionary.prNew,  Array.prNew(64),  Dictionary.prNew,  Array.prNew(4)
+];
+p = [
+	// Dictionary
+	0, [ array: o[1],  size: 20 ],  
+	// Array
+	1, [ 'lfo3',  o[2],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'lfo1',  o[4],  nil,  nil,  
+		'matrix',  o[6],  'modpod',  o[23],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'verb',  o[32],  
+		nil,  nil,  nil,  nil,  
+		'mix2',  o[34],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'ring',  o[36],  'dist',  o[38],  
+		'lfo2',  o[40],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'env1',  o[42],  
+		'env2',  o[49],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'noise1',  o[56],  
+		nil,  nil,  'in1',  o[58],  
+		'filt',  o[60],  nil,  nil,  
+		nil,  nil,  'in2',  o[62],  
+		'del',  o[64],  'mix1',  o[66],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'vco3',  o[68],  'vco1',  o[72],  
+		nil,  nil,  'vco2',  o[76],  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	2, [ array: o[3],  size: 4 ],  
+	// Array
+	3, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		nil,  nil,  'synth',  0,  
+		nil,  nil,  nil,  nil,  
+		'freq',  4.520983351821784,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	4, [ array: o[5],  size: 4 ],  
+	// Array
+	5, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		nil,  nil,  'synth',  0,  
+		nil,  nil,  nil,  nil,  
+		'freq',  0.0828434653381231,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Array
+	6, [ o[7],  o[8],  o[9],  o[10],  
+		o[11],  o[12],  o[13],  o[14],  
+		o[15],  o[16],  o[17],  o[18],  
+		o[19],  o[20],  o[21],  o[22] ],  
+	// Array
+	7, [ 0,  0,  0,  1,  
+		1,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	8, [ 0,  0,  0,  1,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	9, [ 0,  0,  0,  1,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	10, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	11, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	12, [ 0,  0,  0,  1,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	13, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		1,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	14, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	15, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	16, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  1,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	17, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		1,  0,  0,  0 ],  
+	// Array
+	18, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  1,  0,  0 ],  
+	// Array
+	19, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	20, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0 ],  
+	// Array
+	21, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  1,  0 ],  
+	// Array
+	22, [ 0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  0,  
+		0,  0,  0,  1 ],  
+	// Array
+	23, [ o[24],  o[25],  o[26],  o[27],  
+		o[28],  o[29],  o[30],  o[31] ],  
+	// Array
+	24, [ false,  19,  0,  5,  
+		0.5058823529411764,  0 ],  
+	// Array
+	25, [ false,  5,  0,  1,  
+		0.24705882352941178,  0 ],  
+	// Array
+	26, [ false,  6,  0,  1,  
+		-0.3176470588235294,  0 ],  
+	// Array
+	27, [ false,  19,  0,  2,  
+		0.12941176470588234,  0 ],  
+	// Array
+	28, [ false,  23,  2,  3,  
+		0.45238095238095233,  -0.33333333333333326 ],  
+	// Array
+	29, [ false,  29,  0,  5,  
+		0.4117647058823528,  0 ],  
+	// Array
+	30, [ true,  0,  0,  0,  
+		0,  0 ],  
+	// Array
+	31, [ true,  0,  0,  0,  
+		0,  0 ],  
+	// Dictionary
+	32, [ array: o[33],  size: 5 ],  
+	// Array
+	33, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  'time',  5.0,  
+		nil,  nil,  'play',  1,  
+		nil,  nil,  'mix',  0.07663645103009577,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'lpf',  8200.0,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	34, [ array: o[35],  size: 5 ],  
+	// Array
+	35, [ nil,  nil,  nil,  nil,  
+		'mute',  1,  'tone',  0.5,  
+		nil,  nil,  'play',  1,  
+		'pan',  0,  'amp',  1.0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	36, [ array: o[37],  size: 4 ],  
+	// Array
+	37, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		'depth',  1.0,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'ringtype',  4 ],  
+	// Dictionary
+	38, [ array: o[39],  size: 4 ],  
+	// Array
+	39, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		'depth',  1.0,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'disttype',  0,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	40, [ array: o[41],  size: 4 ],  
+	// Array
+	41, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		nil,  nil,  'synth',  6,  
+		nil,  nil,  nil,  nil,  
+		'freq',  0.2412678954722492,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	42, [ array: o[43],  size: 8 ],  
+	// Array
+	43, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  'mode',  0,  
+		'env',  o[44],  'release',  4,  
+		'gate',  1,  'loop',  0,  
+		'play',  1,  'timescale',  1.0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Env
+	44, [ levels: o[45],  times: o[46],  
+		curves: o[47],  releaseNode: 4,  
+		loopNode: nil,  array: o[48] ],  
+	// Array
+	45, [ 0.0,  0.9943820224143565,  0.6348314583301544,  0.5,  
+		0.48876404762268066,  0.0 ],  
+	// Array
+	46, [ 0.005859375,  0.109375,  0.4375,  0.421875,  
+		0.025390625 ],  
+	// Array
+	47, [ 0,  0,  0,  0,  
+		0 ],  
+	// Array
+	48, [ 0.0,  5,  4,  -99,  
+		0.9943820224143565,  0.005859375,  5,  0,  
+		0.6348314583301544,  0.109375,  5,  0,  
+		0.5,  0.4375,  5,  0,  
+		0.48876404762268066,  0.421875,  5,  0,  
+		0.0,  0.025390625,  5,  0 ],  
+	// Dictionary
+	49, [ array: o[50],  size: 8 ],  
+	// Array
+	50, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  'mode',  0,  
+		'env',  o[51],  'release',  3,  
+		'gate',  1,  'loop',  0,  
+		'play',  1,  'timescale',  3.0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Env
+	51, [ levels: o[52],  times: o[53],  
+		curves: o[54],  releaseNode: 3,  
+		loopNode: nil,  array: o[55] ],  
+	// Array
+	52, [ 1,  0.48876404762268066,  0.9831460677087307,  0.5112359523773193,  
+		0.0 ],  
+	// Array
+	53, [ 0.248046875,  0.16015625,  0.43359375,  0.158203125 ],  
+	// Array
+	54, [ 1.7000000000000002,  1.8000000000000005,  1.5000000000000002,  0 ],  
+	// Array
+	55, [ 1,  4,  3,  -99,  
+		0.48876404762268066,  0.248046875,  5,  1.7000000000000002,  
+		0.9831460677087307,  0.16015625,  5,  1.8000000000000005,  
+		0.5112359523773193,  0.43359375,  5,  1.5000000000000002,  
+		0.0,  0.158203125,  5,  0 ],  
+	// Dictionary
+	56, [ array: o[57],  size: 4 ],  
+	// Array
+	57, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		'noisetype',  1,  'amp',  0.0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	58, [ array: o[59],  size: 5 ],  
+	// Array
+	59, [ nil,  nil,  nil,  nil,  
+		'mute',  1,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		'amp',  1.0,  'gate',  0.001,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'in',  1,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	60, [ array: o[61],  size: 7 ],  
+	// Array
+	61, [ nil,  nil,  'fm',  0,  
+		'mute',  0,  'sync',  1,  
+		nil,  nil,  'play',  1,  
+		'amp',  1.8516570102344514,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'freq',  29.757079180319852,  'q',  0.37512672863473895,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	62, [ array: o[63],  size: 5 ],  
+	// Array
+	63, [ nil,  nil,  nil,  nil,  
+		'mute',  1,  nil,  nil,  
+		nil,  nil,  'play',  1,  
+		'amp',  1.0,  'gate',  0.001,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'in',  2,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	64, [ array: o[65],  size: 10 ],  
+	// Array
+	65, [ nil,  nil,  nil,  nil,  
+		nil,  nil,  'time',  5.0,  
+		'delay',  0.20295199434488626,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'lpf',  5438.673452218327,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'rotate',  0.15226700162654416,  
+		'w_rate',  0.9195174187264853,  'mute',  0,  
+		nil,  nil,  'play',  1,  
+		nil,  nil,  'mix',  0.1111111111111111,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'hpf',  504.60437725014435,  
+		'w_depth',  0.0011954607940825527,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	66, [ array: o[67],  size: 5 ],  
+	// Array
+	67, [ nil,  nil,  nil,  nil,  
+		'mute',  0,  'tone',  0.4094668341466054,  
+		nil,  nil,  'play',  1,  
+		'pan',  0,  'amp',  1.0639781586151862,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil ],  
+	// Dictionary
+	68, [ array: o[69],  size: 9 ],  
+	// Array
+	69, [ nil,  nil,  'fm',  0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'amp',  0.1,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'pw',  0.5,  
+		'mute',  0,  'sync',  1,  
+		nil,  nil,  'play',  1,  
+		'setRange',  o[70],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'freq',  2.7479590583376066,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'wave',  0,  nil,  nil ],  
+	// Dictionary
+	70, [ array: o[71],  size: 1 ],  
+	// Array
+	71, [ nil,  nil,  'value',  2 ],  
+	// Dictionary
+	72, [ array: o[73],  size: 8 ],  
+	// Array
+	73, [ nil,  nil,  'pw',  0.28520512299290185,  
+		'fm',  0,  'mute',  0,  
+		nil,  nil,  'play',  1,  
+		'amp',  0.23266816221757966,  'setRange',  o[74],  
+		nil,  nil,  nil,  nil,  
+		'freq',  278.8782385502338,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'wave',  1,  nil,  nil ],  
+	// Dictionary
+	74, [ array: o[75],  size: 1 ],  
+	// Array
+	75, [ nil,  nil,  'value',  2 ],  
+	// Dictionary
+	76, [ array: o[77],  size: 9 ],  
+	// Array
+	77, [ nil,  nil,  'fm',  0,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'amp',  0.16666007731990076,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		nil,  nil,  'pw',  0.2563990567331636,  
+		'mute',  0,  'sync',  1,  
+		nil,  nil,  'play',  1,  
+		'setRange',  o[78],  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'freq',  -3.8988997303017783,  nil,  nil,  
+		nil,  nil,  nil,  nil,  
+		'wave',  1,  nil,  nil ],  
+	// Dictionary
+	78, [ array: o[79],  size: 1 ],  
+	// Array
+	79, [ nil,  nil,  'value',  2 ]
+];
+prUnarchive(o,p);

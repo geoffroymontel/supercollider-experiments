@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5420"
+   name=""
+   committed-date="2006-07-09T15:56:14.009184Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Geometry"
+   last-author="nescivi"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5393"
+   name="Rect.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="60082e811bc2778836c01a41f89eb736"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5420"
+   name="Point.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-07-09T15:56:14.009184Z"
+   checksum="7c7c281a1107639ba67bc766d4a30398"
+   last-author="nescivi"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+</wc-entries>

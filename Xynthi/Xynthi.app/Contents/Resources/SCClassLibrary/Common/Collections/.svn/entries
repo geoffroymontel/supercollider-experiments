@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Collections"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5393"
+   name="List.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="0d01a18272afac2fc713136037258f3f"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Association.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="469c1c4baa83401665efba58bd6726dc"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Array.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="e0ca3063cecd973736d1aa02366e9139"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="ObjectTable.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="8f0147030862862fb455e3dc376dafe5"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5357"
+   name="Event.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-04-23T19:02:21.000000Z"
+   checksum="aa33640ef5d97f1a28414b0160dfe217"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="2436"
+   name="Harmonics.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2004-01-08T10:31:37.000000Z"
+   checksum="986795fff7eabc4f97dd4cb9344a9a22"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Interval.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="2747f2a5933498d34d074ca89c693b3d"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PriorityQueue.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="ad080c7fc511e7bb2af6e0e10f567ed8"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Bag.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="2fd2f13c576060ec9640ca98bb416810"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Set.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="5e42ef655ec12bd88dc7423f49fa2000"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Collection.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="ff1492d50ecd5dd9a77713a94361d7f4"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Pair.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="15be1ba2fe39d1aafdc27fe945ca7af1"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="SortedList.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="45d486f5c3a0cfd561304641b139df34"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="LinkedList.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="857e4ca4dbaea12cb42117d7f85f9c37"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="ArrayedCollection.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="3e6a0705db3a863040892470b699f180"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Library.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="cc53a8389fc8ef67f34ea0b92bc22742"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Environment.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="1c18e93a509e1b896f640784568f724a"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Array2D.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="11576a070a15328299a3476a0411cfc0"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Dictionary.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="7f4a16200c337592bb6655fe6f25ea4d"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="String.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="94cc85f1e510cd72637d94526bfa40b8"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:12.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="SequenceableCollection.sc"
+   text-time="2006-08-01T21:15:12.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="3befeaf90036daf2c527f327a795e267"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:12.000000Z"/>
+</wc-entries>

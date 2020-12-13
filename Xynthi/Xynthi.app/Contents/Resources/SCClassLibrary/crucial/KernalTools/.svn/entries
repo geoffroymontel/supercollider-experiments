@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5374"
+   name=""
+   committed-date="2006-05-19T15:27:17.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/KernalTools"
+   last-author="cruxxial"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4705"
+   name="KernalButtons.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-19T14:47:49.000000Z"
+   checksum="47072154975c1eb38b2415f40b9ce55f"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="1608"
+   name="TestCase.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2003-09-03T15:26:32.000000Z"
+   checksum="f1223b5a09d82e15960b3a55b118a586"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="800"
+   name="test.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2003-03-17T20:59:06.000000Z"
+   checksum="570a62e629f12645b9983db5d6674515"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4705"
+   name="InspManager.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-19T14:47:49.000000Z"
+   checksum="6580930f9d38dc4f356af4c934150c84"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="3531"
+   name="AnnotatedDebugNodeWatcher.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2004-08-21T19:02:08.000000Z"
+   checksum="bc1919288946efb0b911c0234a1ee822"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5374"
+   name="CXObjectInspector.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-05-19T15:27:17.000000Z"
+   checksum="546966466d992713b2ae53073fb5fb52"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

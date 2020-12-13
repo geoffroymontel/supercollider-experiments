@@ -1,0 +1,247 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf2 (\
+// build synthDef, synthObj, gui, midiCtrls\
+\
+// synthDef //\
+SynthDef(\\bp_2, \{|in=21, out=0|\
+		Out.ar(out, In.ar(in, 2));\
+\}).send(s);\
+\
+SynthDef(\\scverb_22, \{|out=0, in=22, mix=0.2, time=5, lpf=8200, srate=0|\
+	var apj, sig, mods, delays, dts, fbs, fb, filts;\
+	sig=In.ar(in, 2);\
+	dts=Select.kr(srate, [\
+		[0.056077097505669, 0.062743764172336, 0.072947845804989, 0.080657596371882, 0.08859410430839, 0.093582766439909, 0.04859410430839, 0.043832199546485],\
+		[0.056104166666667, 0.062729166666667, 0.073145833333333, 0.080770833333333, 0.088604166666667, 0.093604166666667, 0.048604166666667, 0.043729166666667],\
+		[0.056052083333333, 0.062802083333333, 0.072927083333333, 0.080635416666667, 0.088552083333333, 0.093739583333333, 0.048572916666667, 0.043760416666667]\
+	]);\
+	fb=exp(log(0.001) * 0.089/time);\
+	mods=LFNoise2.kr([3.1, 3.5, 1.110, 3.973, 2.341, 1.897, 0.891, 3.221],\
+		[0.0010, 0.0011, 0.0017, 0.0006, 0.0010, 0.0011, 0.0017, 0.0006]\
+	);\
+	fbs=LocalIn.ar(8);\
+	apj=0.25 * Mix.ar(fbs);\
+	delays=DelayC.ar(sig - fbs + apj, 1, dts + mods);\
+	filts=LPF.ar(delays * fb, lpf);\
+	LocalOut.ar(DelayC.ar(filts, ControlRate.ir.reciprocal, ControlRate.ir.reciprocal));\
+	Out.ar(out,\
+		1 - mix * sig + (mix * 0.35 * [Mix.ar([filts[0], filts[2], filts[4], filts[6]]), Mix.ar([filts[1], filts[3], filts[5], filts[7]])])\
+	);\
+\}).send(s);\
+\
+SynthDef(\\scverb_12, \{|out=0, in=22, mix=0.2, time=5, lpf=8200, srate=0|\
+	var apj, sig, mods, delays, dts, fbs, fb, filts;\
+	sig=In.ar(in).dup;\
+	dts=Select.kr(srate, [\
+		[0.056077097505669, 0.062743764172336, 0.072947845804989, 0.080657596371882, 0.08859410430839, 0.093582766439909, 0.04859410430839, 0.043832199546485],\
+		[0.056104166666667, 0.062729166666667, 0.073145833333333, 0.080770833333333, 0.088604166666667, 0.093604166666667, 0.048604166666667, 0.043729166666667],\
+		[0.056052083333333, 0.062802083333333, 0.072927083333333, 0.080635416666667, 0.088552083333333, 0.093739583333333, 0.048572916666667, 0.043760416666667]\
+	]);\
+	fb=0.089.calcFeedback(time);\
+	mods=LFNoise2.kr([3.1, 3.5, 1.110, 3.973, 2.341, 1.897, 0.891, 3.221],\
+		[0.0010, 0.0011, 0.0017, 0.0006, 0.0010, 0.0011, 0.0017, 0.0006]\
+	);\
+	fbs=LocalIn.ar(8);\
+	apj=0.25 * Mix.ar(fbs);\
+	delays=DelayC.ar(sig - fbs + apj, 1, dts + mods);\
+	filts=LPF.ar(delays * fb, lpf);\
+	LocalOut.ar(DelayC.ar(filts, ControlRate.ir.reciprocal, ControlRate.ir.reciprocal));\
+	Out.ar(out,\
+		1 - mix * sig + (mix * 0.35 * [Mix.ar([filts[0], filts[2], filts[4], filts[6]]), Mix.ar([filts[1], filts[3], filts[5], filts[7]])])\
+	);\
+\}).send(s);\
+\
+SynthDef(\\scverb_11, \{|out=0, in=22, mix=0.2, time=5, lpf=8200, srate=0|\
+	var apj, sig, mods, delays, dts, fbs, fb, filts;\
+	sig=In.ar(in).dup;\
+	dts=Select.kr(srate, [\
+		[0.056077097505669, 0.062743764172336, 0.072947845804989, 0.080657596371882, 0.08859410430839, 0.093582766439909, 0.04859410430839, 0.043832199546485],\
+		[0.056104166666667, 0.062729166666667, 0.073145833333333, 0.080770833333333, 0.088604166666667, 0.093604166666667, 0.048604166666667, 0.043729166666667],\
+		[0.056052083333333, 0.062802083333333, 0.072927083333333, 0.080635416666667, 0.088552083333333, 0.093739583333333, 0.048572916666667, 0.043760416666667]\
+	]);\
+	fb=0.089.calcFeedback(time);\
+	mods=LFNoise2.kr([3.1, 3.5, 1.110, 3.973, 2.341, 1.897, 0.891, 3.221],\
+		[0.0010, 0.0011, 0.0017, 0.0006, 0.0010, 0.0011, 0.0017, 0.0006]\
+	);\
+	fbs=LocalIn.ar(8);\
+	apj=0.25 * Mix.ar(fbs);\
+	delays=DelayC.ar(sig - fbs + apj, 1, dts + mods);\
+	filts=LPF.ar(delays * fb, lpf);\
+	LocalOut.ar(DelayC.ar(filts, ControlRate.ir.reciprocal, ControlRate.ir.reciprocal));\
+	Out.ar(out,\
+		1 - mix * sig + (mix * 0.35 * Mix.ar(filts))\
+	);\
+\}).send(s);\
+\
+// synthObj //\
+~scverb=~busControlledSynth.reproduce;\
+~scverb.synthDefName=\\scverb_12;\
+~scverb.fastPlay=false;\
+~scverb.defaultSettings=[0.2, 5, 8200];\
+~scverb.makeBusDictionary=\{|self|\
+	var busarr, rootIndex;\
+	busarr=Bus.control(self.server, 3);\
+	rootIndex=busarr.index;\
+	self.busDictionary=Dictionary[\
+		\\mix -> rootIndex,\
+		\\time -> (rootIndex + 1),\
+		\\lpf -> (rootIndex + 2)\
+	];\
+	busarr.setn(self.defaultSettings);\
+	self.busarr=busarr;\
+\};\
+// gui //\
+~scverbGui=~buildGui.reproduce;\
+~scverbGui.synthObj=~scverb;\
+~scverbGui.makeGui=\{|self, w|\
+	var vert;\
+	self.elementDictionary=Dictionary.new;\
+	(self.showIO).if(\{\
+		self.elementDictionary.put(\
+			\\in,\
+			SCNumberBox(w, self.elementStyle.smallBoxSize)\
+			.action_(\{|v| self.synthObj.setArgs(\\in, v.value) \})\
+		);\
+	\});\
+	self.elementDictionary.putAll(Dictionary[\
+		\\mix ->\
+		EZKnob.new(w, self.elementStyle.knobSize, 'mix', \\amp,\
+			\{|v|\
+				self.synthObj.setArgs(\\mix, v.value);\
+				self.updateMIDI(\\mix, v.value);\
+			\},\
+			nil,\
+			false,\
+			self.elementStyle.knobLabel,\
+			self.elementStyle.knobNumber\
+		),\
+		\\time ->\
+		EZKnob.new(w, self.elementStyle.knobSize, 'time', [0, 60, 4],\
+			\{|v|\
+				self.synthObj.setArgs(\\time, v.value);\
+				self.updateMIDI(\\time, v.value);\
+			\},\
+			nil,\
+			false,\
+			self.elementStyle.knobLabel,\
+			self.elementStyle.knobNumber\
+		),\
+		\\lpf ->\
+		EZKnob.new(w, self.elementStyle.knobSize, 'lpf', \\ffreq,\
+			\{|v|\
+				self.synthObj.setArgs(\\lpf, v.value);\
+				self.updateMIDI(\\lpf, v.value);\
+			\},\
+			nil,\
+			false,\
+			self.elementStyle.knobLabel,\
+			self.elementStyle.knobNumber\
+		)\
+	]);\
+	w.vert(\{|v|\
+		self.elementDictionary.putAll(Dictionary[\
+			\\play ->\
+			ToggleButton(v, " P ", \{ \
+				self.synthObj.playSynth;\
+			\}, \{ \
+				self.synthObj.stopSynth;\
+			\}).view,\
+			\\mute ->\
+			ToggleButton(v, " B ", \{\
+				self.synthObj.runSynth(false); \
+				self.bpObj=Synth.after(self.synthObj.synthObj, \\bp_2, \
+					[\\in, self.synthObj.synthArgDictionary.at(\\in),\
+						\\out, self.synthObj.synthArgDictionary.at(\\out)\
+					]\
+				);\
+			\}, \{ \
+				self.synthObj.runSynth(true);\
+				(self.bpObj.notNil).if(\{ self.bpObj.free \});\
+			\}).view\
+		]);\
+		(self.showIO).if(\{\
+			self.elementDictionary.put(\
+				\\out,\
+				SCNumberBox(v, self.elementStyle.smallBoxSize)\
+					.action_(\{|v| self.synthObj.setArgs(\\out, v.value) \})\
+			);\
+		\});\
+		ActionButton(v, " S ", \{\
+			CocoaDialog.savePanel(\{|path|\
+				var dict;\
+				dict=self.getValues;\
+				dict.writeTextArchive(path);\
+			\})\
+		\});\
+		ActionButton(v, " L ", \{\
+			CocoaDialog.getPaths(\{|path|\
+				self.valueDictionary=Object.readTextArchive(path[0]);\
+				self.setValues;\
+			\})\
+		\});	\
+	\}, 20@82);\
+\};\
+~scverbGui.valueDictionary=Dictionary[\
+	\\mix -> 0.2, \
+	\\time -> 5, \
+	\\lpf -> 8200,\
+	\\in -> 22,\
+	\\out -> 0, \
+	\\mute -> 0, \
+	\\play -> 1\
+];\
+\
+// MIDI\
+~scverbMidi = ~incDecMidi.reproduce;\
+~scverbMidi.synthObj=~scverbSynth;\
+~scverbMidi.guiObj=~scverbGui;\
+~scverbMidi.valueDictionary=~scverbGui.valueDictionary.copy;\
+~scverbMidi.makeResponder=\{|self|\
+	self.responderObj=IncDecResponderBank(\
+		self.src,\
+		self.chan,\
+		self.ccDictionary.at(\\mix), 0.0078, \\amp, \
+			\{|s, c, n, v| \
+				self.synthObj.setArgs(\\mix, v); \
+				self.updateGui(\\mix, v, \\valueNoAction_); \
+			\}, \
+			self.valueDictionary.at(\\mix),\
+		self.ccDictionary.at(\\time), 0.0078, [0, 60, 4], \
+			\{|s, c, n, v| \
+				self.synthObj.setArgs(\\time, v); \
+				self.updateGui(\\time, v, \\valueNoAction_); \
+			\}, \
+			self.valueDictionary.at(\\time),\
+		self.ccDictionary.at(\\lpf), 0.0078, \\ffreq, \
+			\{|s, c, n, v| \
+				self.synthObj.setArgs(\\lpf, v); \
+				self.updateGui(\\lpf, v, \\valueNoAction_); \
+			\}, \
+			self.valueDictionary.at(\\lpf)\
+	);\
+	self.responderObj;\
+\};\
+~scverbInstr=(\
+	reproduce: \{|self|\
+		var newSelf;\
+		newSelf=self.copy;\
+		newSelf.theSynth=self.theSynth.reproduce(true);\
+		newSelf.theGui=self.theGui.reproduce;\
+		newSelf.theGui.synthObj=newSelf.theSynth;\
+		newSelf.theMidi=self.theMidi.reproduce;\
+		newSelf.theMidi.synthObj=newSelf.theSynth;\
+		newSelf.theMidi.guiObj=newSelf.theGui;\
+		newSelf;\
+	\},\
+	theSynth: ~scverb,\
+	theGui: ~scverbGui,\
+	theMidi: ~scverbMidi,\
+	midiOn: \{|self|\
+		self.theGui.midiObj=self.theMidi;\
+	\}\
+)\
+)}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5207"
+   name=""
+   committed-date="2006-01-02T19:38:07.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Control/asScore"
+   last-author="rkuivila"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4212"
+   name="asScore.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2005-02-16T10:29:10.000000Z"
+   checksum="27823ab6a57e0423b5c2dcabbffea7ed"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="3136"
+   name="RenderNotePlayer.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2004-06-08T15:08:18.000000Z"
+   checksum="133578cf406cbd1bb3a7d2801a01c9fe"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5207"
+   name="ScoreStreamPlayer.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-01-02T19:38:07.000000Z"
+   checksum="cefa388fc1c22554c4bc99b20bb1e179"
+   last-author="rkuivila"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+</wc-entries>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5424"
+   name=""
+   committed-date="2006-07-10T13:44:29.779191Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/OSX/objC"
+   last-author="ctrl-t"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5424"
+   name="SCNSObject.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-07-10T13:44:29.779191Z"
+   checksum="a09f0c631915862678d8ad5c700c6ee2"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5304"
+   name="SCWindowPlusCocoa.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-03-10T15:07:11.000000Z"
+   checksum="b7dce53ee06df9906409c65aeec359cb"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5302"
+   name="plusAsNSReturn.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-03-10T15:05:29.000000Z"
+   checksum="af0ba812c5c07bfed6a70ccc8775dd55"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+</wc-entries>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5414"
+   name=""
+   committed-date="2006-07-02T17:13:18.596425Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI"
+   last-author="asynth"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   name="AutoComplete"
+   kind="dir"/>
+<entry
+   committed-rev="5338"
+   name="Document.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-04-08T20:23:12.000000Z"
+   checksum="ee8acac1ec6dbf22675a4166d375936f"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Model.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="55d103012f795da61d2b6fd9ab6a71e9"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5330"
+   name="Stethoscope.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-03-26T18:13:42.000000Z"
+   checksum="7614cd3000d9730bdefb5a85497c757b"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="ControlModel.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="451d21379ac514d36f8bd273f8ca56f3"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   name="PlusGUI"
+   kind="dir"/>
+<entry
+   committed-rev="5393"
+   name="ScopeView.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="c357c57d965b95609b1762ede771b15c"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="3949"
+   name="FlowLayout.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2004-12-09T14:53:14.000000Z"
+   checksum="122cd3c07ffbd08ad236b1097d96d22e"
+   last-author="decampo"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   name="Base"
+   kind="dir"/>
+<entry
+   committed-rev="302"
+   name="Inspector.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2003-02-02T18:36:19.000000Z"
+   checksum="40b5e629946d207f6d69a2a4dc5d5b15"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+</wc-entries>

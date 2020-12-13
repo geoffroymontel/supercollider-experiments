@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/Players"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="3531"
+   name="PlayerEfxFunc.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-08-21T19:02:08.000000Z"
+   checksum="bf98b02c15d9be4ce2ead279dd836175"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="3531"
+   name="SimpleTrigger.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-08-21T19:02:08.000000Z"
+   checksum="5124eb5b2b02ff7ebebe5722fda1cba0"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="1800"
+   name="state.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-09-27T15:13:35.000000Z"
+   checksum="8c2676592463cd51c09a749fdc817ab4"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="4686"
+   name="AbstractPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T20:23:27.000000Z"
+   checksum="04084660abd43facbf553682135fa2c3"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="3401"
+   name="PlayerBasicOps.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-07-31T17:09:58.000000Z"
+   checksum="0bbf74a86f422ff2f5a54ea9b0bed48c"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="1798"
+   name="SimpleTriggerGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-09-26T17:09:19.000000Z"
+   checksum="4a7ffa3cbfe26fa447686e65a4a1da86"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="3401"
+   name="Silence.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-07-31T17:09:58.000000Z"
+   checksum="c53be8a9fdfa6c9f9706730302c9c54d"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="5244"
+   name="SimplePlayerEffect.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2006-02-09T15:17:57.000000Z"
+   checksum="488366adb992d734fd62d8c4e6a97fb4"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   name="SFP"
+   kind="dir"/>
+<entry
+   committed-rev="4667"
+   name="AbstractPlayerGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="531de3969489463220405a839ae240c6"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="996"
+   name="PlayerBasicOpsGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-04-21T20:55:44.000000Z"
+   checksum="030841ecfafbf9873484c94e8196351b"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PlayerPool.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="a90cfd015ad56c4ee32a721df4e6636c"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:04.000000Z"/>
+<entry
+   committed-rev="4667"
+   name="pathUtilities.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="072cbe6f6a3a45088a8afb41fe6ca580"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="1608"
+   name="KrPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-09-03T15:26:32.000000Z"
+   checksum="5af7a53d2abf2c67923df77b5b253498"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4667"
+   name="HasSubject.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="83300e665e95338a2aba43ddef576d86"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PlayerPoolGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="03c9d69436dbc4512277f6b075a31e42"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="3600"
+   name="Patching.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-09-05T22:58:24.000000Z"
+   checksum="567661f367b872a7c3ad4d0a36df7fc1"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PlayerMixer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="cdcd5e66800ea51850fcb069fc2377ac"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4667"
+   name="TempoPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="262b1f35aa11628af56e5595b0083e1e"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="1526"
+   name="FunctionPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-07-22T13:01:48.000000Z"
+   checksum="812cf24625e5ddbbcd3065e5cc2b51b0"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4667"
+   name="BeatClockPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="558b7becc76b05ab47512b10d92706dc"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="1478"
+   name="AudioInPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-06-29T09:23:43.000000Z"
+   checksum="428587d3e8262aab52429150c1252bb2"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4667"
+   name="PlayerSocket.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-06-09T11:14:12.000000Z"
+   checksum="580ba3489ace4c4259c9405bde3d997d"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PlayerMixerGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="3a2833270f860fe3e13562cebd144414"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="1473"
+   name="FunctionPlayerGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-06-26T15:30:59.000000Z"
+   checksum="26a5d8c4d08688cdf85cff3641f935ef"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="1559"
+   name="BeatClockPlayerGui.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2003-08-14T18:07:40.000000Z"
+   checksum="099fb2deb7d5b2fd5fdac89028601a70"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+</wc-entries>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/Editors"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="1559"
+   name="EnvEditor.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2003-08-14T18:07:40.000000Z"
+   checksum="14f6c86f7a9dced263d9b0be7b81989c"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5235"
+   name="NumberEditor.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-02-05T13:49:27.000000Z"
+   checksum="040fa6f727a05ea46e4a68c09b477391"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4662"
+   name="EnvEditorGui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T10:44:19.000000Z"
+   checksum="dbab3fb5b97753323d840b52c2d2f9e7"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="NumberEditorGui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="97b6f78d00631e5484d6bdd5a6bbd85a"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

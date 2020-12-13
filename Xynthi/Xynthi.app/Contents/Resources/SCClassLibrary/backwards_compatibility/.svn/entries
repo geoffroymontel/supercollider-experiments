@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3618"
+   name=""
+   committed-date="2004-09-09T17:32:05.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/backwards_compatibility"
+   last-author="asynth"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5441"/>
+<entry
+   committed-rev="305"
+   name="views.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2003-02-03T21:03:40.000000Z"
+   checksum="dca96e6b775939c9e3c82681abc2f924"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="1145"
+   name="Dialog.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2003-05-08T16:40:23.000000Z"
+   checksum="54553ac02bc89ae74d062f2ff073eedb"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="305"
+   name="classInitalisations.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2003-02-03T21:03:40.000000Z"
+   checksum="d7c3ab2318a89c1492f788d2e1963ba4"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="3618"
+   name="PMOsc.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2004-09-09T17:32:05.000000Z"
+   checksum="aa579eef5da4c70ae956702cb7decc03"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="3178"
+   name="extMethods.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2004-06-23T05:47:00.000000Z"
+   checksum="339228a5b666df1af0f2ffc667d33714"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+</wc-entries>

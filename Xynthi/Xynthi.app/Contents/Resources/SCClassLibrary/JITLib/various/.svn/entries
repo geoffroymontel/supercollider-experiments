@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5381"
+   name=""
+   committed-date="2006-05-28T16:35:32.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/JITLib/various"
+   last-author="asynth"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4008"
+   name="Order.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2004-12-18T18:57:04.000000Z"
+   checksum="d82234b11e16679dd1aa9f5ae26e38c6"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="5381"
+   name="Client.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2006-05-28T16:35:32.000000Z"
+   checksum="84b3ef209e21d93bc01c1d4e61f8a499"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="3293"
+   name="UGens.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2004-07-12T15:22:42.000000Z"
+   checksum="47772283b76cfaf937f41c3c8bb6f68c"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="5072"
+   name="Fdef.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2005-11-07T16:23:46.000000Z"
+   checksum="3ab43e1c3275cadd9b54cf5ea54fbb55"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+</wc-entries>

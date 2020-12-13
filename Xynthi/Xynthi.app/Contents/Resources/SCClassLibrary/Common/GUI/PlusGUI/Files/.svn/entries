@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2989"
+   name=""
+   committed-date="2004-05-05T14:15:36.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/PlusGUI/Files"
+   last-author="asynth"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="2989"
+   name="FilePlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-05-05T14:15:36.000000Z"
+   checksum="fc28d846423e14766ae2c9a1bb1f9069"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+</wc-entries>

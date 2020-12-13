@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5404"
+   name=""
+   committed-date="2006-06-22T21:57:54.118920Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Audio"
+   last-author="jrhb"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4967"
+   name="SystemSynthDefs.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-10-13T11:44:44.000000Z"
+   checksum="becdb4127f77209b51818adc629259dc"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Pan.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="d3ee3517661a5117ce9c9542123419ed"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="FFT.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="febc2bbed6796497b57f7bb38c75cca0"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="BasicOpsUGen.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="9eebcfaa8413c208f9be0df65ba3d45f"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="EnvGen.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="0a56e43126e94a1a97a1d8059f3037d8"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Osc.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="530a8e0b7c77c865c4612f695eaca64a"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="AudioIn.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="3020a806a62980e1fa9144aeee05dc7a"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Peep.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="ad08adc0c0c2565d5ae6d775af1f80dc"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5257"
+   name="Hilbert.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-02-17T12:31:59.000000Z"
+   checksum="85dd6489269d8f57d190dff7cfc393ca"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4344"
+   name="canFreeSynth.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-03-22T15:45:28.000000Z"
+   checksum="5a3036c0a33e1b5565fce5276cdcfacd"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="2580"
+   name="PhysicalModel.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2004-02-01T18:25:21.000000Z"
+   checksum="d10e25f973cb432ea203eb60aaa489dc"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4553"
+   name="InfoUGens.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-05-22T10:26:26.000000Z"
+   checksum="18d6e13f53986129f6aab7bb1d02d247"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5227"
+   name="InOut.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-01-17T13:01:43.000000Z"
+   checksum="7bdf3dabba39bb7f42432ec4d24b09f4"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="1113"
+   name="MacUGens.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2003-05-03T20:00:44.000000Z"
+   checksum="4f8b33188b74d2a901637af535d6a6db"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4700"
+   name="SynthDesc.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-06-12T13:32:57.000000Z"
+   checksum="94b8cb6eb35da9770ad652e194ee4f58"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="FSinOsc.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="30b210c6106df375289ec6436ee30614"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Trig.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="6e80d4716a30a373838f511d03fa9284"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PitchShift.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="545b0be0274262c399b3af20516a005b"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Compander.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="6bcd7f0cf17167b098c02bd955a21fb8"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Noise.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="05c574bde951aeb6a4f551b6db4ba3dc"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Delays.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="826b4a20a4d8a99f6cf79fe9c595f28b"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4047"
+   name="DiskIO.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2004-12-27T23:14:35.000000Z"
+   checksum="d5962aef7549fed3562fbb0c1916d6af"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="2501"
+   name="Gendyn.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2004-01-18T13:53:32.000000Z"
+   checksum="527c4cd5513fed12886c7a6dd88fc8f0"
+   last-author="sicklincoln"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="SynthDef.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="69ac89a7680f16e9d0ce8f2b6a671d17"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Filter.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="f34a7b73375006170b0fee3ce66515e8"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Line.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="47d155c004516895e98583e39eed4442"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Env.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="041b2f69d966ea58b414bc7238addd24"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5404"
+   name="Demand.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-22T21:57:54.118920Z"
+   checksum="6a0eb36f29862044565f0c094fd6273b"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4640"
+   name="Splay.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-06-07T15:54:41.000000Z"
+   checksum="8f1b01adc991f729ec87df9766e84114"
+   last-author="decampo"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="PSinGrain.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="50a1887258d24a4d12cca94d3fda3a27"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Mix.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="1d540b29ab3936121ff4026430c8fff0"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="4549"
+   name="Chaos.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-05-17T13:09:59.000000Z"
+   checksum="84a8c7c58f9e7fba106eab4c6d01d433"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="UGen.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="3ae08a40cb8d9465a1e0f92fbf25c512"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5403"
+   name="FFT2.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-15T11:38:48.275195Z"
+   checksum="333f6bb21cdfead697ffabde16f2ed9d"
+   last-author="nescivi"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="ImageOps.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="9718675753eb7c87b984c2959e755039"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="BufIO.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="23b496248e81ae9045eaf9c6c85abae7"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="DelayWr.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="265f020c3aff9f216ff6d435388a94c7"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:08.000000Z"/>
+</wc-entries>

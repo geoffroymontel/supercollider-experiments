@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5424"
+   name=""
+   committed-date="2006-07-10T13:44:29.779191Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/OSX"
+   last-author="ctrl-t"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="1536"
+   name="StringPlusSpeech.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2003-07-28T21:54:30.000000Z"
+   checksum="e74c8098eab10b3b1e12e86b3e345156"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="1537"
+   name="Cocoa.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2003-08-01T23:56:46.000000Z"
+   checksum="f04e4e2d3b92421a037822238aead312"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="1536"
+   name="Speech.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2003-07-28T21:54:30.000000Z"
+   checksum="05b0d5e8cfcdb21e946ed141554c9fac"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   name="objC"
+   kind="dir"/>
+</wc-entries>
