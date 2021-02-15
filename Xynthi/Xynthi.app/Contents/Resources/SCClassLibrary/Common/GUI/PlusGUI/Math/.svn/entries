@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4892"
+   name=""
+   committed-date="2005-09-27T14:03:31.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/PlusGUI/Math"
+   last-author="mullmusik"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="1536"
+   name="IntegerPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2003-07-28T21:54:30.000000Z"
+   checksum="93062a46beff714a03f1b81e72be3d99"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="4892"
+   name="SignalPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2005-09-27T14:03:31.000000Z"
+   checksum="526367710f3e92ed2edeecf4a37d3c74"
+   last-author="mullmusik"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+</wc-entries>

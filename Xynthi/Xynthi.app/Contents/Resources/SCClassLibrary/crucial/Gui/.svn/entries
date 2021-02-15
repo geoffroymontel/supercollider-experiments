@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/Gui"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5393"
+   name="ObjectGui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="1bd8ef323202544a3dc817e348eb9ffc"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4664"
+   name="CXMenu.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T10:57:52.000000Z"
+   checksum="0750168afbbecc1625b34e8809ea36d2"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Updater.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="8bfc02ce7392c85db5cfccc3ab680273"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4705"
+   name="gui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-19T14:47:49.000000Z"
+   checksum="61a4677c6ad9758cba27646129ac3208"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="SelectButtonSet.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="43f09640e165db6dbf9b9e453d326a14"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="SynthConsole.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="5ad36068206f727818e04e642b84a8ef"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="ActionButton.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="474cb6bc7fd4fe540fee11c3a35f2788"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4651"
+   name="MLIDbrowser.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-08T15:57:23.000000Z"
+   checksum="7875bcbc3cb7e82cccf0717b1fc6140a"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4664"
+   name="CXLabel.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T10:57:52.000000Z"
+   checksum="672b24d30e7ea2af39c5bc55cd67da73"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4664"
+   name="PageLayout.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T10:57:52.000000Z"
+   checksum="d5e234be9c3e276687accdc0fbaedc83"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

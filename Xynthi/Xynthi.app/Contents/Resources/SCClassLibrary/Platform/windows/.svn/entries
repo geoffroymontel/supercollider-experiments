@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5433"
+   name=""
+   committed-date="2006-07-13T13:51:56.159036Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Platform/windows"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5433"
+   name="WindowsPlatform.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-07-13T13:51:56.159036Z"
+   checksum="5ea55fa7f249b3f37d8a5fd5b424f13d"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5433"
+   name="extMain.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-07-13T13:51:56.159036Z"
+   checksum="66f0e52946fdb78b02116fb457e066be"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

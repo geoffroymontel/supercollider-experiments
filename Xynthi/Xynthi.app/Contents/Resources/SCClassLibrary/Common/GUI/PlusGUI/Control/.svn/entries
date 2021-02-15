@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5335"
+   name=""
+   committed-date="2006-03-28T09:18:49.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/PlusGUI/Control"
+   last-author="decampo"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="3172"
+   name="SynthDescPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-06-21T17:35:51.000000Z"
+   checksum="ff93ab8c8bd0b3e54b0d1da7497022a9"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5335"
+   name="server-scope.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2006-03-28T09:18:49.000000Z"
+   checksum="db256e277f8b744df1a61b0bb8914411"
+   last-author="decampo"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5201"
+   name="ServerPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2005-12-28T19:51:06.000000Z"
+   checksum="728fe8f91f01c6116c50a41879178211"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="2732"
+   name="SynthDescLibPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-03-10T17:43:46.000000Z"
+   checksum="5a54c0b2a160636fa4136dadec563849"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="5331"
+   name="UGen-scope.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2006-03-26T18:14:44.000000Z"
+   checksum="545b4c48c74758a9a8336e28099ed2e8"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+</wc-entries>

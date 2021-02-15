@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3653"
+   name=""
+   committed-date="2004-09-23T01:21:28.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/PlusGUI/Core"
+   last-author="jamshark70"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="2985"
+   name="NilPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-05-05T13:54:37.000000Z"
+   checksum="753d1697de87c6c1d4f57f1ac0e4c2c5"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="1536"
+   name="ObjectPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2003-07-28T21:54:30.000000Z"
+   checksum="6d4c1b27f6e567ec160c50f6adc089b7"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="1536"
+   name="ColorPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2003-07-28T21:54:30.000000Z"
+   checksum="1b4ddcd51d6743ec4759bff53c7fdd68"
+   last-author="mupuxeddu"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="3653"
+   name="ClassBrowser.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-09-23T01:21:28.000000Z"
+   checksum="a3b34481b92b778e282d7e917ba1441a"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+<entry
+   committed-rev="3647"
+   name="KernelPlusGUI.sc"
+   text-time="2006-08-01T21:15:09.000000Z"
+   committed-date="2004-09-22T02:02:09.000000Z"
+   checksum="91a691068b079bc0596ba0e0b4392898"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:09.000000Z"/>
+</wc-entries>

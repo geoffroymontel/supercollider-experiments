@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5466"
+   name=""
+   committed-date="2006-08-01T17:12:14.375891Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Quarks"
+   last-author="cruxxial"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5459"
+   name="LocalQuarks.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-07-31T13:40:22.855312Z"
+   checksum="7d1e5e2154fabbf83c22f27996680645"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5459"
+   name="Quark.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-07-31T13:40:22.855312Z"
+   checksum="77eb952c57e6f6594bf685d45a343f13"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5466"
+   name="Quarks.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-08-01T17:12:14.375891Z"
+   checksum="71f30868e2548f814c758488d8e75c95"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5459"
+   name="QuarkSVNRepository.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-07-31T13:40:22.855312Z"
+   checksum="e4099dd8f2f9cb50ac4e2be669e7fc74"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+</wc-entries>

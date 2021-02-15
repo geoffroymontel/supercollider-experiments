@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5465"
+   name=""
+   committed-date="2006-08-01T08:51:51.019750Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/JITLib/ProxySpace"
+   last-author="jrhb"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4329"
+   name="operators.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-03-20T18:21:22.000000Z"
+   checksum="809a7b425b9d08298b12e8bd123746de"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   name="wrappersForCrucialSystem"
+   kind="dir"/>
+<entry
+   committed-rev="4603"
+   name="extDispatch.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-06-01T14:53:59.000000Z"
+   checksum="627678c0c2519aebfe89725887af72c3"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5465"
+   name="InBus.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2006-08-01T08:51:51.019750Z"
+   checksum="b27141c9fbe38f425532511c784a91f2"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="4938"
+   name="RecNodeProxy.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-10-09T12:43:14.000000Z"
+   checksum="82b41bea5614c7c997d178e277ddea8c"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5417"
+   name="ProxyInterfaces.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2006-07-07T09:26:20.514164Z"
+   checksum="7faf0602dc78bbfa72cda6384d1fb093"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="4969"
+   name="ProxySynthDef.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-10-13T11:53:26.000000Z"
+   checksum="255f6c396112f7ac139f6d6f34f8239b"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5072"
+   name="EnvironmentRedirect.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-11-07T16:23:46.000000Z"
+   checksum="b590ce246782922faf3646f065996043"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5327"
+   name="NodeProxy.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2006-03-16T01:28:40.000000Z"
+   checksum="09b8d16056baac76e19dfff1f10358ad"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5190"
+   name="wrapForNodeProxy.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-12-13T21:38:42.000000Z"
+   checksum="d5234fba82a2ef8aa037c901c6cfbec9"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="4800"
+   name="BroadcastServer.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-08-11T14:24:51.000000Z"
+   checksum="c578a0476e5dca26eb0ee6881dae6d34"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="5072"
+   name="ProxySpace.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-11-07T16:23:46.000000Z"
+   checksum="7ccd5e37147a849aa5a588f05d7a0846"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="4698"
+   name="Dispatch.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-06-10T11:02:14.000000Z"
+   checksum="5f1ab8dc91404cb4de9d4055e1aa112c"
+   last-author="decampo"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="5410"
+   name="extStoreOn.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2006-06-23T10:10:14.407018Z"
+   checksum="2a169c41499f8bc84050c8cfd2eff843"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+<entry
+   committed-rev="4740"
+   name="TempoBusClock.sc"
+   text-time="2006-08-01T21:15:14.000000Z"
+   committed-date="2005-07-14T08:19:32.000000Z"
+   checksum="ceba0dc6f75f932dd1f34832c7fe84bf"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:14.000000Z"/>
+</wc-entries>

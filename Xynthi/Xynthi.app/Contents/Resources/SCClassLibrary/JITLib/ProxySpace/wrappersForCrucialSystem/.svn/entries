@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4735"
+   name=""
+   committed-date="2005-07-12T12:45:26.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/JITLib/ProxySpace/wrappersForCrucialSystem"
+   last-author="jrhb"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4735"
+   name="CXProxyInterfaces.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2005-07-12T12:45:26.000000Z"
+   checksum="fb9c68140ddf233f14e9e426a174a662"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+<entry
+   committed-rev="4735"
+   name="wrapCXForNodeProxy.sc"
+   text-time="2006-08-01T21:15:13.000000Z"
+   committed-date="2005-07-12T12:45:26.000000Z"
+   checksum="018a52d87744a94e6546aee879f2ad11"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:13.000000Z"/>
+</wc-entries>

@@ -1,0 +1,544 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf410
+{\fonttbl\f0\fswiss\fcharset77 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red250\green235\blue215;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf2 /*\
+    Xynthi \
+    Copyright (c) 2006 Bhob Rainey. All rights reserved.\
+    http://www.bhobrainey.net\
+\
+    This program is free software; you can redistribute it and/or modify\
+    it under the terms of the GNU General Public License as published by\
+    the Free Software Foundation; either version 2 of the License, or\
+    (at your option) any later version.\
+\
+    This program is distributed in the hope that it will be useful,\
+    but WITHOUT ANY WARRANTY; without even the implied warranty of\
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\
+    GNU General Public License for more details.\
+\
+    You should have received a copy of the GNU General Public License\
+    along with this program; if not, write to the Free Software\
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\
+*/\
+\
+// inspired by the ems synthi series... not a model... \
+// reverb is a port of sean costello's scverb from csound\
+\
+(\
+Routine(\{\
+	var msg, tmpmsg, unpackMsg, tmparr, audioMods, groups, revInBus, revOutBus, delInBus, mix1OutBus, mix2OutBus, matrix, freqInstr, vco1, vco2, vco3, in1, in2, noise1, env1, env2, ringer, dist, moogVcf, mixer1, mixer2, del, scverb, lfo1, lfo2, lfo3, modpod, index, prename, theMods, quickPre, revSr, muteSynth, noteOn, noteOff, noteOnFunc, noteOffFunc, bend, bendRange=2, heldNotes, keyMode=0;\
+	\
+	"Loading Modules".postln;\
+	"SynthEvents.rtf".loadPaths;\
+	"modules/*.rtf".loadPaths;\
+	\
+	SynthDef(\\soft_mute_2, \{|in=0, gate=1|\
+		var env, input;\
+		input=In.ar(in, 2);\
+		env=EnvGen.ar(Env.new([1.0, 0.0, 1.0], [0.02, 0.02], releaseNode:1), gate, doneAction:2);\
+		ReplaceOut.ar(in, env * input);\
+	\}).send(s);\
+	\
+	// wait for the defs to load\
+	s.sync;\
+	\
+	"Initializing Synths".postln;\
+	msg=List.new;\
+	tmpmsg=List.new;\
+	unpackMsg=\{|arr|\
+		arr.do(\{|e, c|\
+			(e.notNil).if(\{\
+				(e[0].isArray).if(\{\
+					unpackMsg.value(e);\
+				\}, \{\
+					msg=msg.add(e);\
+				\});\
+			\});\
+		\});\
+	\};\
+	audioMods=[\\vco1, \\vco2, \\vco3, \\in1, \\in2, \\noise1, \\env1, \\ringer, \\dist, \\moogVcf, \\mixer1, \\mixer2, \\del, \\scverb, \\out];\
+	// make groups\
+	groups=Dictionary.new;\
+	audioMods.do(\{|e, c|\
+		(c==0).if(\{\
+			groups.put(e, Group.basicNew(s));\
+			tmpmsg=tmpmsg.add(groups.at(e).newMsg(s, \\addToHead));\
+		\}, \{\
+			groups.put(e, Group.basicNew(s));\
+			tmpmsg=tmpmsg.add(groups.at(e).addAfterMsg(groups.at(audioMods.at(c-1))));\
+		\});\
+	\});\
+	// the matrix\
+	// stereo busses\
+	revInBus=Bus.audio(s, 2);\
+	revOutBus=Bus.audio(s, 2);\
+	delInBus=Bus.audio(s, 2);\
+	mix1OutBus=Bus.audio(s, 2);\
+	mix2OutBus=Bus.audio(s, 2);\
+	matrix=~audioMatrix.reproduce;\
+	// names\
+	matrix.inputNames=["fm1", "fm2", "fm3", "env", "rc", "rm", "dc", "dm", "filt", "ffm", "mix1", "mix2", "rev1", "rev2", "out1", "out2"];\
+	matrix.outputNames=[\\vco1, \\vco2, \\vco3, \\in1, \\in2, \\noise, \\env, \\ring, \\dist, \\filt, \\mix1L, \\mix1R, \\mix2L, \\mix2R, \\rev1, \\rev2];\
+	// io arrays\
+	matrix.inputArr=Array.fill(12, \{ var bus; bus=Bus.audio(s, 1); bus.index \}) ++ [delInBus.index, delInBus.index + 1] ++ [0, 1];\
+	matrix.outputArr=Array.fill(10, \{ var bus; bus=Bus.audio(s, 1); bus.index \}) ++ [mix1OutBus.index, mix1OutBus.index + 1, mix2OutBus.index, mix2OutBus.index + 1, revOutBus.index, revOutBus.index + 1];\
+	// input nodes\
+	matrix.inputNodes=[groups.at(\\vco1), groups.at(\\vco2), groups.at(\\vco3), groups.at(\\env1), groups.at(\\ringer), groups.at(\\ringer), groups.at(\\dist), groups.at(\\dist), groups.at(\\moogVcf), groups.at(\\moogVcf), groups.at(\\mixer1), groups.at(\\mixer2), groups.at(\\del), groups.at(\\del), groups.at(\\out), groups.at(\\out)];\
+	// node order\
+	matrix.nodeOrder=[matrix.inputArr.copy, matrix.outputArr.copy].lace(matrix.outputArr.size + matrix.inputArr.size );\
+	// free audio busses on cmd-period\
+	CmdPeriod.doOnce(\{ \
+		~xynthis=nil;\
+		matrix.inputArr.do(\{|e|\
+			s.audioBusAllocator.free(e);\
+		\});\
+		matrix.outputArr.do(\{|e|\
+			s.audioBusAllocator.free(e);\
+		\});\
+	\});\
+	// the vcos\
+	freqInstr=~masterFreq.reproduce;\
+	freqInstr.run=true;\
+	tmpmsg=tmpmsg.add(freqInstr.playSynthMsg);\
+	vco1=~vcoInstr.reproduce;\
+	vco1.theSynth.masterFreq=freqInstr;\
+	vco1.theSynth.target=groups.at(\\vco1);\
+	vco1.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(vco1.theSynth.playSynthMsg([\\fm_in, matrix.inputArr[0], \\out, matrix.outputArr[0]]));\
+	vco2=~vcoInstr.reproduce;\
+	vco2.theSynth.target=groups.at(\\vco2);\
+	vco2.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(vco2.theSynth.playSynthMsg([\\fm_in, matrix.inputArr[1], \\out, matrix.outputArr[1]]));\
+	vco2.theGui.syncObj=vco1.theSynth;\
+	vco3=~vcoInstr.reproduce;\
+	vco3.theSynth.target=groups.at(\\vco3);\
+	vco3.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(vco3.theSynth.playSynthMsg([\\fm_in, matrix.inputArr[2], \\out, matrix.outputArr[2]]));\
+	vco3.theGui.syncObj=vco1.theSynth;\
+	// audio input\
+	in1=~audioInInstr.reproduce;\
+	in1.theSynth.target=groups.at(\\in1);\
+	in1.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(in1.theSynth.playSynthMsg([\\out, matrix.outputArr[3]]));\
+	in2=~audioInInstr.reproduce;\
+	in2.theSynth.target=groups.at(\\in2);\
+	in2.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(in2.theSynth.playSynthMsg([\\out, matrix.outputArr[4]]));\
+	noise1=~noiseInstr.reproduce;\
+	noise1.theSynth.target=groups.at(\\noise1);\
+	noise1.theSynth.run=false;\
+	tmpmsg=tmpmsg.add(noise1.theSynth.playSynthMsg([\\out, matrix.outputArr[5]]));\
+	// env\
+	env1=~envInstr.reproduce;\
+	env1.theSynth.env=Env([0.0, 0.0, 1.0, 1.0, 0.0, 0.0], [0.2, 0.1, 0.4, 0.1, 0.2], [0, 0, 0, 0], 4, 0);\
+	env1.theGui.valueDictionary.putAll(Dictionary[\\env -> env1.theSynth.env, \\release -> 4]);\
+	env1.theSynth.target=groups.at(\\env1);\
+	env1.theSynth.run=true;\
+	env1.theSynth.outbus=Bus.control;\
+	tmpmsg=tmpmsg.add(env1.theSynth.playSynthMsg([\\ctrl_out, env1.theSynth.outbus.index, \\in, matrix.inputArr[3], \\out, matrix.outputArr[6]]));\
+	tmparr=env1.theSynth.env.asArray;\
+	tmpmsg=tmpmsg.add([\\n_setn, env1.theSynth.synthObj.nodeID, tmparr.size] ++ tmparr);\
+	// env1.theSynth.setArgArray(\\env, env1.theSynth.env.asArray);\
+	\
+	// ringer\
+	ringer=~ringerInstr.reproduce;\
+	ringer.theSynth.target=groups.at(\\ringer);\
+	ringer.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(ringer.theSynth.playSynthMsg([\\in, matrix.inputArr[4], \\ring_in, matrix.inputArr[5], \\out, matrix.outputArr[7]]));\
+	// distort2\
+	dist=~distort2Instr.reproduce;\
+	dist.theSynth.target=groups.at(\\dist);\
+	dist.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(dist.theSynth.playSynthMsg([\\in, matrix.inputArr[6], \\mod_in, matrix.inputArr[7], \\out, matrix.outputArr[8]]));\
+	// the vcfs\
+	moogVcf=~moogVcfInstr.reproduce;\
+	moogVcf.theSynth.target=groups.at(\\moogVcf);\
+	moogVcf.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(moogVcf.theSynth.playSynthMsg([\\in, matrix.inputArr[8], \\fm_in, matrix.inputArr[9], \\out, matrix.outputArr[9]]));\
+	moogVcf.theGui.syncObj=vco1.theSynth;\
+	// mixers\
+	mixer1=~outputInstr.reproduce;\
+	mixer1.theSynth.target=groups.at(\\mixer1);\
+	mixer1.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(mixer1.theSynth.playSynthMsg([\\in, matrix.inputArr[10], \\out, matrix.outputArr[10]]));\
+	mixer2=~outputInstr.reproduce;\
+	mixer2.theSynth.target=groups.at(\\mixer2);\
+	mixer2.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(mixer2.theSynth.playSynthMsg([\\in, matrix.inputArr[11], \\out, matrix.outputArr[12]]));\
+	\
+	// get ready for the space echo\
+	\
+	// delay\
+	del=~tdelayInstr.reproduce;\
+	del.theSynth.target=groups.at(\\del);\
+	del.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(del.theSynth.playSynthMsg([\\in, matrix.inputArr[12], \\out, revInBus.index]));\
+	// reverb\
+	// get sr\
+	(s.sampleRate==48000).if(\{\
+		revSr=1;\
+	\}, \{\
+		(s.sampleRate==96000).if(\{\
+			revSr=2;\
+		\}, \{\
+			revSr=0;\
+		\});\
+	\});\
+	scverb=~scverbInstr.reproduce;\
+	scverb.theSynth.synthDefName=\\scverb_22;\
+	scverb.theSynth.target=groups.at(\\scverb);\
+	scverb.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(scverb.theSynth.playSynthMsg([\\in, revInBus.index, \\out, revOutBus.index, \\srate, revSr]));\
+	// lfos\
+	lfo1=~lfoInstr.reproduce;\
+	lfo1.theSynth.outbus=Bus.control.set(0);\
+	lfo1.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(lfo1.theSynth.playSynthMsg([\\out, lfo1.theSynth.outbus.index]));\
+	lfo2=~lfoInstr.reproduce;\
+	lfo2.theSynth.outbus=Bus.control.set(0);\
+	lfo2.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(lfo2.theSynth.playSynthMsg([\\out, lfo2.theSynth.outbus.index]));\
+	lfo3=~lfoInstr.reproduce;\
+	lfo3.theSynth.outbus=Bus.control.set(0);\
+	lfo3.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(lfo3.theSynth.playSynthMsg([\\out, lfo3.theSynth.outbus.index]));\
+	env2=~envInstr.reproduce;\
+	env2.theSynth.defName=\\ctrl_env;\
+	env2.theSynth.env=Env([0.0, 0.0, 1.0, 1.0, 0.0, 0.0], [0.1, 0.2, 0.4, 0.1, 0.2], [0, 0, 0, 0], 4, 0);\
+	env2.theGui.valueDictionary.putAll(Dictionary[\\env -> env2.theSynth.env, \\release -> 4]);\
+	env2.theSynth.outbus=Bus.control.set(0);\
+	env2.theSynth.target=groups.at(\\env1);\
+	env2.theSynth.run=true;\
+	tmpmsg=tmpmsg.add(env2.theSynth.playSynthMsg([\\ctrl_out, env2.theSynth.outbus.index]));\
+	tmparr=env2.theSynth.env.asArray;\
+	tmpmsg=tmpmsg.add([\\n_setn, env2.theSynth.synthObj.nodeID, tmparr.size] ++ tmparr);\
+	unpackMsg.value(tmpmsg);\
+	s.listSendBundle(0.1, msg);\
+	// all setup for the modpod\
+	s.sync;\
+	// modpod\
+	modpod=ModPod(8, [\
+		["MFreq", \\tune, vco1.theSynth.masterFreq, vco1.theSynth.masterFreq.busDictionary.at(\\tune), \\ring],\
+		["Freq1", \\tune, vco1.theSynth, vco1.theSynth.busDictionary.at(\\tune), \\ring],\
+		["Freq2", \\tune, vco2.theSynth, vco2.theSynth.busDictionary.at(\\tune), \\ring],\
+		["Freq3", \\tune, vco3.theSynth, vco3.theSynth.busDictionary.at(\\tune), \\ring],\
+		["Pw1", \\pw, vco1.theSynth, vco1.theSynth.busDictionary.at(\\pw), \\ring],\
+		["Pw2", \\pw, vco2.theSynth, vco2.theSynth.busDictionary.at(\\pw), \\ring],\
+		["Pw3", \\pw, vco3.theSynth, vco3.theSynth.busDictionary.at(\\pw), \\ring],\
+		["Fm1", \\fm, vco1.theSynth, vco1.theSynth.busDictionary.at(\\fm), \\ring],\
+		["Fm2", \\fm, vco2.theSynth, vco2.theSynth.busDictionary.at(\\fm), \\ring],\
+		["Fm3", \\fm, vco3.theSynth, vco3.theSynth.busDictionary.at(\\fm), \\ring],\
+		["Amp1", \\amp, vco1.theSynth, vco1.theSynth.busDictionary.at(\\amp), \\ring],\
+		["Amp2", \\amp, vco2.theSynth, vco2.theSynth.busDictionary.at(\\amp), \\ring],\
+		["Amp3", \\amp, vco3.theSynth, vco3.theSynth.busDictionary.at(\\amp), \\ring],\
+		["Noise", \\amp, noise1.theSynth, noise1.theSynth.busDictionary.at(\\amp), \\ring],\
+		["In1", \\amp, in1.theSynth, in1.theSynth.busDictionary.at(\\amp), \\ring],\
+		["In2", \\amp, in2.theSynth, in2.theSynth.busDictionary.at(\\amp), \\ring],\
+		["Ring", \\depth, ringer.theSynth, ringer.theSynth.busDictionary.at(\\depth), \\ring],\
+		["Dist", \\depth, dist.theSynth, dist.theSynth.busDictionary.at(\\depth), \\ring],\
+		["Ffreq", \\tune, moogVcf.theSynth, moogVcf.theSynth.busDictionary.at(\\tune), \\ring],\
+		["FQ", \\q, moogVcf.theSynth, moogVcf.theSynth.busDictionary.at(\\q), \\ring],\
+		["FFm", \\fm, moogVcf.theSynth, moogVcf.theSynth.busDictionary.at(\\fm), \\ring],\
+		["Famp", \\amp, moogVcf.theSynth, moogVcf.theSynth.busDictionary.at(\\amp), \\ring],\
+		["Pan1", \\pan, mixer1.theSynth, mixer1.theSynth.busDictionary.at(\\pan), \\add],\
+		["Pan2", \\pan, mixer2.theSynth, mixer2.theSynth.busDictionary.at(\\pan), \\add],\
+		["MA1", \\amp, mixer1.theSynth, mixer1.theSynth.busDictionary.at(\\amp), \\ring],\
+		["MA2", \\amp, mixer2.theSynth, mixer2.theSynth.busDictionary.at(\\amp), \\ring],\
+		["LFO1", \\freq, lfo1.theSynth, lfo1.theSynth.busDictionary.at(\\freq), \\ring],\
+		["LFO2", \\freq, lfo2.theSynth, lfo2.theSynth.busDictionary.at(\\freq), \\ring],\
+		["LFO3", \\freq, lfo3.theSynth, lfo3.theSynth.busDictionary.at(\\freq), \\ring],\
+		["E1T", \\timescale, env1.theSynth, env1.theSynth.busDictionary.at(\\timescale), \\ring],\
+		["E2T", \\timescale, env2.theSynth, env2.theSynth.busDictionary.at(\\timescale), \\ring],\
+		["DMix", \\mix, del.theSynth, del.theSynth.busDictionary.at(\\mix), \\ring],\
+		["RMix", \\mix, scverb.theSynth, scverb.theSynth.busDictionary.at(\\mix), \\ring]\
+		], [\
+		["LFO1", lfo1.theSynth.outbus.index],\
+		["LFO2", lfo2.theSynth.outbus.index],\
+		["LFO3", lfo3.theSynth.outbus.index],\
+		["ENV1", env1.theSynth.outbus.index],\
+		["ENV2", env2.theSynth.outbus.index]\
+		]\
+	);\
+	~xynthi=(\
+		modDict: Dictionary[\\vco1 -> vco1.theGui, \\vco2 -> vco2.theGui, \\vco3 -> vco3.theGui, \\in1 -> in1.theGui, \\in2 -> in2.theGui, \\noise1 -> noise1.theGui, \\env1 -> env1.theGui, \\env2 -> env2.theGui, \\ring -> ringer.theGui, \\dist -> dist.theGui, \\filt -> moogVcf.theGui, \\mix1 -> mixer1.theGui, \\mix2 -> mixer2.theGui, \\del -> del.theGui, \\verb -> scverb.theGui, \\lfo1 -> lfo1.theGui, \\lfo2 -> lfo2.theGui, \\lfo3 -> lfo3.theGui, \\matrix -> matrix, \\modpod -> modpod],\
+		groups: groups,\
+		vco1: vco1,\
+		vco2: vco2,\
+		vco3: vco3,\
+		in1: in1,\
+		in2: in2,\
+		noise1: noise1,\
+		env1: env1,\
+		env2: env2,\
+		ringer: ringer,\
+		dist: dist,\
+		vcf: moogVcf,\
+		mix1: mixer1,\
+		mix2: mixer2,\
+		del: del,\
+		rev: scverb,\
+		lfo1: lfo1,\
+		lfo2: lfo2,\
+		lfo3: lfo3,\
+		matrix: matrix,\
+		modpod: modpod\
+	);\
+	\
+	// just hold on a sec, okay!\
+	\
+	s.sync;\
+	\
+	// do the gui\
+	quickPre=Array.newClear(20);\
+	// make the window\
+	"Creating GUI".postln;\
+	\{\
+		~synthWin=MultiPageLayout("Xynthi");\
+		ActionButton(~synthWin, " Save ", \{\
+			CocoaDialog.savePanel(\{|path|\
+				var state;\
+				state=Dictionary.new;\
+				~xynthi.modDict.keysValuesDo(\{|key, value|\
+					state.put(key, value.getValues);\
+				\});\
+				state.writeTextArchive(path);\
+			\});\
+		\});\
+		ActionButton(~synthWin, " Load ", \{\
+			CocoaDialog.getPaths(\{|path|\
+				var state, name;\
+				state=Object.readTextArchive(path[0]);\
+				state.keysValuesDo(\{|key, value|\
+					try \{ ~xynthi.modDict.at(key).setValues(value); \}\
+				\});\
+				name=path[0].split;\
+				prename.string_(' ' ++ name[name.size - 1]);\
+			\});\
+		\});	\
+		12.do(\{|i|\
+			SCButton(~synthWin, 18@16)\
+				.states_([[(i + 1).asString]])\
+				.mouseDownAction_(\{|v, x, y, mod|\
+					var state;\
+					((mod==131332) || (mod==131330)).if(\{\
+						state=Dictionary.new;\
+						~xynthi.modDict.keysValuesDo(\{|key, value|\
+							state.put(key, value.getValues);\
+						\});\
+						quickPre.put(i, state);\
+					\}, \{\
+						(quickPre.at(i).notNil).if(\{\
+							state=quickPre.at(i);\
+							state.keysValuesDo(\{|key, value|\
+								try \{ ~xynthi.modDict.at(key).setValues(value); \}\
+							\});\
+							prename.string_(' ' ++ (i + 1).asString);\
+						\});\
+					\});\
+				\});\
+		\});\
+		prename=SCStaticText(~synthWin, 80@18).string_("Default");\
+		SCButton(~synthWin, 70@18)\
+			.states_([["Batch"]])\
+			.action_(\{\
+				var win, pres, size;\
+				SelectButtonSet(win=MultiPageLayout.new("Select group:"), \
+					["Main", "Matrix", "ModPod"],\
+					\{|in|\
+						switch (in)\
+						\{ 0 \} \{ pres=quickPre; size=11; \}\
+						\{ 1 \} \{ pres=~xynthi.matrix.quickPre; size=8 \}\
+						\{ 2 \} \{ pres=~xynthi.modpod.quickPre; size=23 \};\
+						win.close;\
+						CocoaDialog.getPaths(\{|paths|\
+							paths=paths.copyRange(0, size);\
+							paths.do(\{|e, c|\
+								pres.put(c, Object.readTextArchive(e));\
+							\});\
+						\});\
+					\},\
+					nil,\
+					nil,\
+					70, \
+					20\
+				);\
+				win.resizeToFit;\
+				win.front;\
+			\});\
+		SCButton(~synthWin, 75@18)\
+			.states_([["prepare rec"], ["start rec", Color.white, Color.black],\
+				["recording", Color.white, Color.red], ["stopped"]])\
+			.action_(\{|v|\
+				switch(v.value)\
+					\{ 1 \} \{ s.prepareForRecord \}\
+					\{ 2 \} \{ s.record \}\
+					\{ 3 \} \{ s.stopRecording; v.value_(0) \};\
+			\});\
+		SCButton(~synthWin, 70@18)\
+			.states_([["mute"], ["unmute"]])\
+			.action_(\{|v|\
+				(v.value==1).if(\{\
+					Routine(\{\
+						muteSynth=Synth.tail(~xynthi.groups.at(\\out), \\soft_mute_2);\
+						0.02.wait;\
+						s.asTarget.run(false);\
+					\}).play;\
+				\}, \{\
+					s.asTarget.run(true);\
+					muteSynth.release;\
+				\});\
+			\});\
+		SCButton(~synthWin, 70@18)\
+			.states_([[" Reboot "]])\
+			.action_(\{\
+				~synthWin.close;\
+				CCResponder.removeAll;\
+				Routine(\{\
+					s.quit;\
+					s.wait(\\done);\
+					0.1.wait;\
+					s.waitForBoot(\{\
+						try \{ "~/scwork/startup.rtf".loadPaths; \};\
+						"Xynthi_Run.rtf".loadPaths;\
+					\});\
+				\}).play\
+			\});\
+		~synthWin.startRow;	\
+		~leftWin=FlowView(~synthWin, 245@470);\
+		~xynthi.vco1.theGui.displayGui(~leftWin);\
+		~leftWin.startRow;\
+		~xynthi.vco2.theGui.displayGui(~leftWin);\
+		~leftWin.startRow;\
+		~xynthi.vco3.theGui.displayGui(~leftWin);\
+		~leftWin.startRow;\
+		~xynthi.in1.theGui.displayGui(~leftWin);\
+		~xynthi.in2.theGui.valueDictionary.put(\\in, 2);\
+		~xynthi.in2.theGui.displayGui(~leftWin);\
+		~midWin=FlowView(~synthWin, 280@470);\
+		~xynthi.noise1.theGui.displayGui(~midWin);\
+		~xynthi.ringer.theGui.displayGui(~midWin);\
+		~xynthi.dist.theGui.displayGui(~midWin);\
+		~midWin.startRow;\
+		~xynthi.matrix.makeMatrix(~midWin);\
+		~rightWin=FlowView(~synthWin, 340@470);\
+		~xynthi.vcf.theGui.displayGui(~rightWin);\
+		~rightWin.startRow;\
+		~xynthi.mix1.theGui.displayGui(~rightWin);\
+		~xynthi.mix2.theGui.displayGui(~rightWin);\
+		~rightWin.startRow;\
+		~xynthi.del.theGui.displayGui(~rightWin);\
+		~rightWin.startRow;\
+		~xynthi.rev.theGui.displayGui(~rightWin);\
+		~synthWin.startRow;\
+		~xynthi.env1.theGui.displayGui(~synthWin);\
+		~xynthi.env2.theGui.displayGui(~synthWin);\
+		~xynthi.lfo1.theGui.displayGui(~synthWin);\
+		~xynthi.lfo2.theGui.displayGui(~synthWin);\
+		~xynthi.lfo3.theGui.displayGui(~synthWin);\
+		~synthWin.startRow;\
+		~xynthi.modpod.gui(~synthWin);	\
+		~synthWin.startRow;\
+		\
+		// cc's\
+		ActionButton(~synthWin, "Init CC Controllers", \{\
+			"Xynthi_cc.rtf".loadPaths;\
+			// "CC Initialized".postln;\
+		\});\
+		\
+		// keyboard stuff\
+		heldNotes=List.new;\
+		noteOnFunc=\{|src, chan, note, vel|\
+			~xynthi.vco1.theSynth.masterFreq.setArgs(\\freq_in, note.midicps);\
+			~xynthi.env1.theSynth.setArgs(\\gate, 1);\
+			~xynthi.env2.theSynth.setArgs(\\gate, 1);\
+			heldNotes.add(note);\
+			\{ \
+				~xynthi.env1.theGui.elementDictionary.at(\\gate).value_(1);\
+				~xynthi.env2.theGui.elementDictionary.at(\\gate).value_(1);\
+			\}.defer;\
+		\};\
+		noteOffFunc=\{|src, chan, note, vel|\
+			heldNotes.removeAt(heldNotes.indexOf(note));\
+			(heldNotes.size < 1).if(\{\
+				~xynthi.env1.theSynth.setArgs(\\gate, 0);\
+				~xynthi.env2.theSynth.setArgs(\\gate, 0);\
+				\{ \
+					~xynthi.env1.theGui.elementDictionary.at(\\gate).value_(0);\
+					~xynthi.env2.theGui.elementDictionary.at(\\gate).value_(0);\
+				\}.defer;\
+			\}, \{\
+				~xynthi.vco1.theSynth.masterFreq.setArgs(\\freq_in, heldNotes.last.midicps);\
+			\});\
+		\};\
+		SCButton(~synthWin, 130@18)\
+			.states_([["Turn Keyboard On"], ["Turn Keyboard Off"]])\
+			.action_(\{|v|\
+				(v.value==0).if(\{\
+					noteOn.remove;\
+					noteOff.remove;\
+					bend.remove;\
+				\}, \{\
+					noteOn=NoteOnResponder(noteOnFunc);\
+					noteOff=NoteOffResponder(noteOffFunc);\
+					bend=BendResponder(\{|src, chan, val|\
+						val=val/16383;\
+						val=bendRange.value * 2 * val - bendRange.value;\
+						~xynthi.vco1.theSynth.masterFreq.setArgs(\\tune, val.midiratio);\
+					\});\
+				\});\
+			\});\
+		SCStaticText(~synthWin, 80@18).string_("Bend Range: ").align_(\\right);\
+		SNBox(~synthWin, 20@18)\
+			.clipLo_(0)\
+			.clipHi_(48)\
+			.value_(2)\
+			.action_(\{|v|\
+				bendRange=v.value;\
+			\});\
+		SCStaticText(~synthWin, 40@18).string_("Lag: ").align_(\\right);\
+		SNBox(~synthWin, 40@18)\
+			.clipLo_(0.01)\
+			.clipHi_(4)\
+			.step_(0.05)\
+			.value_(0.02)\
+			.action_(\{|v|\
+				~xynthi.vco1.theSynth.masterFreq.setArgs(\\lag, v.value);\
+			\});\
+		// key actions\
+		theMods=[~xynthi.rev, ~xynthi.del, ~xynthi.vco1, ~xynthi.vco2, \
+			~xynthi.vco3, ~xynthi.in1, ~xynthi.in2, ~xynthi.noise1, \
+			~xynthi.vcf, ~xynthi.mix1, ~xynthi.mix2\
+		]; \
+		SCButton(~synthWin, 160@18)\
+			.states_([["Turn Key Actions On"], ["Turn Key Actions Off"]])\
+			.action_(\{|v|\
+				(v.value==0).if(\{\
+					~synthWin.window.view.keyDownAction_(nil);\
+				\}, \{\
+					~synthWin.window.view.keyDownAction_(\{|v, char, mod, uni|\
+						(char==$e).if(\{\
+							~xynthi.env1.theGui.elementDictionary.at(\\gate).valueAction_(\
+								(~xynthi.env1.theGui.elementDictionary.at(\\gate).value - 1).abs\
+							);\
+							~xynthi.env2.theGui.elementDictionary.at(\\gate).valueAction_(\
+								(~xynthi.env2.theGui.elementDictionary.at(\\gate).value - 1).abs\
+							);\
+						\}, \{\
+							((uni > 46) && (uni < 58)).if(\{\
+								uni=uni - 47;\
+								theMods.at(uni).theGui.elementDictionary.at(\\mute).valueAction_(\
+									(theMods.at(uni).theGui.elementDictionary.at(\\mute).value - 1).abs\
+								);\
+							\})\
+						\});\
+					\});\
+				\});\
+			\});\
+		~synthWin.resizeToFit;\
+		~synthWin.front;\
+		~synthWin.window.userCanClose_(false);\
+	\}.defer\
+\}).play\
+)}

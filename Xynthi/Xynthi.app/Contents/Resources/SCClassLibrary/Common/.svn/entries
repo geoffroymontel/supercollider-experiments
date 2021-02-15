@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5434"
+   name=""
+   committed-date="2006-07-14T09:28:30.496348Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common"
+   last-author="cruxxial"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   prop-time="2006-07-20T02:21:47.000000Z"
+   revision="5441"/>
+<entry
+   name="Control"
+   kind="dir"/>
+<entry
+   name="Audio"
+   kind="dir"/>
+<entry
+   name="Files"
+   kind="dir"/>
+<entry
+   name="Unix"
+   kind="dir"/>
+<entry
+   name="GUI"
+   kind="dir"/>
+<entry
+   name="Quarks"
+   kind="dir"/>
+<entry
+   name="Core"
+   kind="dir"/>
+<entry
+   name="Math"
+   kind="dir"/>
+<entry
+   name="OSX"
+   kind="dir"/>
+<entry
+   name="Geometry"
+   kind="dir"/>
+<entry
+   committed-rev="65"
+   name=".cvsignore"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2002-10-13T20:40:08.000000Z"
+   checksum="952fd44d14cee87882239b707231609d"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-07-20T02:21:46.000000Z"/>
+<entry
+   name="Collections"
+   kind="dir"/>
+<entry
+   name="Streams"
+   kind="dir"/>
+</wc-entries>

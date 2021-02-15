@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5419"
+   name=""
+   committed-date="2006-07-07T12:15:08.765331Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Control"
+   last-author="ctrl-t"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5206"
+   name="Score.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-01-02T19:36:39.000000Z"
+   checksum="1a8d026ad3e9eb4bcf19ceae46d3e29e"
+   last-author="rkuivila"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="1611"
+   name="asBus.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2003-09-03T15:49:10.000000Z"
+   checksum="9d81bfb92bde1725b1e5843c43485378"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5381"
+   name="OSCBundle.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-05-28T16:35:32.000000Z"
+   checksum="0c4275dbfad88a65884c5368d739c135"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4658"
+   name="asGroup.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2005-06-09T10:22:07.000000Z"
+   checksum="43e9b796128526bb06e06d894e75a9c9"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5407"
+   name="NetAddr.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-06-23T09:18:38.882062Z"
+   checksum="b9119a467c743d985ee2d497f3e5520a"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5381"
+   name="asDefName.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-05-28T16:35:32.000000Z"
+   checksum="4adcaf1999a5f5a5f17622f4e8054df0"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="3728"
+   name="OSCpathResponder.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2004-10-07T18:02:54.000000Z"
+   checksum="4e4cb532b7e1afab2f2c1e48706044a6"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="OSC.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="b630f5a09712cb33eccd113d2063d009"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="131"
+   name="Module.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2002-11-19T22:32:26.000000Z"
+   checksum="b79912a6ad1d5e42d7bc89991ffe6b90"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5199"
+   name="Node.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2005-12-23T16:39:59.000000Z"
+   checksum="485cc44cc84fa0ad8233bf0133583fb3"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="1202"
+   name="NodeControl.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2003-05-12T23:14:46.000000Z"
+   checksum="18182936532a64c13a63b594fc3cf522"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4656"
+   name="Bus.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2005-06-09T10:19:54.000000Z"
+   checksum="e4b730a0c79b8325aa1ce0676e8a8293"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   name="asScore"
+   kind="dir"/>
+<entry
+   committed-rev="5073"
+   name="NodeWatcher.sc"
+   text-time="2006-08-01T21:15:07.000000Z"
+   committed-date="2005-11-07T16:28:18.000000Z"
+   checksum="e2a8318fa262807c93d9b08513d9a999"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4276"
+   name="OSCService.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-03-04T15:11:27.000000Z"
+   checksum="c65d3b3d17067ab2d25dab22fe2cdd17"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5419"
+   name="HIDDeviceService.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-07-07T12:15:08.765331Z"
+   checksum="dc1903e7abf439c9127c55d75b2f3ba7"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5192"
+   name="Engine.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-12-16T03:26:56.000000Z"
+   checksum="d8f34cdb8fe3ad450531d32a7199b80c"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4981"
+   name="CmdPeriod.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-10-17T09:40:13.000000Z"
+   checksum="9ecfbe6379b7d7c54761529011be894a"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="3855"
+   name="OSCresponder.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2004-11-21T12:05:42.000000Z"
+   checksum="b8fd11e7a8994a968f2ab0c7724fd47a"
+   last-author="mullmusik"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5169"
+   name="Server.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-12-06T03:49:07.000000Z"
+   checksum="2da5cee2a3d17b793c283dbbcedbb1e8"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4929"
+   name="GraphBuilder.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-10-09T12:27:05.000000Z"
+   checksum="61db60622f933aad64a44c9960df1860"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5208"
+   name="Buffer.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-01-03T17:24:31.000000Z"
+   checksum="bd636a9360b3210588a849080b22b1fd"
+   last-author="mullmusik"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="MIDIOut.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="823fe8c2ba82757f95e99e9f0ccc7a65"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+<entry
+   committed-rev="4354"
+   name="asTarget.sc"
+   text-time="2006-08-01T21:15:08.000000Z"
+   committed-date="2005-03-22T16:21:17.000000Z"
+   checksum="2bbef198229fc62e9b61763e0a5f2f27"
+   last-author="jrhb"
+   kind="file"
+   prop-time="2006-08-01T21:15:07.000000Z"/>
+</wc-entries>

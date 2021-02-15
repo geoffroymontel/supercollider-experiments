@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5435"
+   name=""
+   committed-date="2006-07-14T15:00:45.737075Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Platform/linux"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5435"
+   name="LinuxPlatform.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-07-14T15:00:45.737075Z"
+   checksum="c913ffc5726bb278c5f957017c508f1e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5433"
+   name="extMain.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-07-13T13:51:56.159036Z"
+   checksum="89a704d4397440a6eefcaef7e48c7645"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5403"
+   name="LID.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-15T11:38:48.275195Z"
+   checksum="5323b47cd9140c631992c6450242aa1c"
+   last-author="nescivi"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

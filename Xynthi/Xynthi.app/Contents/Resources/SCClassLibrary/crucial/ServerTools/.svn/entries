@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4751"
+   name=""
+   committed-date="2005-07-26T12:08:00.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/ServerTools"
+   last-author="jamshark70"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="1608"
+   name="OSCResponderQueue.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2003-09-03T15:26:32.000000Z"
+   checksum="c565bc58e1453c4e006bcc3097407458"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4751"
+   name="ServerGui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-07-26T12:08:00.000000Z"
+   checksum="7e7d4a6a1d1f453577fdf3885732e8f0"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="3600"
+   name="CXMessage.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2004-09-05T22:58:24.000000Z"
+   checksum="bc6b1269f7b7331bfeb6ded3bb429d3e"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4670"
+   name="SharedBus.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T11:23:13.000000Z"
+   checksum="f331651fe7b58482185f2824b26a325b"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4686"
+   name="synthDef.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T20:23:27.000000Z"
+   checksum="8ccbdb7c555eab39710a25d6fa61de51"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

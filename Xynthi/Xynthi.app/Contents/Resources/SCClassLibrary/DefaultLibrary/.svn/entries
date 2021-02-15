@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5433"
+   name=""
+   committed-date="2006-07-13T13:51:56.159036Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/DefaultLibrary"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5441"/>
+<entry
+   committed-rev="5290"
+   name="UI.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2006-03-06T17:38:19.000000Z"
+   checksum="a2856d81e59ef42d74cf1b23cf032edf"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="MyLFSaw.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="5433"
+   name="Main.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2006-07-13T13:51:56.159036Z"
+   checksum="10cc62fec58dd752e30bfd8399ccc94e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="3306"
+   name="dumpFullInterface.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2004-07-13T01:07:49.000000Z"
+   checksum="abda545dda04223ade4fd8ab14029154"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="extNumber.sc"
+   text-time="2006-07-20T02:21:47.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="176876e013e0551aab0e62f6b62e3b4c"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-07-20T02:21:47.000000Z"/>
+</wc-entries>

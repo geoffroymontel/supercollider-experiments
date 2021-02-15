@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/Core"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5393"
+   name="Ref.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="6f80c7b5461c628835e1f442e42a38db"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Char.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="bd38de337cc9ee3b18588bc2f35c9bff"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Color.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="b8e06a1021e03b3127db4bd5968c2929"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Boolean.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="4455f08627b629770183651c90f1fb3e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Kernel.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="56f2092ec6d5085ea668bccff0ebb867"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Nil.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="410e5f351c8e70d12a82b0f3a0de15f1"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Message.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="98ba7964af4019aef2cb863d7a5fcd11"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Function.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="c82769487299c560ec779b1c1ecf985e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="4228"
+   name="Condition.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2005-02-20T23:45:38.000000Z"
+   checksum="a5487e8925d5cdb7a54a7acabfa16c21"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="4551"
+   name="Error.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2005-05-21T12:24:30.000000Z"
+   checksum="14b4ebae4eb50085ea78ccaa895e54af"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5017"
+   name="Clock.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2005-10-25T20:35:47.000000Z"
+   checksum="7a74e15eaa599a1a56cd30a85f30f735"
+   last-author="rkuivila"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Finalize.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="541fc4e6a21e576bd1a19f1ee930a2a3"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Infinitum.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="91fb27771f3d9adeac1a0c18a2ae6a47"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Symbol.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="24ce96095d5516dba9ac9e87b88a1864"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Object.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="47cb4be424e27375795a7d9fa0879597"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Thread.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="b67cba34858663c0b9a9955f2904915e"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="AbstractFunction.sc"
+   text-time="2006-08-01T21:15:11.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="be54f5a0d78a1ac1ad330871757d19cf"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:11.000000Z"/>
+</wc-entries>

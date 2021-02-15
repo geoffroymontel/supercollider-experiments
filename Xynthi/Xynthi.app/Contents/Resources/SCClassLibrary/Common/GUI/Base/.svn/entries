@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5414"
+   name=""
+   committed-date="2006-07-02T17:13:18.596425Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/Base"
+   last-author="asynth"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="5167"
+   name="SCView.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-12-06T03:44:56.000000Z"
+   checksum="12144ed65825e17a70c9cd8d45774bff"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="4412"
+   name="Pen.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-04-03T08:42:29.000000Z"
+   checksum="a648a260631a3a933c43beb0f837d9c1"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5414"
+   name="GUIScreen.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2006-07-02T17:13:18.596425Z"
+   checksum="40c6a324efd3180364ad7ea01f0d4eec"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5205"
+   name="SCCocoaView.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-12-30T04:23:47.000000Z"
+   checksum="23abd975dc1d17665c18a60976a264f5"
+   last-author="skadoo"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5175"
+   name="SCViews2.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-12-07T13:37:33.000000Z"
+   checksum="28959828ce2ea3fc01fd5d7c0f4810c3"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="4411"
+   name="Font.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-04-03T06:04:54.000000Z"
+   checksum="734862b18d4d3022691528353060d898"
+   last-author="asynth"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+<entry
+   committed-rev="5177"
+   name="SCSoundFileView.sc"
+   text-time="2006-08-01T21:15:10.000000Z"
+   committed-date="2005-12-09T11:09:06.000000Z"
+   checksum="bc24b175b4ef541f53f8fa628597257f"
+   last-author="ctrl-t"
+   kind="file"
+   prop-time="2006-08-01T21:15:10.000000Z"/>
+</wc-entries>

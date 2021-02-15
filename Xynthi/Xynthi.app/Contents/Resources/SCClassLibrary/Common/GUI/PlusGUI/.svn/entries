@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5335"
+   name=""
+   committed-date="2006-03-28T09:18:49.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/Common/GUI/PlusGUI"
+   last-author="decampo"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   name="Control"
+   kind="dir"/>
+<entry
+   name="Files"
+   kind="dir"/>
+<entry
+   name="Core"
+   kind="dir"/>
+<entry
+   name="Math"
+   kind="dir"/>
+<entry
+   name="Collections"
+   kind="dir"/>
+</wc-entries>

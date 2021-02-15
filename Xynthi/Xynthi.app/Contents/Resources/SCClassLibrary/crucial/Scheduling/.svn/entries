@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="5393"
+   name=""
+   committed-date="2006-06-01T13:25:50.943049Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/Scheduling"
+   last-author="kersten"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="4686"
+   name="OSCSched.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-09T20:23:27.000000Z"
+   checksum="df2c3168169b9f3f995b209ebb1ef63e"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5245"
+   name="schedCXBundle.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-02-10T13:07:33.000000Z"
+   checksum="d50ddbe417c36df89428c72b999ea62b"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="3401"
+   name="TempoBus.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2004-07-31T17:09:58.000000Z"
+   checksum="5040e651ae1609c530f70c760db21eff"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="3401"
+   name="tempoClock.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2004-07-31T17:09:58.000000Z"
+   checksum="d4b0d508d770181d2ad7921f1a4f0763"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="5393"
+   name="Position.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2006-06-01T13:25:50.943049Z"
+   checksum="b3c6c376a1594001a42373c4a677d256"
+   last-author="kersten"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="3401"
+   name="Tempo.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2004-07-31T17:09:58.000000Z"
+   checksum="c4c30210057c8e60a3a71cb090ceef93"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+<entry
+   committed-rev="4705"
+   name="TempoGui.sc"
+   text-time="2006-08-01T21:15:06.000000Z"
+   committed-date="2005-06-19T14:47:49.000000Z"
+   checksum="f3521b7d1a5ace993c1cf9003735b36e"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:06.000000Z"/>
+</wc-entries>

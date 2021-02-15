@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4733"
+   name=""
+   committed-date="2005-07-09T19:36:49.000000Z"
+   url="https://svn.sourceforge.net/svnroot/supercollider/trunk/build/SCClassLibrary/crucial/Control"
+   last-author="jamshark70"
+   kind="dir"
+   uuid="a380766d-ff14-0410-b294-a243070f3f08"
+   revision="5466"/>
+<entry
+   committed-rev="3531"
+   name="MIDIPlayer.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2004-08-21T19:02:08.000000Z"
+   checksum="352bf89ae676b08656bbe4d12936ada8"
+   last-author="cruxxial"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+<entry
+   committed-rev="4733"
+   name="MIDIResponder.sc"
+   text-time="2006-08-01T21:15:05.000000Z"
+   committed-date="2005-07-09T19:36:49.000000Z"
+   checksum="d745e04052a3afe572999e1d60d5ab40"
+   last-author="jamshark70"
+   kind="file"
+   prop-time="2006-08-01T21:15:05.000000Z"/>
+</wc-entries>
