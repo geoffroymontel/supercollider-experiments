@@ -1,6 +1,7 @@
 MIDIClient.init;
-
+MIDIIn.connectAll;
 ~ob6 = MIDIOut.newByName("OB-6", "OB-6");
+~ob6.latency = 0;
 // ~ob6.latency = Server.default.latency;
 
 (
@@ -78,3 +79,33 @@ p = Pbind(
 	\dur, 1
 ).play(quant: 1);
 )
+
+// old style sequencer
+~root = 40;
+~dur = 0.1;
+~velocity = 60;
+
+(
+MIDIFunc.cc({ |value, cc, chan|
+	postf("% % %\n", value, cc, chan);
+	switch(chan,
+		0, { ~root = value.linlin(0, 127, 0, 70) },
+		1, { ~dur = value.linexp(0, 127, 0.01, 2) },
+		2, { ~velocity = value.linlin(0, 127, 0, 127) }
+	);
+}, 7);
+)
+
+(
+r = Routine({
+	loop {
+		(type: \midi, midiout: ~ob6, degree: [0, 2, 4, 7].choose, root: ~root, amp: ~velocity / 127, dur: ~dur).play;
+		~dur.wait;
+	}
+});
+)
+
+r.play
+r.stop
+
+~ob6.allNotesOff(0)
