@@ -105,3 +105,68 @@ Ndef(\b, {
 	sig;
 }).play
 )
+
+// another one
+b = Buffer.read(s, Platform.resourceDir +/+ "sounds/a11wlk01-44_1.aiff");
+
+(
+Ndef(\b, {
+
+	var sig, tick, freqShiftBump, plainSig, wind, feed, phase, feedAmp, peaks, peakLimit, onOff, feedDelay;
+
+	onOff = ToggleFF.kr(Dust.kr(0.4)).lag(0.5);
+
+	tick = 2.collect {
+		Impulse.ar(LFDNoise3.ar(LFDNoise3.ar(1).exprange(0.1, 10)).exprange(0.03, 1))
+	};
+
+	feed = LocalIn.ar(2);
+	feed = LeakDC.ar(feed);
+	feed = -3.dbamp * feed;
+	feed = feed - FreqShift.ar(feed, [-0.03, 0.05]);
+	feed = Balance2.ar(feed[0], feed[1], SinOsc.kr(1/4).range(-0.4, 0.4));
+	feed = PitchShift.ar(feed, 1/20, 0.9);
+	feed = feed + (10.dbamp * PitchShift.ar(feed, 1/10, 0.7));
+	feed = feed + DelayC.ar(feed, 1, [3/4, 5/4], -10.dbamp);
+
+	phase = TRand.ar(0, BufSamples.kr(b), tick);
+	phase = phase.lag3(0.014).blend(
+		phase.lag3(20),
+		0.4
+	);
+	phase = phase + (BLowPass.ar(feed, 180, 0.5) * TExpRand.ar(0.5, 100, PulseDivider.ar(tick, 8)));
+
+	phase = phase + LFTri.ar(
+		Env.perc().ar(gate:tick).lincurve(0, 1, [30, 32].midicps, 100, 4)).range(
+		0,
+		1 / TExpRand.ar(100, 1000, PulseDivider.ar(tick, [4, 3])) * SampleRate.ir
+	);
+
+	sig = BufRd.ar(1, b, phase, interpolation:4);
+	sig = BHiShelf.ar(sig, 9000, 0.6, 6);
+	sig = LeakDC.ar(sig);
+	sig = [
+		sig[0] + (-10.dbamp * DelayC.ar(sig[1], 0.1, 1/303)),
+		sig[1] + (-10.dbamp * DelayC.ar(sig[0], 0.1, 1/213))
+	];
+
+	feed = (-10.dbamp * feed).softclip;
+
+	sig = sig + (-28.dbamp * JPverb.ar(HPF.ar(sig, 2000), 0.2, 0.3, 0.5, 0.4, 0.01, 10));
+
+	LocalOut.ar(sig + feed);
+
+	sig = sig + (-0.dbamp * DelayC.ar(feed, 1/6));
+	sig = BLowShelf.ar(sig, 40, 0.9, 9);
+
+	sig = Compander.ar(sig, sig[0], 0.5, 1, 1/40);
+
+	sig;
+}).play
+)
+
+(
+Ndef(\a).free;
+Ndef(\b).free;
+)
+
