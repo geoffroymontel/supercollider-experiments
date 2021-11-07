@@ -1,5 +1,6 @@
 ~bcf = BCF2000Mixer.new(s, 8, 1);
 ~looper = GMultiLooper.new(4, [0, 2, 4, 6] + ~bcf.inBuses[0].index);
+~granularizer = GMultiGranularizer.new(4, [0, 2, 4, 6] + ~bcf.inBuses[0].index);
 
 VSTPlugin.search(s, "c:/audio/vst")
 

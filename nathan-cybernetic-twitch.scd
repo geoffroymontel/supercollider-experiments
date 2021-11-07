@@ -2,6 +2,54 @@
 
 (
 SynthDef(\cybernetic, {
+	var snd, index, divide, cutoff;
+	var freq;
+	index = MouseY.kr(1, 7000, 1);
+	freq = MouseX.kr(0.01, 40, 1);
+	divide = 1;
+	cutoff = 1;
+	snd = LocalIn.ar(4);
+	snd = Latch.ar(snd, PulseDivider.ar(snd.reverse, LPF.ar(snd, 10 * cutoff) * 1e5 * divide));
+	snd = SinOsc.ar(({ ExpRand(10, 100) } ! 4 * freq) + (snd * index));
+	snd = Latch.ar(snd, PulseDivider.ar(snd.reverse, LPF.ar(snd, 10 * cutoff).cubed * 8000 * divide));
+	snd = LPF.ar(snd);
+	snd = Select.ar(LPF.ar(snd.reverse, 10 * cutoff) * 3, [Pulse.ar(440 * freq + (snd * index)), SinOsc.ar(100 * freq + (snd * index))]);
+	snd = RLPF.ar(snd, 440 + (1000 * LPF.ar(LPF.ar(snd, 1), 1).clip), 0.1);
+	snd = Sanitize.ar(snd);
+	4.do {
+		snd = snd + SinOsc.ar(exprand(10, 800) * freq + LPF.ar(snd * index, 100));
+	};
+	LocalOut.ar(snd);
+	snd = Splay.ar(snd);
+	snd = snd.tanh * -5.dbamp;
+	Out.ar(\out.kr(0), snd);
+}).play;
+)
+
+(
+SynthDef(\cybernetic2, {
+	var snd, freq, freqScale, index;
+	freqScale = MouseY.kr(0.01, 3, 1);
+	snd = LocalIn.ar(4);
+	freq = 3000 * freqScale + ((LPF.ar(snd, 0.1) * 100) * [1000, 1500, 1200, 1100]);
+	snd = RLPF.ar(Saw.ar(LPF.ar(freq.abs, 1) * snd), 1000 * freqScale + (900 * snd), snd.abs + 0.01);
+	snd = Select.ar(PulseDivider.ar(BPF.ar(snd, 0.1, 0.1), div: 1000), [
+		snd,
+		RLPF.ar(snd, 1000 * freqScale + (100 * LPF.ar(snd, 0.1).fold2), 0.5).tanh
+	]);
+	snd = LeakDC.ar(Sanitize.ar(snd).clip2);
+	snd = [snd[1], snd[2], snd[3], snd[0]];
+	LocalOut.ar(snd.clip2);
+	snd = Splay.ar(snd[[0, 1]], 0.5);
+	snd = snd.clip2 * -5.dbamp;
+	Out.ar(\out.kr(0), snd);
+}).play;
+)
+
+// How he made it
+
+(
+SynthDef(\cybernetic, {
 	var snd;
 	snd = LocalIn.ar(1);
 	snd = SinOsc.ar(440 + snd);
