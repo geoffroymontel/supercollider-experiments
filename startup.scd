@@ -5,6 +5,8 @@ Server.default = s = Server.internal;
 s.recHeaderFormat = "wav";
 s.options.sampleRate = 44100;
 s.options.memSize = 65536;
+s.options.numWireBufs = 64 * 8;
+BusPlug.defaultReshaping = \elastic;
 s.boot;
 s.makeGui;
 
